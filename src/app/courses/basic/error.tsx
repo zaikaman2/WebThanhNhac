@@ -1,4 +1,4 @@
 'use client'
 
-import ErrorBoundary from '@/components/shared/ErrorBoundary'
-export default ErrorBoundary 
+import CourseErrorBoundary from '@/components/shared/CourseErrorBoundary'
+export default CourseErrorBoundary 

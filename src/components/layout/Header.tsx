@@ -30,7 +30,7 @@ export default function Header() {
               Đăng nhập
             </Link>
             <Link 
-              href="/courses" 
+              href="/auth/register" 
               className="bg-primary text-secondary px-6 py-2 rounded-full font-semibold hover:bg-primary-light transition-all duration-300 transform hover:scale-105"
             >
               Đăng ký ngay
@@ -63,6 +63,9 @@ export default function Header() {
               </Link>
               <Link href="/auth" className="block px-3 py-2 text-gray-300 hover:text-primary">
                 Đăng nhập
+              </Link>
+              <Link href="/auth/register" className="block px-3 py-2 text-primary hover:text-primary-light">
+                Đăng ký ngay
               </Link>
             </div>
           </div>

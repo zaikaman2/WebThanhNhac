@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Course } from '@/components/shared/types'
 import LoadingSpinner from '@/components/shared/LoadingSpinner'
 import ImageWithLoading from '@/components/shared/ImageWithLoading'
+import CourseRegisterButton from '@/components/shared/CourseRegisterButton'
 
 export default async function BasicCoursePage() {
   const course = await getCourseByType('basic')
@@ -42,12 +43,7 @@ export default async function BasicCoursePage() {
                     {course.price.toLocaleString('vi-VN')}
                   </span>
                 </div>
-                <Link
-                  href={`/checkout/basic`}
-                  className="block w-full bg-primary text-secondary text-center py-4 rounded-full font-bold hover:bg-primary-light transition-all duration-300"
-                >
-                  Đăng ký ngay
-                </Link>
+                <CourseRegisterButton courseType="basic" />
               </div>
             </div>
           </div>

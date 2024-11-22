@@ -1,6 +1,6 @@
 import Banner from '@/components/home/Banner'
 import CourseList from '@/components/home/CourseList'
-import Testimonials from '@/components/home/Testimonials'
+import TestimonialsServer from '@/components/home/TestimonialsServer'
 import Instructor from '@/components/home/Instructor'
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
       <Banner />
       <Instructor />
       <CourseList />
-      <Testimonials />
+      <TestimonialsServer />
     </main>
   )
 }
