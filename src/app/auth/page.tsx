@@ -1,9 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import LoadingSpinner from '@/components/shared/LoadingSpinner'
+import { signIn } from '@/lib/auth'
 
 export default function AuthPage() {
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -11,7 +17,18 @@ export default function AuthPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle login logic here
+    setError('')
+    setLoading(true)
+
+    try {
+      await signIn(formData.email, formData.password)
+      router.push('/')
+      router.refresh()
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Đăng nhập thất bại')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -23,6 +40,12 @@ export default function AuthPage() {
           </h1>
           
           <div className="bg-secondary-light p-8 rounded-xl border border-primary/10">
+            {error && (
+              <div className="bg-red-500/10 border border-red-500/50 text-red-500 p-3 rounded-md mb-6">
+                {error}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-300">
@@ -54,9 +77,10 @@ export default function AuthPage() {
 
               <button
                 type="submit"
-                className="w-full bg-primary text-secondary py-3 rounded-full font-bold hover:bg-primary-light transition-all duration-300"
+                disabled={loading}
+                className="w-full bg-primary text-secondary py-3 rounded-full font-bold hover:bg-primary-light transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Đăng nhập
+                {loading ? <LoadingSpinner /> : 'Đăng nhập'}
               </button>
             </form>
 
