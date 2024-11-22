@@ -41,10 +41,10 @@ export default function SlideIn({
   }, [])
 
   const slideClasses = {
-    left: 'translate-x-[-100px]',
-    right: 'translate-x-[100px]',
-    up: 'translate-y-[100px]',
-    down: 'translate-y-[-100px]'
+    left: 'translate-x-[-50px]',
+    right: 'translate-x-[50px]',
+    up: 'translate-y-[50px]',
+    down: 'translate-y-[-50px]'
   }
 
   return (
@@ -55,7 +55,7 @@ export default function SlideIn({
         opacity-0 
         ${slideClasses[direction]}
         transition-all 
-        duration-700 
+        duration-[1500ms]
         ease-out
         slide-in
         ${className}
