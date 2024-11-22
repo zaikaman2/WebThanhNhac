@@ -2,6 +2,7 @@ import { supabase } from '@/lib/supabase'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Course } from '@/components/shared/types'
+import LoadingSpinner from '@/components/shared/LoadingSpinner'
 
 async function getCourse(): Promise<Course | null> {
   try {
@@ -52,14 +53,23 @@ export default async function IntermediateCoursePage() {
             <div className="md:w-1/2">
               <div className="relative">
                 <div className="absolute -inset-4 bg-primary opacity-20 blur-lg rounded-lg"></div>
-                <Image
-                  src={course.image}
-                  alt={course.title}
-                  width={600}
-                  height={400}
-                  className="rounded-lg shadow-2xl relative"
-                  priority
-                />
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center justify-center bg-secondary-light">
+                    <LoadingSpinner />
+                  </div>
+                  <Image
+                    src={course.image}
+                    alt={course.title}
+                    width={600}
+                    height={400}
+                    className="rounded-lg shadow-2xl relative"
+                    priority
+                    loading="lazy"
+                    onLoadingComplete={(img) => {
+                      img.parentElement?.querySelector('.absolute')?.remove()
+                    }}
+                  />
+                </div>
               </div>
             </div>
             
