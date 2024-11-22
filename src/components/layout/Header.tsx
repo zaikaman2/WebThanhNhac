@@ -2,9 +2,26 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useAuth } from '@/hooks/useAuth'
+import { signOut } from '@/lib/auth'
+import toast from 'react-hot-toast'
+import { useRouter } from 'next/navigation'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { user } = useAuth()
+  const router = useRouter()
+
+  const handleSignOut = async () => {
+    try {
+      await signOut()
+      toast.success('Đăng xuất thành công!')
+      router.push('/')
+      router.refresh()
+    } catch (error) {
+      toast.error('Có lỗi xảy ra khi đăng xuất')
+    }
+  }
 
   return (
     <header className="bg-secondary shadow-lg fixed w-full top-0 z-50 border-b border-primary/20">
@@ -26,15 +43,34 @@ export default function Header() {
             <Link href="/about" className="text-gray-300 hover:text-primary transition-colors">
               Về giảng viên
             </Link>
-            <Link href="/auth" className="text-gray-300 hover:text-primary transition-colors">
-              Đăng nhập
-            </Link>
-            <Link 
-              href="/auth/register" 
-              className="bg-primary text-secondary px-6 py-2 rounded-full font-semibold hover:bg-primary-light transition-all duration-300 transform hover:scale-105"
-            >
-              Đăng ký ngay
-            </Link>
+            {user ? (
+              <div className="flex items-center gap-4">
+                <Link 
+                  href="/account" 
+                  className="bg-primary text-secondary px-6 py-2 rounded-full font-semibold hover:bg-primary-light transition-all duration-300 transform hover:scale-105"
+                >
+                  Tài khoản
+                </Link>
+                <button
+                  onClick={handleSignOut}
+                  className="text-gray-300 hover:text-primary transition-colors"
+                >
+                  Đăng xuất
+                </button>
+              </div>
+            ) : (
+              <>
+                <Link href="/auth" className="text-gray-300 hover:text-primary transition-colors">
+                  Đăng nhập
+                </Link>
+                <Link 
+                  href="/auth/register" 
+                  className="bg-primary text-secondary px-6 py-2 rounded-full font-semibold hover:bg-primary-light transition-all duration-300 transform hover:scale-105"
+                >
+                  Đăng ký ngay
+                </Link>
+              </>
+            )}
           </nav>
 
           <div className="md:hidden flex items-center">
@@ -61,12 +97,28 @@ export default function Header() {
               <Link href="/about" className="block px-3 py-2 text-gray-300 hover:text-primary">
                 Về giảng viên
               </Link>
-              <Link href="/auth" className="block px-3 py-2 text-gray-300 hover:text-primary">
-                Đăng nhập
-              </Link>
-              <Link href="/auth/register" className="block px-3 py-2 text-primary hover:text-primary-light">
-                Đăng ký ngay
-              </Link>
+              {user ? (
+                <>
+                  <Link href="/account" className="block px-3 py-2 text-primary hover:text-primary-light">
+                    Tài khoản
+                  </Link>
+                  <button
+                    onClick={handleSignOut}
+                    className="block w-full text-left px-3 py-2 text-gray-300 hover:text-primary"
+                  >
+                    Đăng xuất
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link href="/auth" className="block px-3 py-2 text-gray-300 hover:text-primary">
+                    Đăng nhập
+                  </Link>
+                  <Link href="/auth/register" className="block px-3 py-2 text-primary hover:text-primary-light">
+                    Đăng ký ngay
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         )}

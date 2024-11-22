@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import LoadingSpinner from '@/components/shared/LoadingSpinner'
 import { signIn } from '@/lib/auth'
+import toast from 'react-hot-toast'
 
 export default function AuthPage() {
   const router = useRouter()
@@ -22,9 +23,11 @@ export default function AuthPage() {
 
     try {
       await signIn(formData.email, formData.password)
+      toast.success('Đăng nhập thành công!')
       router.push('/')
       router.refresh()
     } catch (err) {
+      toast.error(err instanceof Error ? err.message : 'Đăng nhập thất bại')
       setError(err instanceof Error ? err.message : 'Đăng nhập thất bại')
     } finally {
       setLoading(false)
@@ -78,9 +81,16 @@ export default function AuthPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-primary text-secondary py-3 rounded-full font-bold hover:bg-primary-light transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-primary text-secondary py-3 rounded-full font-bold hover:bg-primary-light transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               >
-                {loading ? <LoadingSpinner /> : 'Đăng nhập'}
+                {loading ? (
+                  <div className="flex items-center gap-2">
+                    <LoadingSpinner size={20} />
+                    <span>Đang xử lý...</span>
+                  </div>
+                ) : (
+                  'Đăng nhập'
+                )}
               </button>
             </form>
 

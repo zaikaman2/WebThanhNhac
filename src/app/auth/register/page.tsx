@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import LoadingSpinner from '@/components/shared/LoadingSpinner'
+import toast from 'react-hot-toast'
 
 export default function RegisterPage() {
   return (
@@ -76,13 +77,11 @@ function RegisterForm() {
       const data = await response.json()
 
       if (!response.ok) {
+        toast.error(data.message || 'Đăng ký thất bại')
         throw new Error(data.message || 'Đăng ký thất bại')
       }
 
-      // Hiển thị thông báo thành công
-      alert('Đăng ký thành công! Vui lòng đăng nhập để tiếp tục.')
-      
-      // Chuyển đến trang đăng nhập
+      toast.success('Đăng ký thành công! Vui lòng xác nhận email để tiếp tục.')
       router.push('/auth')
 
     } catch (err) {
