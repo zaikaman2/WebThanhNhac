@@ -10,7 +10,6 @@ export default function AccountPage() {
   const [formData, setFormData] = useState({
     name: user?.user_metadata?.name || '',
     email: user?.email || '',
-    phone: '',
     avatar_url: null
   })
   const [isEditing, setIsEditing] = useState(false)
@@ -86,21 +85,6 @@ export default function AccountPage() {
                 value={formData.email}
                 disabled
                 className="mt-1 block w-full rounded-md bg-secondary border border-primary/10 text-gray-300 px-4 py-2 opacity-50"
-              />
-            </div>
-
-            {/* Phone input */}
-            <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-300">
-                Số điện thoại
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                value={formData.phone}
-                onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                disabled={!isEditing}
-                className="mt-1 block w-full rounded-md bg-secondary border border-primary/10 text-gray-300 px-4 py-2 disabled:opacity-50"
               />
             </div>
 
