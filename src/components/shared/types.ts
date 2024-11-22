@@ -17,11 +17,7 @@ export interface Testimonial {
 }
 
 export interface Instructor {
-  id: string
   name: string
-  bio: string
   image: string
-  achievements: string[]
-  createdAt?: Date
-  updatedAt?: Date
+  description?: string
 } 

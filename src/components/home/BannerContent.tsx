@@ -3,8 +3,9 @@
 import SlideIn from '@/components/shared/SlideIn'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Instructor } from '@/components/shared/types'
 
-export default function BannerContent({ instructor }: { instructor: any }) {
+export default function BannerContent({ instructor }: { instructor: Instructor }) {
   return (
     <div className="py-24 md:py-32 flex flex-col md:flex-row items-center gap-16">
       <SlideIn direction="left">
