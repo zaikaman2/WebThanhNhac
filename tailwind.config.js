@@ -31,6 +31,21 @@ module.exports = {
           dark: '#141414',
         }
       },
+      animation: {
+        'in': 'in 1s ease-out forwards',
+      },
+      keyframes: {
+        in: {
+          '0%': { 
+            opacity: '0',
+            transform: 'var(--transform-from)'
+          },
+          '100%': { 
+            opacity: '1',
+            transform: 'translate(0,0)'
+          },
+        },
+      },
     },
   },
   plugins: [],

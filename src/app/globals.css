@@ -1,21 +1,81 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: #FFD700;
+  --primary-light: #FFE44D;
+  --secondary: #1A1A1A;
+  --secondary-light: #2A2A2A;
+  --secondary-darker: #0F0F0F;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 0.7s ease-out;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.7s ease-out;
+}
+
+.slide-in-up {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.7s ease-out;
+}
+
+.slide-in-down {
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: all 0.7s ease-out;
+}
+
+.slide-in-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--secondary);
+  color: #fff;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--primary-light), var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
