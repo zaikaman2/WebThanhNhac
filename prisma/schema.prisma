@@ -9,6 +9,7 @@ datasource db {
 
 model Course {
   id          String   @id @default(cuid())
+  type        String   @unique
   title       String
   description String
   price       Float

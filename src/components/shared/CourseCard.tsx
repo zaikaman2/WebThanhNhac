@@ -4,10 +4,16 @@ import { Course } from './types'
 
 type CourseCardProps = Course
 
-export default function CourseCard({ id, title, description, price, image }: CourseCardProps) {
+export default function CourseCard({ id, type, title, description, price, image }: CourseCardProps) {
+  const routePath = {
+    'basic': '/courses/basic',
+    'intermediate': '/courses/intermediate',
+    'advanced': '/courses/advanced'
+  }[type] || '/courses'
+
   return (
     <Link 
-      href={`/courses/${id}`}
+      href={routePath}
       className="block bg-secondary-light rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border border-primary/10"
     >
       <div className="relative h-48">

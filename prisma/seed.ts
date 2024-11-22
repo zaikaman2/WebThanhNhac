@@ -6,18 +6,21 @@ async function main() {
   await prisma.course.createMany({
     data: [
       {
+        type: 'basic',
         title: 'Khóa học thanh nhạc cơ bản',
         description: 'Khám phá những kiến thức cơ bản về thanh nhạc, kỹ thuật hát và phát triển giọng hát.',
         price: 2500000,
         image: '/images/course-1.jpg'
       },
       {
+        type: 'intermediate',
         title: 'Khóa học nâng cao',
         description: 'Phát triển kỹ năng thanh nhạc chuyên nghiệp với các bài học chuyên sâu.',
         price: 3500000,
         image: '/images/course-2.jpg'
       },
       {
+        type: 'advanced',
         title: 'Khóa học 1-1',
         description: 'Học trực tiếp với giảng viên Đinh Trung Kiên, tập trung vào phát triển cá nhân.',
         price: 5000000,
