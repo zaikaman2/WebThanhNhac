@@ -1,43 +1,12 @@
-import { supabase } from '@/lib/supabase'
+import { getCourseByType } from '@/lib/getCourses'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Course } from '@/components/shared/types'
 import LoadingSpinner from '@/components/shared/LoadingSpinner'
 import ImageWithLoading from '@/components/shared/ImageWithLoading'
 
-async function getCourse(): Promise<Course | null> {
-  try {
-    const { data, error } = await supabase
-      .from('Course')
-      .select('*')
-      .eq('type', 'advanced')
-      .single()
-    
-    if (error) {
-      return {
-        id: '3',
-        type: 'advanced',
-        title: 'Khóa học thanh nhạc nâng cao',
-        description: 'Phát triển kỹ năng thanh nhạc chuyên nghiệp với các kỹ thuật nâng cao.',
-        price: 4500000,
-        image: '/images/course-advanced.jpg'
-      }
-    }
-    return data
-  } catch (err) {
-    return {
-      id: '3',
-      type: 'advanced',
-      title: 'Khóa học thanh nhạc nâng cao',
-      description: 'Phát triển kỹ năng thanh nhạc chuyên nghiệp với các kỹ thuật nâng cao.',
-      price: 4500000, 
-      image: '/images/course-advanced.jpg'
-    }
-  }
-}
-
-export default async function AdvancedCoursePage() {
-  const course = await getCourse()
+export default async function AdvancedPage() {
+  const course = await getCourseByType('advanced')
 
   if (!course) {
     return <div>Không tìm thấy khóa học</div>

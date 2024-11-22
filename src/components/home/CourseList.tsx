@@ -1,15 +1,6 @@
-import { supabase } from '@/lib/supabase'
+import { getCourses } from '@/lib/getCourses'
 import CourseCard from '../shared/CourseCard'
 import { Course } from '../shared/types'
-
-async function getCourses(): Promise<Course[]> {
-  const { data, error } = await supabase
-    .from('Course')
-    .select('*')
-  
-  if (error) throw error
-  return data || []
-}
 
 export default async function CourseList() {
   const courses = await getCourses()
