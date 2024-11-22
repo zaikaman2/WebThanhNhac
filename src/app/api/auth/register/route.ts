@@ -76,10 +76,30 @@ export async function POST(request: Request) {
       )
     }
 
+    const { error: profileError } = await supabaseAdmin
+      .from('profiles')
+      .insert([
+        {
+          id: authData.user.id,
+          name,
+          email,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        }
+      ])
+
+    if (profileError) {
+      console.error('Profile creation error:', profileError)
+      return NextResponse.json(
+        { message: 'Lỗi khi tạo thông tin người dùng' },
+        { status: 400 }
+      )
+    }
+
     return NextResponse.json(
-      { 
+      {
         message: 'Đăng ký thành công! Vui lòng xác nhận email để tiếp tục.',
-        success: true 
+        success: true
       },
       { status: 200 }
     )

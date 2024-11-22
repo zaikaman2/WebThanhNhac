@@ -1,21 +1,44 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import LoadingSpinner from '@/components/shared/LoadingSpinner'
 import toast from 'react-hot-toast'
+import { getProfile, updateProfile, type Profile } from '@/lib/profile'
 
 export default function AccountPage() {
   const { user, loading } = useAuth()
   const [formData, setFormData] = useState({
-    name: user?.user_metadata?.name || '',
-    email: user?.email || '',
-    avatar_url: null
+    name: '',
+    email: ''
   })
   const [isEditing, setIsEditing] = useState(false)
   const [updateLoading, setUpdateLoading] = useState(false)
+  const [profileLoading, setProfileLoading] = useState(true)
 
-  if (loading) {
+  useEffect(() => {
+    async function loadProfile() {
+      if (!user) return
+      try {
+        const profile = await getProfile(user.id)
+        if (profile) {
+          setFormData({
+            name: profile.name || '',
+            email: profile.email || user.email || ''
+          })
+        }
+      } catch (error) {
+        console.error('Error loading profile:', error)
+        toast.error('Không thể tải thông tin tài khoản')
+      } finally {
+        setProfileLoading(false)
+      }
+    }
+
+    loadProfile()
+  }, [user])
+
+  if (loading || profileLoading) {
     return (
       <div className="min-h-screen bg-secondary pt-24 flex items-center justify-center">
         <LoadingSpinner size={40} />
@@ -40,7 +63,9 @@ export default function AccountPage() {
     setUpdateLoading(true)
 
     try {
-      // TODO: Implement update profile logic
+      await updateProfile(user.id, {
+        name: formData.name
+      })
       toast.success('Cập nhật thông tin thành công!')
       setIsEditing(false)
     } catch (error) {
