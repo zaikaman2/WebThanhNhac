@@ -10,7 +10,6 @@ type Testimonial = {
   avatar: string
 }
 
-// @ts-ignore
 async function getTestimonials(): Promise<Testimonial[]> {
   const { data, error } = await supabase
     .from('Testimonial')
@@ -20,7 +19,6 @@ async function getTestimonials(): Promise<Testimonial[]> {
   return data || []
 }
 
-// @ts-ignore
 export default async function Testimonials() {
   const testimonials = await getTestimonials()
 

@@ -9,7 +9,6 @@ type Props = {
   avatar: string
 }
 
-// @ts-ignore
 export default function TestimonialList({ name, content, avatar }: Props) {
   return (
     <div className="bg-secondary-light p-8 rounded-2xl border border-primary/10 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
@@ -23,7 +22,7 @@ export default function TestimonialList({ name, content, avatar }: Props) {
             className="rounded-full object-cover border-4 border-secondary relative"
           />
         </div>
-        <p className="text-gray-300 mb-4 text-center italic leading-relaxed">"{content}"</p>
+        <p className="text-gray-300 mb-4 text-center italic leading-relaxed">&ldquo;{content}&rdquo;</p>
         <h3 className="text-primary font-semibold text-lg">{name}</h3>
       </div>
     </div>
