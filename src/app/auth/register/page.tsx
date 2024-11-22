@@ -1,5 +1,6 @@
 'use client'
 
+import { Suspense } from 'react'
 import { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
@@ -15,7 +16,9 @@ export default function RegisterPage() {
           </h1>
           
           <div className="bg-secondary-light p-8 rounded-xl border border-primary/10">
-            <RegisterForm />
+            <Suspense fallback={<LoadingSpinner />}>
+              <RegisterForm />
+            </Suspense>
             
             <div className="mt-6 text-center">
               <Link href="/auth" className="text-primary hover:text-primary-light">
