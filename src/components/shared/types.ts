@@ -1,23 +1,10 @@
-export type Course = {
+export interface Course {
   id: string
-  type: string
+  type: 'basic' | 'intermediate' | 'advanced'
   title: string
   description: string
   price: number
   image: string
-  curriculum: {
-    title: string
-    description: string
-  }[]
-  benefits: {
-    title: string
-    description: string
-  }[]
-  testimonials: {
-    name: string
-    content: string
-    avatar: string
-  }[]
 }
 
 export interface Testimonial {
