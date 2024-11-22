@@ -15,13 +15,14 @@ async function getCourse(id: string): Promise<Course | null> {
   return data
 }
 
-type Props = {
+interface PageProps {
   params: {
     id: string
   }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default async function CoursePage({ params }: Props) {
+export default async function CoursePage({ params, searchParams }: PageProps) {
   const course = await getCourse(params.id)
 
   if (!course) {
