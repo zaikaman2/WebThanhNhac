@@ -82,11 +82,11 @@ export default function Footer() {
               © 2024 KienVocal. Tất cả quyền được bảo lưu.
             </p>
             <div className="mt-4 space-x-8">
-              <Link href="#" className="text-gray-400 hover:text-primary transition-colors">
-                Điều khoản sử dụng
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-primary transition-colors">
+              <Link href="/privacy" className="text-gray-400 hover:text-primary transition-colors">
                 Chính sách bảo mật
+              </Link>
+              <Link href="/terms" className="text-gray-400 hover:text-primary transition-colors">
+                Điều khoản sử dụng
               </Link>
             </div>
           </div>
