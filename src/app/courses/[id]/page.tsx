@@ -15,7 +15,13 @@ async function getCourse(id: string): Promise<Course | null> {
   return data
 }
 
-export default async function CoursePage({ params }: { params: { id: string } }) {
+type Props = {
+  params: {
+    id: string
+  }
+}
+
+export default async function CoursePage({ params }: Props) {
   const course = await getCourse(params.id)
 
   if (!course) {
