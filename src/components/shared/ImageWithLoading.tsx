@@ -8,9 +8,10 @@ interface ImageWithLoadingProps {
   alt: string
   width: number
   height: number
+  className?: string
 }
 
-export default function ImageWithLoading({ src, alt, width, height }: ImageWithLoadingProps) {
+export default function ImageWithLoading({ src, alt, width, height, className }: ImageWithLoadingProps) {
   return (
     <div className="relative">
       <div className="absolute -inset-4 bg-primary opacity-20 blur-lg rounded-lg"></div>
@@ -23,7 +24,7 @@ export default function ImageWithLoading({ src, alt, width, height }: ImageWithL
           alt={alt}
           width={width}
           height={height}
-          className="rounded-lg shadow-2xl relative"
+          className={`rounded-lg shadow-2xl relative ${className}`}
           priority
           onLoadingComplete={(img) => {
             img.parentElement?.querySelector('.absolute')?.remove()
