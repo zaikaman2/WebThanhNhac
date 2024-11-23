@@ -1,10 +1,12 @@
 export interface Course {
   id: string
-  type: 'basic' | 'intermediate' | 'advanced'
   title: string
   description: string
   price: number
   image: string
+  type: 'basic' | 'intermediate' | 'advanced'
+  createdAt: string
+  updatedAt: string
 }
 
 export interface Testimonial {

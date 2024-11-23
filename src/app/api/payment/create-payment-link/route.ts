@@ -34,8 +34,8 @@ export async function POST(request: Request) {
           price: amount,
         },
       ],
-      returnUrl: `${domain}/payment/success?orderCode=${orderCode}`,
-      cancelUrl: `${domain}/payment/cancel?orderCode=${orderCode}`,
+      returnUrl: `${domain}/payment/success?orderCode=${orderCode}&courseType=${courseType}`,
+      cancelUrl: `${domain}/payment/cancel?orderCode=${orderCode}&courseType=${courseType}`,
     }
 
     const paymentLinkResponse = await payOS.createPaymentLink(body)

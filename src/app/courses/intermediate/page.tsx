@@ -1,14 +1,37 @@
-import { getCourseByType } from '@/lib/getCourses'
-import ImageWithLoading from '@/components/shared/ImageWithLoading'
-import { BookOpen, Clock, Award, CheckCircle, Mic2, Music, Star } from 'lucide-react'
-import SlideIn from '@/components/shared/SlideIn'
-import CourseRegisterButton from '@/components/shared/CourseRegisterButton'
+'use client'
 
-export default async function IntermediatePage() {
-  const course = await getCourseByType('intermediate')
+import { useState, useEffect } from 'react'
+import { useUser } from '@/hooks/useUser'
+import { supabase } from '@/lib/supabase'
+import { Course } from '@/components/shared/types'
+import toast from 'react-hot-toast'
+import CourseAccessButton from '@/components/shared/CourseAccessButton'
+import { BookOpen, Clock, Mic2, CheckCircle } from 'lucide-react'
+import SlideIn from '@/components/shared/SlideIn'
+import ImageWithLoading from '@/components/shared/ImageWithLoading'
+
+export default function IntermediatePage() {
+  const { user } = useUser()
+  const [course, setCourse] = useState<Course | null>(null)
+  const [showDevModal, setShowDevModal] = useState(false)
+  const [devPassword, setDevPassword] = useState('')
+  const [devError, setDevError] = useState('')
+
+  useEffect(() => {
+    async function loadCourse() {
+      const response = await fetch('/api/courses/intermediate')
+      const data = await response.json()
+      setCourse(data)
+    }
+    loadCourse()
+  }, [])
 
   if (!course) {
-    return <div>Không tìm thấy khóa học</div>
+    return (
+      <div className="min-h-screen bg-secondary flex items-center justify-center">
+        <div className="text-primary">Loading...</div>
+      </div>
+    )
   }
 
   const highlights = [
@@ -194,7 +217,7 @@ export default async function IntermediatePage() {
         {
           title: 'Bài 20: Phòng tránh và khắc phục chấn thương giọng hát',
           content: [
-            'Các mẹo chăm sóc giọng hát chuyên nghiệp',
+            'Các mẹo chăm sc giọng hát chuyên nghiệp',
             'Xử lý nhanh khi giọng bị khàn, mất hơi hoặc căng dây thanh'
           ]
         },
@@ -208,6 +231,52 @@ export default async function IntermediatePage() {
       ]
     }
   ]
+
+  const handleDevAccess = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setDevError('')
+    
+    if (devPassword === '17062004') {
+      try {
+        const { data: { user }, error: authError } = await supabase.auth.getUser()
+        
+        if (authError) {
+          throw new Error('Lỗi xác thực: ' + authError.message)
+        }
+        
+        if (!user) {
+          toast.error('Vui lòng đăng nhập để tiếp tục')
+          return
+        }
+
+        const { error: purchaseError } = await supabase
+          .from('purchases')
+          .insert([
+            {
+              user_id: user.id,
+              course_type: 'intermediate',
+              order_code: 'DEV' + Date.now(),
+              amount: 0,
+              payment_status: 'completed',
+              created_at: new Date().toISOString()
+            }
+          ])
+
+        if (purchaseError) {
+          throw new Error('Lỗi tạo đơn hàng: ' + purchaseError.message)
+        }
+
+        toast.success('Kích hoạt khóa học thành công!')
+        setShowDevModal(false)
+        window.location.reload()
+      } catch (error) {
+        console.error('Dev access error:', error instanceof Error ? error.message : 'Unknown error')
+        toast.error('Có lỗi xảy ra')
+      }
+    } else {
+      setDevError('Mật khẩu không đúng')
+    }
+  }
 
   return (
     <main>
@@ -240,7 +309,13 @@ export default async function IntermediatePage() {
                     {course.price.toLocaleString('vi-VN')}
                   </span>
                 </div>
-                <CourseRegisterButton courseType="intermediate" />
+                <CourseAccessButton courseType="intermediate" userId={user?.id} />
+                <button
+                  onClick={() => setShowDevModal(true)}
+                  className="mt-4 w-full bg-secondary-light text-primary text-center py-2 rounded-full font-bold hover:bg-secondary-darker transition-all duration-300 border border-primary/10"
+                >
+                  Developer Code
+                </button>
               </div>
             </div>
           </div>
@@ -305,6 +380,43 @@ export default async function IntermediatePage() {
           </div>
         </div>
       </section>
+
+      {showDevModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-secondary-light p-6 rounded-xl max-w-md w-full mx-4">
+            <h3 className="text-xl font-bold text-primary mb-4">Developer Access</h3>
+            <form onSubmit={handleDevAccess} className="space-y-4">
+              <div>
+                <input
+                  type="password"
+                  value={devPassword}
+                  onChange={(e) => setDevPassword(e.target.value)}
+                  placeholder="Nhập mật khẩu"
+                  className="w-full bg-secondary border border-primary/10 rounded-lg px-4 py-2 text-white"
+                />
+                {devError && (
+                  <p className="text-red-500 text-sm mt-1">{devError}</p>
+                )}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowDevModal(false)}
+                  className="flex-1 bg-secondary-darker text-primary py-2 rounded-full hover:bg-secondary transition-all duration-300"
+                >
+                  Hủy
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 bg-primary text-secondary py-2 rounded-full hover:bg-primary-light transition-all duration-300"
+                >
+                  Xác nhận
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </main>
   )
 } 
