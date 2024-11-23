@@ -4,6 +4,7 @@ import SlideIn from '@/components/shared/SlideIn'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Instructor } from '@/components/shared/types'
+import GlowingEffect from '@/components/shared/GlowingEffect'
 
 export default function BannerContent({ instructor }: { instructor: Instructor }) {
   return (
@@ -28,8 +29,7 @@ export default function BannerContent({ instructor }: { instructor: Instructor }
       
       <SlideIn direction="right" delay={200}>
         <div className="md:w-1/2 mt-12 md:mt-0">
-          <div className="relative">
-            <div className="absolute -inset-4 bg-primary opacity-20 blur-lg rounded-lg"></div>
+          <GlowingEffect>
             <Image
               src="https://i.ibb.co/8sB3D1B/img-t6-Bs-Gd3nm0i0-LYXai-D9z1.jpg"
               alt={instructor?.name || 'Giảng viên'}
@@ -37,7 +37,7 @@ export default function BannerContent({ instructor }: { instructor: Instructor }
               height={400}
               className="rounded-lg shadow-2xl relative"
             />
-          </div>
+          </GlowingEffect>
         </div>
       </SlideIn>
     </div>

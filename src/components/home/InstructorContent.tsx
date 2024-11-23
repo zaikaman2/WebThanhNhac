@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import SlideIn from '@/components/shared/SlideIn'
+import GlowingEffect from '@/components/shared/GlowingEffect'
 
 export default function InstructorContent() {
   return (
@@ -16,8 +17,7 @@ export default function InstructorContent() {
       <div className="flex flex-col md:flex-row items-start gap-20">
         <SlideIn direction="left">
           <div className="w-[300px] h-[300px]">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-primary opacity-20 blur-3xl rounded-lg"></div>
+            <GlowingEffect intensity={0.4} duration={4}>
               <Image
                 src="https://i.ibb.co/3c9RJm2/1732274222865.jpg"
                 alt="Giảng viên Đinh Trung Kiên"
@@ -26,7 +26,7 @@ export default function InstructorContent() {
                 className="rounded-lg relative aspect-square object-cover"
                 priority
               />
-            </div>
+            </GlowingEffect>
           </div>
         </SlideIn>
         
