@@ -21,7 +21,7 @@ async function main() {
       },
       {
         type: 'advanced',
-        title: 'Khóa học 1-1',
+        title: 'Khóa học 1-1 online',
         description: 'Học trực tiếp với giảng viên Đinh Trung Kiên, tập trung vào phát triển cá nhân.',
         price: 5000000,
         image: '/images/course-3.jpg'
