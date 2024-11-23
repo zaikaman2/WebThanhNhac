@@ -26,6 +26,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "KienVocal - Khóa học thanh nhạc online",
   description: "Khám phá tiềm năng giọng hát của bạn cùng giảng viên Đinh Trung Kiên",
+  icons: {
+    icon: 'https://i.ibb.co/YhSY2QK/logo.png',
+    shortcut: 'https://i.ibb.co/YhSY2QK/logo.png',
+    apple: 'https://i.ibb.co/YhSY2QK/logo.png',
+  }
 };
 
 export default function RootLayout({
