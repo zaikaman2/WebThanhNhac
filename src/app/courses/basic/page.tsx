@@ -43,112 +43,116 @@ export default function BasicCoursePage() {
 
   const courseContent = [
     {
-      title: 'Phần 1: Khởi động và nền tảng cơ bản',
+      title: 'Phần 1: Lấy hơi và kiểm soát hơi thở',
       lessons: [
         {
-          title: 'Bài 1: Làm quen với thanh nhạc',
+          title: 'Bài 1: Nguyên tắc lấy hơi trong thanh nhạc',
           content: [
-            'Giới thiệu khóa học và tầm quan trọng của thanh nhạc',
-            'Kiến thức cơ bản về giọng hát và cơ chế hoạt động của dây thanh quản'
+            'Hiểu sự khác biệt giữa lấy hơi để thở thường và lấy hơi trong thanh nhạc',
+            'Luyện tập lấy hơi nhanh như ngáp và giữ hơi chắc như nén'
           ]
         },
         {
-          title: 'Bài 2: Kỹ thuật thở đúng cách',
+          title: 'Bài 2: Kiểm soát hơi thở khi phát âm',
           content: [
-            'Hướng dẫn cách lấy hơi bằng cơ hoành',
-            'Bài tập kiểm soát hơi thở và duy trì hơi lâu hơn'
-          ]
-        },
-        {
-          title: 'Bài 3: Luyện khẩu hình và phát âm',
-          content: [
-            'Các bài tập mở khẩu hình chuẩn xác để phát âm rõ ràng',
-            'Thực hành với nguyên âm và phụ âm để cải thiện chất lượng giọng hát'
+            'Kỹ thuật kiểm soát hơi khi hát: ra hơi chậm, đều',
+            'Tập kiểm soát hơi thông qua các bài tập nhỏ, vừa, và lớn'
           ]
         }
       ]
     },
     {
-      title: 'Phần 2: Luyện giọng và kiểm soát cao độ',
+      title: 'Phần 2: Đặt âm thanh đúng',
       lessons: [
         {
-          title: 'Bài 4: Làm ấm giọng',
+          title: 'Bài 3: Đặt âm thanh đúng vị trí',
           content: [
-            'Những bài tập làm ấm giọng trước khi hát để bảo vệ dây thanh',
-            'Hướng dẫn luyện thanh cơ bản với âm "ma-me-mi-mo-mu"'
+            'Học cách phát âm để âm thanh vang từ môi và hướng ra trước mặt',
+            'Thực hành âm "O", "A", "E", "I"'
           ]
         },
         {
-          title: 'Bài 5: Mở rộng quãng giọng',
+          title: 'Bài 4: Tập rung môi để phát âm đúng',
           content: [
-            'Phương pháp luyện thanh giúp hát được các nốt cao và thấp hơn',
-            'Thực hành mở rộng quãng giọng với bài tập glissando'
-          ]
-        },
-        {
-          title: 'Bài 6: Điều chỉnh cao độ và cảm âm',
-          content: [
-            'Cách nghe và hát đúng cao độ qua các bài luyện ngắn',
-            'Bài tập thẩm âm cơ bản để tăng khả năng cảm nhận âm thanh'
+            'Bài tập rung môi giúp âm thanh vang tự nhiên'
           ]
         }
       ]
     },
     {
-      title: 'Phần 3: Biểu cảm và ứng dụng thực tế',
+      title: 'Phần 3: Hát ở âm trung',
       lessons: [
         {
-          title: 'Bài 7: Tạo sắc thái trong giọng hát',
+          title: 'Bài 5: Hát các nguyên âm ở âm trung',
           content: [
-            'Cách điều chỉnh âm lượng, độ sáng và độ mềm của giọng hát',
-            'Bài tập thay đổi sắc thái để tạo cảm xúc'
+            'Luyện hát ở âm trung (không quá cao, không quá thấp) với các nguyên âm',
+            'Ví dụ: "Hô hô hô, hà hà hà"'
           ]
         },
         {
-          title: 'Bài 8: Hát đúng nhịp điệu',
+          title: 'Bài 6: Kiểm soát âm lượng qua lực hơi',
           content: [
-            'Giới thiệu về nhịp và phách trong âm nhạc',
-            'Thực hành hát đúng nhịp với các đoạn nhạc đơn giản'
-          ]
-        },
-        {
-          title: 'Bài 9: Biểu cảm khi trình diễn',
-          content: [
-            'Hướng dẫn cách truyền tải cảm xúc qua ánh mắt, cơ thể và giọng hát',
-            'Tích hợp biểu cảm với lời bài hát'
+            'Tập phát âm với lượng hơi nhỏ, trung bình, và mạnh',
+            'Hiểu mối quan hệ giữa lực hơi và độ lớn của âm thanh'
           ]
         }
       ]
     },
     {
-      title: 'Phần 4: Thực hành bài hát',
+      title: 'Phần 4: Tập rung và tạo cảm giác âm thanh',
       lessons: [
         {
-          title: 'Bài 10: Lựa chọn bài hát phù hợp',
+          title: 'Bài 7: Luyện tập rung âm thanh',
           content: [
-            'Cách chọn bài hát vừa sức và phù hợp với chất giọng',
-            'Phân tích cấu trúc bài hát để luyện tập hiệu quả'
+            'Tập rung dây thanh bằng rung tự nhiên và dùng ngón tay để hỗ trợ'
           ]
         },
         {
-          title: 'Bài 11: Thực hành bài hát cơ bản',
+          title: 'Bài 8: Phát âm trầm và cảm nhận rung ở ngực',
           content: [
-            'Hát thử một bài hát ngắn với sự hướng dẫn từng đoạn',
-            'Tập trung vào hơi thở, cao độ và nhịp điệu'
+            'Luyện âm trầm, tập cảm giác âm thanh chảy xuống ngực',
+            'Kiểm tra độ rung của ngực khi phát âm'
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Phần 5: Luyện các nốt cao',
+      lessons: [
+        {
+          title: 'Bài 9: Kỹ thuật lấy hơi và giữ hơi cho nốt cao',
+          content: [
+            'Lấy hơi đầy đủ và giữ hơi chắc ở nền móng',
+            'Tập thả lỏng cổ, không gồng khi hát nốt cao'
           ]
         },
         {
-          title: 'Bài 12: Tăng cường tự tin khi hát',
+          title: 'Bài 10: Tập âm lượng nhỏ cho nốt cao',
           content: [
-            'Mẹo để giảm căng thẳng trước khi hát',
-            'Thực hành bài hát hoàn chỉnh với sự tự tin'
+            'Hát nốt cao với âm lượng trung bình hoặc nhỏ, tránh làm căng dây thanh'
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Phần 6: Xử lý bài hát',
+      lessons: [
+        {
+          title: 'Bài 11: Cách xử lý cảm xúc trong bài hát',
+          content: [
+            'Hiểu ý nghĩa bài hát và điều chỉnh cách hát cho phù hợp'
           ]
         },
         {
-          title: 'Bài 13: Tổng kết và hướng dẫn luyện tập lâu dài',
+          title: 'Bài 12: Tập luyện xử lý bài hát mẫu (1)',
           content: [
-            'Tóm tắt các kỹ thuật đã học trong khóa',
-            'Gợi ý lịch luyện tập hàng ngày để duy trì và phát triển giọng hát'
+            'Ví dụ bài: Cắt đôi nỗi sầu'
+          ]
+        },
+        {
+          title: 'Bài 13: Tập luyện xử lý bài hát mẫu (2)',
+          content: [
+            'Ví dụ bài: Ngày mai người ta lấy chồng'
           ]
         }
       ]

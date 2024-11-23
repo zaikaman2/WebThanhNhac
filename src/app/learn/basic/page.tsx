@@ -8,112 +8,122 @@ import CourseContent from '@/components/learn/CourseContent'
 
 const courseSections = [
   {
-    title: 'Phần 1: Nền tảng thanh nhạc',
+    title: 'Phần 1: Lấy hơi và kiểm soát hơi thở',
     lessons: [
       {
         id: 1,
-        title: 'Bài 1: Làm quen với thanh nhạc',
-        duration: '10:30',
-        description: 'Khám phá cơ bản về giọng hát và cách hoạt động của dây thanh. Bài học này sẽ giúp bạn hiểu rõ về cấu tạo và nguyên lý hoạt động của bộ máy phát âm, đặt nền móng cho việc học thanh nhạc.',
+        title: 'Bài 1: Nguyên tắc lấy hơi trong thanh nhạc',
+        duration: '15:30',
+        description: 'Hiểu sự khác biệt giữa lấy hơi để thở thường và lấy hơi trong thanh nhạc. Luyện tập lấy hơi nhanh như ngáp và giữ hơi chắc như nén.',
         videoUrl: 'https://res.cloudinary.com/ddrfu9ftt/video/upload/v1732350611/pmhk7vddle3y3cjnpuvy.mp4'
       },
       {
         id: 2,
-        title: 'Bài 2: Kỹ thuật thở đúng cách',
-        duration: '15:45',
-        description: 'Tìm hiểu và thực hành kỹ thuật thở bụng cơ bản. Bạn sẽ học cách sử dụng cơ hoành hiệu quả và các bài tập giúp kiểm soát hơi thở tốt hơn khi hát.',
-        videoUrl: 'https://res.cloudinary.com/...'
-      },
-      {
-        id: 3,
-        title: 'Bài 3: Luyện khẩu hình và phát âm',
-        duration: '12:20',
-        description: 'Hướng dẫn chi tiết về cách mở khẩu hình và phát âm chuẩn xác. Thông qua các bài tập với nguyên âm và phụ âm, bạn sẽ cải thiện được độ rõ ràng trong giọng hát.',
+        title: 'Bài 2: Kiểm soát hơi thở khi phát âm',
+        duration: '14:45',
+        description: 'Kỹ thuật kiểm soát hơi khi hát: ra hơi chậm, đều. Tập kiểm soát hơi thông qua các bài tập nhỏ, vừa, và lớn.',
         videoUrl: 'https://res.cloudinary.com/...'
       }
     ]
   },
   {
-    title: 'Phần 2: Luyện giọng và kiểm soát cao độ',
+    title: 'Phần 2: Đặt âm thanh đúng',
     lessons: [
       {
-        id: 4,
-        title: 'Bài 4: Làm ấm giọng',
-        duration: '14:15',
-        description: 'Học các bài tập khởi động giọng hát quan trọng. Bạn sẽ được hướng dẫn cách làm ấm giọng đúng cách và an toàn trước khi luyện tập hoặc biểu diễn.',
+        id: 3,
+        title: 'Bài 3: Đặt âm thanh đúng vị trí',
+        duration: '16:20',
+        description: 'Học cách phát âm để âm thanh vang từ môi và hướng ra trước mặt. Thực hành âm "O", "A", "E", "I".',
         videoUrl: 'https://res.cloudinary.com/...'
       },
       {
+        id: 4,
+        title: 'Bài 4: Tập rung môi để phát âm đúng',
+        duration: '12:15',
+        description: 'Bài tập rung môi giúp âm thanh vang tự nhiên.',
+        videoUrl: 'https://res.cloudinary.com/...'
+      }
+    ]
+  },
+  {
+    title: 'Phần 3: Hát ở âm trung',
+    lessons: [
+      {
         id: 5,
-        title: 'Bài 5: Mở rộng quãng giọng',
-        duration: '16:30',
-        description: 'Khám phá các kỹ thuật để mở rộng phạm vi giọng hát của bạn. Bài học tập trung vào việc phát triển khả năng hát các nốt cao và thấp một cách tự nhiên.',
+        title: 'Bài 5: Hát các nguyên âm ở âm trung',
+        duration: '18:30',
+        description: 'Luyện hát ở âm trung (không quá cao, không quá thấp) với các nguyên âm. Ví dụ: "Hô hô hô, hà hà hà".',
         videoUrl: 'https://res.cloudinary.com/...'
       },
       {
         id: 6,
-        title: 'Bài 6: Điều chỉnh cao độ và cảm âm',
-        duration: '18:45',
-        description: 'Phát triển khả năng nghe và hát đúng cao độ. Thông qua các bài tập thực hành, bạn sẽ nâng cao khả năng cảm thụ âm nhạc của mình.',
+        title: 'Bài 6: Kiểm soát âm lượng qua lực hơi',
+        duration: '17:45',
+        description: 'Tập phát âm với lượng hơi nhỏ, trung bình, và mạnh. Hiểu mối quan hệ giữa lực hơi và độ lớn của âm thanh.',
         videoUrl: 'https://res.cloudinary.com/...'
       }
     ]
   },
   {
-    title: 'Phần 3: Biểu cảm và ứng dụng thực tế',
+    title: 'Phần 4: Tập rung và tạo cảm giác âm thanh',
     lessons: [
       {
         id: 7,
-        title: 'Bài 7: Tạo sắc thái trong giọng hát',
+        title: 'Bài 7: Luyện tập rung âm thanh',
         duration: '15:20',
-        description: 'Khám phá cách điều chỉnh âm lượng và màu sắc giọng hát. Bạn sẽ học được cách tạo ra những sắc thái khác nhau trong giọng hát để truyền tải cảm xúc tốt hơn.',
+        description: 'Tập rung dây thanh bằng rung tự nhiên và dùng ngón tay để hỗ trợ.',
         videoUrl: 'https://res.cloudinary.com/...'
       },
       {
         id: 8,
-        title: 'Bài 8: Hát đúng nhịp điệu',
-        duration: '17:40',
-        description: 'Tìm hiểu về nhịp và phách trong âm nhạc. Bài học này sẽ giúp bạn nắm vững cách đếm nhịp và hát đúng tiết tấu thông qua các bài tập thực hành.',
-        videoUrl: 'https://res.cloudinary.com/...'
-      },
-      {
-        id: 9,
-        title: 'Bài 9: Biểu cảm khi trình diễn',
-        duration: '13:55',
-        description: 'Học cách kết hợp giữa giọng hát và ngôn ngữ cơ thể. Bạn sẽ được hướng dẫn cách thể hiện cảm xúc qua ánh mắt và cử chỉ khi trình diễn.',
+        title: 'Bài 8: Phát âm trầm và cảm nhận rung ở ngực',
+        duration: '16:40',
+        description: 'Luyện âm trầm, tập cảm giác âm thanh chảy xuống ngực. Kiểm tra độ rung của ngực khi phát âm.',
         videoUrl: 'https://res.cloudinary.com/...'
       }
     ]
   },
   {
-    title: 'Phần 4: Thực hành bài hát',
+    title: 'Phần 5: Luyện các nốt cao',
     lessons: [
       {
-        id: 10,
-        title: 'Bài 10: Lựa chọn bài hát phù hợp',
-        duration: '11:25',
-        description: 'Hướng dẫn cách chọn bài hát phù hợp với giọng hát của bạn. Học cách phân tích cấu trúc và độ khó của bài hát để lựa chọn và luyện tập hiệu quả.',
+        id: 9,
+        title: 'Bài 9: Kỹ thuật lấy hơi và giữ hơi cho nốt cao',
+        duration: '19:15',
+        description: 'Lấy hơi đầy đủ và giữ hơi chắc ở nền móng. Tập thả lỏng cổ, không gồng khi hát nốt cao.',
         videoUrl: 'https://res.cloudinary.com/...'
       },
       {
+        id: 10,
+        title: 'Bài 10: Tập âm lượng nhỏ cho nốt cao',
+        duration: '14:30',
+        description: 'Hát nốt cao với âm lượng trung bình hoặc nhỏ, tránh làm căng dây thanh.',
+        videoUrl: 'https://res.cloudinary.com/...'
+      }
+    ]
+  },
+  {
+    title: 'Phần 6: Xử lý bài hát',
+    lessons: [
+      {
         id: 11,
-        title: 'Bài 11: Thực hành bài hát cơ bản',
-        duration: '20:15',
-        description: 'Áp dụng các kỹ thuật đã học vào một bài hát cụ thể. Bạn sẽ được hướng dẫn chi tiết cách phân tích và thực hành từng đoạn trong bài hát.',
+        title: 'Bài 11: Cách xử lý cảm xúc trong bài hát',
+        duration: '20:25',
+        description: 'Hiểu ý nghĩa bài hát và điều chỉnh cách hát cho phù hợp.',
         videoUrl: 'https://res.cloudinary.com/...'
       },
       {
         id: 12,
-        title: 'Bài 12: Tăng cường tự tin khi hát',
-        duration: '16:40',
-        description: 'Học cách kiểm soát cảm xúc và xây dựng sự tự tin khi hát. Khám phá các kỹ thuật giúp giảm căng thẳng và thể hiện bài hát một cách tự nhiên nhất.',
+        title: 'Bài 12: Tập luyện xử lý bài hát mẫu (1)',
+        duration: '25:30',
+        description: 'Ví dụ bài: Cắt đôi nỗi sầu.',
         videoUrl: 'https://res.cloudinary.com/...'
       },
       {
         id: 13,
-        title: 'Bài 13: Tổng kết và hướng dẫn luyện tập lâu dài',
-        duration: '19:30',
-        description: 'Ôn tập lại toàn bộ kiến thức đã học và nhận hướng dẫn chi tiết về cách luyện tập hàng ngày. Bạn sẽ có được lộ trình rõ ràng để tiếp tục phát triển giọng hát của mình.',
+        title: 'Bài 13: Tập luyện xử lý bài hát mẫu (2)',
+        duration: '23:45',
+        description: 'Ví dụ bài: Ngày mai người ta lấy chồng.',
         videoUrl: 'https://res.cloudinary.com/...'
       }
     ]
