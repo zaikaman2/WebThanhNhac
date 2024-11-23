@@ -13,7 +13,6 @@ export function useAuth() {
       setLoading(false)
     })
 
-    // Lắng nghe sự thay đổi của auth state
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null)
     })
