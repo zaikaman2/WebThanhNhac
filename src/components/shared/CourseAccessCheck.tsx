@@ -20,7 +20,7 @@ export default function CourseAccessCheck({ courseType, userId, children }: Cour
   useEffect(() => {
     if (!userId) {
       const timer = setTimeout(() => {
-        router.push('/login')
+        router.push('/auth')
       }, 3000)
       return () => clearTimeout(timer)
     }
