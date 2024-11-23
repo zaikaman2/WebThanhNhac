@@ -43,9 +43,9 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-6 text-primary">Liên hệ</h3>
             <ul className="space-y-3 text-gray-400">
-              <li className="hover:text-primary transition-colors">Email: contact@kienvocal.com</li>
-              <li className="hover:text-primary transition-colors">Điện thoại: 0123.456.789</li>
-              <li className="hover:text-primary transition-colors">Địa chỉ: Hà Nội, Việt Nam</li>
+              <li className="hover:text-primary transition-colors">Email: zaikaman123@gmail.com</li>
+              <li className="hover:text-primary transition-colors">Điện thoại: 0903100887</li>
+              <li className="hover:text-primary transition-colors">Địa chỉ: Hồ Chí Minh, Việt Nam</li>
             </ul>
           </div>
 
