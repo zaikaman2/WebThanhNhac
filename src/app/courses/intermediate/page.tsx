@@ -58,7 +58,7 @@ export default function IntermediatePage() {
     }
   ]
 
-  const courseContent = [
+  const courseSections = [
     {
       title: 'Phần 1: Hoàn thiện kỹ thuật thanh nhạc cơ bản',
       lessons: [
@@ -350,7 +350,7 @@ export default function IntermediatePage() {
           </SlideIn>
           
           <div className="space-y-8">
-            {courseContent.map((section, index) => (
+            {courseSections.map((section, index) => (
               <SlideIn key={index} direction="up" delay={index * 100}>
                 <div className="bg-secondary-light p-8 rounded-xl border border-primary/10">
                   <h3 className="text-2xl font-semibold text-primary mb-8">{section.title}</h3>

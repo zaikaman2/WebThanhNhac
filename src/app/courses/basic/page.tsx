@@ -289,7 +289,7 @@ export default function BasicCoursePage() {
       <section className="py-16 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-primary-light to-primary bg-clip-text text-transparent">
-            Nội dung khóa học
+            Nội dung khóa học cơ bản
           </h2>
           
           <div className="space-y-8">
