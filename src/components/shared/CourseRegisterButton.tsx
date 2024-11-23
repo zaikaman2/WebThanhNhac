@@ -1,18 +1,60 @@
 'use client'
 
-import Link from 'next/link'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
+import LoadingSpinner from './LoadingSpinner'
 
 interface CourseRegisterButtonProps {
   courseType: string
 }
 
 export default function CourseRegisterButton({ courseType }: CourseRegisterButtonProps) {
+  const [loading, setLoading] = useState(false)
+  const router = useRouter()
+
+  const handlePayment = async () => {
+    try {
+      setLoading(true)
+      
+      const response = await fetch('/api/payment/create-payment-link', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ courseType }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Có lỗi xảy ra')
+      }
+
+      // Redirect to PayOS checkout page
+      window.location.href = data.checkoutUrl
+
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'Có lỗi xảy ra')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
-    <Link
-      href={`/checkout/basic`}
-      className="block w-full bg-primary text-secondary text-center py-4 rounded-full font-bold hover:bg-primary-light transition-all duration-300"
+    <button
+      onClick={handlePayment}
+      disabled={loading}
+      className="w-full bg-primary text-secondary text-center py-4 rounded-full font-bold hover:bg-primary-light transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
     >
-      Đăng ký ngay
-    </Link>
+      {loading ? (
+        <>
+          <LoadingSpinner size={20} />
+          <span>Đang xử lý...</span>
+        </>
+      ) : (
+        'Đăng ký ngay'
+      )}
+    </button>
   )
 } 
