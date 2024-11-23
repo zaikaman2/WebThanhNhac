@@ -24,10 +24,37 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "KienVocal - Khóa học thanh nhạc online",
-  description: "Khám phá tiềm năng giọng hát của bạn cùng giảng viên Đinh Trung Kiên",
+  title: "KienVocal - Khóa học thanh nhạc online chất lượng cao",
+  description: "KienVocal - Khóa học thanh nhạc online với giảng viên Đinh Trung Kiên. Học hát chuyên nghiệp, phương pháp khoa học, có lộ trình rõ ràng từ cơ bản đến nâng cao.",
+  keywords: "kienvocal, học hát online, khóa học thanh nhạc, Đinh Trung Kiên, dạy hát online, học thanh nhạc",
   verification: {
     google: 'google28c0039f61be903c.html',
+  },
+  openGraph: {
+    title: 'KienVocal - Khóa học thanh nhạc online chất lượng cao',
+    description: 'Khám phá tiềm năng giọng hát của bạn cùng giảng viên Đinh Trung Kiên qua các khóa học thanh nhạc online chất lượng cao',
+    url: 'https://kienvocal.vercel.app',
+    siteName: 'KienVocal',
+    images: [
+      {
+        url: 'https://i.ibb.co/YhSY2QK/logo.png',
+        width: 800,
+        height: 600,
+      }
+    ],
+    locale: 'vi_VN',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   icons: {
     icon: 'https://i.ibb.co/YhSY2QK/logo.png',
