@@ -33,6 +33,7 @@ module.exports = {
       },
       animation: {
         'in': 'in 1s ease-out forwards',
+        musicWave: 'musicWave 1s ease-in-out infinite'
       },
       keyframes: {
         in: {
@@ -45,6 +46,10 @@ module.exports = {
             transform: 'translate(0,0)'
           },
         },
+        musicWave: {
+          '0%, 100%': { height: '4px' },
+          '50%': { height: '24px' }
+        }
       },
     },
   },
