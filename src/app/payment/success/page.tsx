@@ -25,7 +25,7 @@ function SuccessContent() {
           throw new Error('Lỗi xác thực người dùng')
         }
 
-        const amount = courseType === 'basic' ? 10000 : 499000
+        const amount = courseType === 'basic' ? 299000 : 499000
 
         const { error: purchaseError } = await supabase
           .from('purchases')
