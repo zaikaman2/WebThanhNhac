@@ -4,6 +4,8 @@ import { Suspense, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { CheckCircle } from 'lucide-react'
 import LoadingSpinner from '@/components/shared/LoadingSpinner'
+import { supabase } from '@/lib/supabase'
+import toast from 'react-hot-toast'
 
 function SuccessContent() {
   const router = useRouter()
@@ -15,12 +17,47 @@ function SuccessContent() {
   const redirectPath = `/courses/${courseType}`
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      router.push(redirectPath)
-    }, 3000)
+    async function createPurchaseRecord() {
+      try {
+        const { data: { user }, error: authError } = await supabase.auth.getUser()
+        
+        if (authError || !user) {
+          throw new Error('Lỗi xác thực người dùng')
+        }
 
-    return () => clearTimeout(timer)
-  }, [router, redirectPath])
+        const amount = courseType === 'basic' ? 10000 : 499000
+
+        const { error: purchaseError } = await supabase
+          .from('purchases')
+          .insert([
+            {
+              user_id: user.id,
+              course_type: courseType,
+              order_code: orderCode,
+              amount: amount,
+              payment_status: 'completed',
+              created_at: new Date().toISOString()
+            }
+          ])
+
+        if (purchaseError) {
+          throw new Error('Lỗi khi tạo đơn hàng')
+        }
+
+        // Redirect sau khi tạo purchase thành công
+        const timer = setTimeout(() => {
+          router.push(redirectPath)
+        }, 3000)
+        return () => clearTimeout(timer)
+
+      } catch (error) {
+        console.error('Error creating purchase:', error)
+        toast.error('Có lỗi xảy ra khi xử lý đơn hàng')
+      }
+    }
+
+    createPurchaseRecord()
+  }, [courseType, orderCode, redirectPath, router])
 
   return (
     <div className="text-center">
