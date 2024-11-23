@@ -339,13 +339,20 @@ export default function IntermediatePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="flex flex-col md:flex-row gap-16 items-start">
             <div className="md:w-1/2">
-              <ImageWithLoading
-                src={course.image}
-                alt={course.title}
-                width={600}
-                height={400}
-                className="rounded-xl shadow-2xl"
-              />
+              <SlideIn direction="left">
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-primary-light/30 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+                  <div className="relative">
+                    <ImageWithLoading
+                      src={course.image}
+                      alt={course.title}
+                      width={600}
+                      height={400}
+                      className="rounded-xl shadow-2xl w-full aspect-video object-cover"
+                    />
+                  </div>
+                </div>
+              </SlideIn>
             </div>
             
             <div className="md:w-1/2">
