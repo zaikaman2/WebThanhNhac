@@ -48,17 +48,20 @@ export default function CourseAccessButton({ courseType, userId }: CourseAccessB
     checkUserAccess()
   }, [userId, courseType])
 
+  // Show loading spinner while checking
   if (loading) {
-    return <LoadingSpinner />
-  }
-
-  if (!userId) {
-    return <CourseRegisterButton courseType={courseType} />
+    return (
+      <div className="flex justify-center py-4">
+        <LoadingSpinner size={30} />
+      </div>
+    )
   }
 
   return (
     <div className="space-y-4">
-      {hasPurchased ? (
+      {!userId || (!hasPurchased && !loading) ? (
+        <CourseRegisterButton courseType={courseType} />
+      ) : hasPurchased ? (
         <>
           <p className="text-green-500 text-sm text-center">Bạn đã mua khóa học này</p>
           <button
@@ -68,9 +71,7 @@ export default function CourseAccessButton({ courseType, userId }: CourseAccessB
             Bắt đầu học
           </button>
         </>
-      ) : (
-        <CourseRegisterButton courseType={courseType} />
-      )}
+      ) : null}
 
       {isAdmin && (
         <button
