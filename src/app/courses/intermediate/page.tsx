@@ -9,6 +9,8 @@ import CourseAccessButton from '@/components/shared/CourseAccessButton'
 import { BookOpen, Clock, Mic2, CheckCircle } from 'lucide-react'
 import SlideIn from '@/components/shared/SlideIn'
 import ImageWithLoading from '@/components/shared/ImageWithLoading'
+import ReviewSection from '@/components/shared/ReviewSection'
+import { generateMockReviews } from '@/utils/mockReviews'
 
 export default function IntermediatePage() {
   const { user } = useUser()
@@ -284,6 +286,51 @@ export default function IntermediatePage() {
     }
   }
 
+  const intermediateReviews = [
+    {
+      id: 1,
+      name: "Vũ Hoàng Long",
+      rating: 5,
+      comment: "Khóa học nâng cao này thực sự giúp mình phát triển kỹ thuật thanh nhạc lên tầm cao mới. Đặc biệt là phần luyện vibrato và xử lý bài hát rất chuyên nghiệp.",
+      date: "12/03/2024"
+    },
+    {
+      id: 2,
+      name: "Nguyễn Thanh Thảo",
+      rating: 5,
+      comment: "Sau khi học xong khóa cơ bản, mình tiếp tục đăng ký khóa nâng cao và không hề thất vọng. Các kỹ thuật được dạy rất chuyên sâu và thực tế.",
+      date: "08/03/2024"
+    },
+    {
+      id: 3,
+      name: "Trần Đức Thắng",
+      rating: 4,
+      comment: "Phần kỹ thuật belting và mix voice được giảng dạy rất chi tiết. Thầy rất chú trọng đến việc thực hành an toàn để không làm tổn thương dây thanh.",
+      date: "03/03/2024"
+    },
+    {
+      id: 4,
+      name: "Lê Minh Phương",
+      rating: 5,
+      comment: "Mình đã có thể hát được những nốt cao mà trước đây không dám thử. Cảm ơn thầy đã giúp mình phát triển giọng hát toàn diện.",
+      date: "28/02/2024"
+    },
+    {
+      id: 5,
+      name: "Đặng Thu Hà",
+      rating: 5,
+      comment: "Khóa học giúp mình hiểu sâu hơn về cách xử lý bài hát theo từng thể loại khác nhau. Đặc biệt là phần jazz và ballad rất bổ ích.",
+      date: "23/02/2024"
+    },
+    {
+      id: 6,
+      name: "Bùi Quang Minh",
+      rating: 5,
+      comment: "Thầy không chỉ dạy kỹ thuật mà còn truyền đạt được cảm xúc trong âm nhạc. Mình đã học được cách làm cho bài hát trở nên sống động hơn.",
+      date: "18/02/2024"
+    }
+  ]
+
   return (
     <main>
       {/* Hero Section */}
@@ -380,6 +427,8 @@ export default function IntermediatePage() {
           </div>
         </div>
       </section>
+
+      <ReviewSection reviews={intermediateReviews} averageRating={4.8} />
 
       {showDevModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">

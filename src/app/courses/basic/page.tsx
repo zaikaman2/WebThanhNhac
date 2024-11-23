@@ -9,6 +9,8 @@ import CourseAccessButton from '@/components/shared/CourseAccessButton'
 import { BookOpen, Clock, Mic2, CheckCircle } from 'lucide-react'
 import SlideIn from '@/components/shared/SlideIn'
 import ImageWithLoading from '@/components/shared/ImageWithLoading'
+import ReviewSection from '@/components/shared/ReviewSection'
+import { generateMockReviews } from '@/utils/mockReviews'
 
 export default function BasicCoursePage() {
   const { user } = useUser()
@@ -224,6 +226,51 @@ export default function BasicCoursePage() {
     }
   }
 
+  const basicReviews = [
+    {
+      id: 1,
+      name: "Nguyễn Thị Hương",
+      rating: 5,
+      comment: "Khóa học rất phù hợp cho người mới bắt đầu như mình. Thầy dạy rất tận tình và dễ hiểu. Sau 3 tháng, mình đã tự tin hát karaoke với bạn bè!",
+      date: "15/03/2024"
+    },
+    {
+      id: 2,
+      name: "Trần Văn Minh",
+      rating: 4,
+      comment: "Nội dung khóa học được sắp xếp khoa học, từ cơ bản đến nâng cao. Đặc biệt phần luyện hơi thở giúp mình rất nhiều trong việc kiểm soát giọng hát.",
+      date: "10/03/2024"
+    },
+    {
+      id: 3,
+      name: "Phạm Thu Trang",
+      rating: 5,
+      comment: "Cảm ơn thầy đã giúp em sửa được những lỗi cơ bản trong cách hát. Giờ em đã tự tin hơn nhiều khi hát trước đám đông.",
+      date: "05/03/2024"
+    },
+    {
+      id: 4,
+      name: "Lê Thành Đạt",
+      rating: 5,
+      comment: "Học phí rất hợp lý cho một khóa học chất lượng. Các bài tập về nhà rất hiệu quả, giúp mình tiến bộ nhanh chóng.",
+      date: "01/03/2024"
+    },
+    {
+      id: 5,
+      name: "Đỗ Thị Mai Anh",
+      rating: 4,
+      comment: "Thầy rất nhiệt tình trong việc chỉnh sửa các lỗi phát âm. Video bài giảng được quay rất chuyên nghiệp và dễ theo dõi.",
+      date: "25/02/2024"
+    },
+    {
+      id: 6,
+      name: "Hoàng Minh Tuấn",
+      rating: 5,
+      comment: "Ban đầu mình khá lo lắng vì chưa biết gì về thanh nhạc, nhưng cách dạy của thầy rất dễ hiểu. Giờ mình đã có thể tự tin hát những bài đơn giản.",
+      date: "20/02/2024"
+    }
+  ]
+
   return (
     <main>
       {/* Hero Section */}
@@ -318,6 +365,8 @@ export default function BasicCoursePage() {
           </div>
         </div>
       </section>
+
+      <ReviewSection reviews={basicReviews} averageRating={4.7} />
     </main>
   )
 } 
