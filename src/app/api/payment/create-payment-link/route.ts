@@ -7,21 +7,31 @@ const payOS = new PayOS(
   '5afef51ed0743e8aaa2bcc44ccea171b8eda05d3400c3e7f1ec9819215d18427'
 )
 
+const COURSE_PRICES = {
+  basic: 299000,
+  intermediate: 499000
+}
+
 export async function POST(request: Request) {
   try {
     const { courseType } = await request.json()
     const orderCode = Number(String(Date.now()).slice(-6))
     const domain = process.env.NEXT_PUBLIC_DOMAIN || 'https://kienvocal.vercel.app'
     
+    const amount = COURSE_PRICES[courseType as keyof typeof COURSE_PRICES]
+    if (!amount) {
+      throw new Error('Invalid course type')
+    }
+
     const body = {
       orderCode,
-      amount: 299000,
+      amount,
       description: `Thanh toán khóa học ${courseType}`,
       items: [
         {
-          name: "Khóa học Basic",
+          name: `Khóa học ${courseType}`,
           quantity: 1,
-          price: 299000,
+          price: amount,
         },
       ],
       returnUrl: `${domain}/payment/success?orderCode=${orderCode}`,

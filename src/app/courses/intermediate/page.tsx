@@ -2,7 +2,7 @@ import { getCourseByType } from '@/lib/getCourses'
 import ImageWithLoading from '@/components/shared/ImageWithLoading'
 import { BookOpen, Clock, Award, CheckCircle, Mic2, Music, Star } from 'lucide-react'
 import SlideIn from '@/components/shared/SlideIn'
-import Link from 'next/link'
+import CourseRegisterButton from '@/components/shared/CourseRegisterButton'
 
 export default async function IntermediatePage() {
   const course = await getCourseByType('intermediate')
@@ -240,12 +240,7 @@ export default async function IntermediatePage() {
                     {course.price.toLocaleString('vi-VN')}
                   </span>
                 </div>
-                <Link
-                  href={`/checkout/intermediate`}
-                  className="block w-full bg-primary text-secondary text-center py-4 rounded-full font-bold hover:bg-primary-light transition-all duration-300"
-                >
-                  Đăng ký ngay
-                </Link>
+                <CourseRegisterButton courseType="intermediate" />
               </div>
             </div>
           </div>
