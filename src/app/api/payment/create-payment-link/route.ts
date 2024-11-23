@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     const body = {
       orderCode,
       amount,
-      description: `Thanh toán khóa học ${courseType}`,
+      description: `Thanh toán ${courseType}`,
       items: [
         {
           name: `Khóa học ${courseType}`,
