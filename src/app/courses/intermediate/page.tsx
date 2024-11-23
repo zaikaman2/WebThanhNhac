@@ -26,6 +26,12 @@ export default function IntermediatePage() {
     loadCourse()
   }, [])
 
+  useEffect(() => {
+    const handleOpenDevModal = () => setShowDevModal(true)
+    window.addEventListener('openDevModal', handleOpenDevModal)
+    return () => window.removeEventListener('openDevModal', handleOpenDevModal)
+  }, [])
+
   if (!course) {
     return (
       <div className="min-h-screen bg-secondary flex items-center justify-center">
@@ -310,12 +316,6 @@ export default function IntermediatePage() {
                   </span>
                 </div>
                 <CourseAccessButton courseType="intermediate" userId={user?.id} />
-                <button
-                  onClick={() => setShowDevModal(true)}
-                  className="mt-4 w-full bg-secondary-light text-primary text-center py-2 rounded-full font-bold hover:bg-secondary-darker transition-all duration-300 border border-primary/10"
-                >
-                  Developer Code
-                </button>
               </div>
             </div>
           </div>

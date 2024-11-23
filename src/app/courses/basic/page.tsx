@@ -27,6 +27,12 @@ export default function BasicCoursePage() {
     loadCourse()
   }, [])
 
+  useEffect(() => {
+    const handleOpenDevModal = () => setShowDevModal(true)
+    window.addEventListener('openDevModal', handleOpenDevModal)
+    return () => window.removeEventListener('openDevModal', handleOpenDevModal)
+  }, [])
+
   if (!course) {
     return (
       <div className="min-h-screen bg-secondary flex items-center justify-center">
@@ -106,7 +112,7 @@ export default function BasicCoursePage() {
           ]
         },
         {
-          title: 'Bài 9: Biểu cảm khi trình di��n',
+          title: 'Bài 9: Biểu cảm khi trình diễn',
           content: [
             'Hướng dẫn cách truyền tải cảm xúc qua ánh mắt, cơ thể và giọng hát',
             'Tích hợp biểu cảm với lời bài hát'
@@ -251,49 +257,6 @@ export default function BasicCoursePage() {
                     </span>
                   </div>
                   <CourseAccessButton courseType="basic" userId={user?.id} />
-                  <button
-                    onClick={() => setShowDevModal(true)}
-                    className="mt-4 w-full bg-secondary-light text-primary text-center py-2 rounded-full font-bold hover:bg-secondary-darker transition-all duration-300 border border-primary/10"
-                  >
-                    Developer Code
-                  </button>
-
-                  {showDevModal && (
-                    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-                      <div className="bg-secondary-light p-6 rounded-xl max-w-md w-full mx-4">
-                        <h3 className="text-xl font-bold text-primary mb-4">Developer Access</h3>
-                        <form onSubmit={handleDevAccess} className="space-y-4">
-                          <div>
-                            <input
-                              type="password"
-                              value={devPassword}
-                              onChange={(e) => setDevPassword(e.target.value)}
-                              placeholder="Nhập mật khẩu"
-                              className="w-full bg-secondary border border-primary/10 rounded-lg px-4 py-2 text-white"
-                            />
-                            {devError && (
-                              <p className="text-red-500 text-sm mt-1">{devError}</p>
-                            )}
-                          </div>
-                          <div className="flex gap-2">
-                            <button
-                              type="button"
-                              onClick={() => setShowDevModal(false)}
-                              className="flex-1 bg-secondary-darker text-primary py-2 rounded-full hover:bg-secondary transition-all duration-300"
-                            >
-                              Hủy
-                            </button>
-                            <button
-                              type="submit"
-                              className="flex-1 bg-primary text-secondary py-2 rounded-full hover:bg-primary-light transition-all duration-300"
-                            >
-                              Xác nhận
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  )}
                 </div>
               </SlideIn>
             </div>
