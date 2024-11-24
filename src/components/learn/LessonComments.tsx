@@ -90,7 +90,7 @@ function CommentItem({
               <div>
                 <span className="font-semibold text-gray-200">{comment.user.name}</span>
                 <span className="text-gray-400 text-sm ml-2">
-                  <TimeAgo date={comment.created_at} />
+                  <TimeAgo date={comment.createdAt} />
                 </span>
               </div>
               {currentUserId === comment.user_id && (
