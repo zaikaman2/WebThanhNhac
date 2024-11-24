@@ -6,8 +6,8 @@ export type Profile = {
   email: string
   avatar_url?: string | null
   phone?: string | null
-  createdAt?: string
-  updatedAt?: string
+  createdAt: string
+  updatedAt: string
 }
 
 export async function getProfile(userId: string): Promise<Profile | null> {
@@ -19,22 +19,7 @@ export async function getProfile(userId: string): Promise<Profile | null> {
   
   if (error) {
     console.error('Error fetching profile:', error)
-    throw error
+    return null
   }
   return data
 }
-
-export async function updateProfile(userId: string, updates: { name?: string }) {
-  const { error } = await supabase
-    .from('profiles')
-    .update({
-      ...updates,
-      updatedAt: new Date().toISOString()
-    })
-    .eq('id', userId)
-  
-  if (error) {
-    console.error('Error updating profile:', error)
-    throw error
-  }
-} 
