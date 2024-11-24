@@ -11,6 +11,8 @@ const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
+  display: 'swap',
+  preload: true,
 });
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
@@ -60,6 +62,16 @@ export const metadata: Metadata = {
     icon: 'https://i.ibb.co/YhSY2QK/logo.png',
     shortcut: 'https://i.ibb.co/YhSY2QK/logo.png',
     apple: 'https://i.ibb.co/YhSY2QK/logo.png',
+  },
+  metadataBase: new URL('https://kienvocal.com'),
+  alternates: {
+    canonical: '/',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'KienVocal - Khóa học thanh nhạc online chất lượng cao',
+    description: 'Học hát chuyên nghiệp với giảng viên Đinh Trung Kiên',
+    images: ['https://i.ibb.co/YhSY2QK/logo.png'],
   }
 };
 

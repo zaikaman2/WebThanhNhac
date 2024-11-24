@@ -12,15 +12,19 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { user } = useAuth()
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSignOut = async () => {
+    setIsLoading(true)
     try {
       await signOut()
-      toast.success('Đăng xuất thành công!')
+      toast.success('Đăng xuất thành công')
       router.push('/')
       router.refresh()
     } catch (error) {
-      toast.error('Có lỗi xảy ra khi đăng xuất')
+      toast.error('Có lỗi xảy ra')
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -55,9 +59,10 @@ export default function Header() {
                 </Link>
                 <button
                   onClick={handleSignOut}
-                  className="text-gray-300 hover:text-primary transition-colors"
+                  disabled={isLoading}
+                  className="text-gray-300 hover:text-primary transition-colors disabled:opacity-50"
                 >
-                  Đăng xuất
+                  {isLoading ? 'Đang xử lý...' : 'Đăng xuất'}
                 </button>
               </div>
             ) : (
