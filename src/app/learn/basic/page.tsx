@@ -15,14 +15,14 @@ const courseSections = [
         title: 'Bài 1: Nguyên tắc lấy hơi trong thanh nhạc',
         duration: '15:30',
         description: 'Hiểu sự khác biệt giữa lấy hơi để thở thường và lấy hơi trong thanh nhạc. Luyện tập lấy hơi nhanh như ngáp và giữ hơi chắc như nén.',
-        videoUrl: 'https://res.cloudinary.com/ddrfu9ftt/video/upload/v1732350611/pmhk7vddle3y3cjnpuvy.mp4'
+        videoId: 'ePhB5H2B3K8'
       },
       {
         id: 2,
         title: 'Bài 2: Kiểm soát hơi thở khi phát âm',
         duration: '14:45',
         description: 'Kỹ thuật kiểm soát hơi khi hát: ra hơi chậm, đều. Tập kiểm soát hơi thông qua các bài tập nhỏ, vừa, và lớn.',
-        videoUrl: 'https://res.cloudinary.com/...'
+        videoId: 'kuvtM_Q-7CY'
       }
     ]
   },
@@ -34,7 +34,7 @@ const courseSections = [
         title: 'Bài 3: Đặt âm thanh đúng vị trí',
         duration: '16:20',
         description: 'Học cách phát âm để âm thanh vang từ môi và hướng ra trước mặt. Thực hành âm "O", "A", "E", "I".',
-        videoUrl: 'https://res.cloudinary.com/...'
+        videoId: '17B-gOEcKyw'
       },
       {
         id: 4,
@@ -145,7 +145,8 @@ export default function LearnBasicPage() {
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <VideoPlayer 
-                src={currentLesson?.videoUrl || ''}
+                videoId={currentLesson?.videoId}
+                src={currentLesson?.videoUrl}
                 title={currentLesson?.title || ''}
                 courseType="basic"
                 lessonId={currentLesson?.id || 1}
