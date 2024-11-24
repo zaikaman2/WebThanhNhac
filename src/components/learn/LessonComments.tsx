@@ -43,6 +43,12 @@ interface LessonCommentsProps {
   lessonId: number
 }
 
+interface Profile {
+  id: string
+  name: string | null
+  avatar_url: string | null
+}
+
 function CommentItem({ 
   comment, 
   onReply, 
@@ -230,7 +236,7 @@ export default function LessonComments({ courseType, lessonId }: LessonCommentsP
       const profilesMap = (profiles || []).reduce((acc, profile) => ({
         ...acc,
         [profile.id]: profile
-      }), {} as Record<string, any>)
+      }), {} as Record<string, Profile>)
 
       // Lấy thông tin like của user hiện tại nếu đã đăng nhập
       let userLikes: Record<string, boolean> = {}
