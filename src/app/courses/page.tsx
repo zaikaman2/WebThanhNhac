@@ -34,8 +34,8 @@ export default async function CoursesPage() {
     },
     {
       icon: <Award className="w-8 h-8" />,
-      title: 'Cam kết chất lượng',
-      description: 'Hoàn tiền 100% nếu không hài lòng trong 7 ngày đầu tiên'
+      title: 'Giảng dạy tận tâm',
+      description: 'Giảng viên luôn sẵn sàng hỗ trợ và giải đáp thắc mắc của học viên'
     }
   ]
 

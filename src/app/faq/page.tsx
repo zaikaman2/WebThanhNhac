@@ -17,8 +17,8 @@ export default function FAQPage() {
         answer: 'Bạn có thể liên hệ qua email zaikaman123@gmail.com để được hỗ trợ.'
       },
       {
-        question: 'Có được hoàn tiền không nếu không hài lòng?',
-        answer: 'Chúng tôi có chính sách hoàn tiền trong vòng 7 ngày đầu tiên nếu bạn không hài lòng với khóa học.'
+        question: 'Tôi có thể học cùng lúc nhiều khóa học không?',
+        answer: 'Có, bạn có thể đăng ký và học nhiều khóa học cùng một lúc. Tuy nhiên chúng tôi khuyến nghị nên hoàn thành từng khóa một để đạt hiệu quả tốt nhất.'
       }
     ]
   
