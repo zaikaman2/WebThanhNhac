@@ -1,28 +1,20 @@
 import Image from 'next/image'
-import { supabase } from '@/lib/supabase'
 
-type Instructor = {
-  name: string
-  bio: string
-  image: string
-  achievements: string[]
+const instructor = {
+  name: 'Đinh Trung Kiên',
+  bio: 'Với hơn 30 năm kinh nghiệm trong lĩnh vực sư phạm thanh nhạc, thầy Đinh Trung Kiên đã đồng hành và phát triển tài năng cho hàng nghìn học viên trên khắp cả nước.',
+  image: 'https://i.ibb.co/3c9RJm2/1732274222865.jpg',
+  achievements: [
+    'Giải nhất tiếng hát phát thanh năm 2004',
+    'Huy chương vàng diễn viên ca kịch năm 1992',
+    'Đã từng là giảng viên của Đại học Văn hóa nghệ thuật Quân đội và Cao đẳng văn hóa nghệ thuật TPHCM',
+    'Hơn 30 năm kinh nghiệm làm ca sĩ ở nhiều sự kiện nổi trội',
+    'Influencer với hơn 600 nghìn followers trên nền tảng TikTok',
+    'Hơn 30 năm kinh nghiệm trong lĩnh vực sư phạm thanh nhạc'
+  ]
 }
 
-async function getInstructor(): Promise<Instructor | null> {
-  const { data, error } = await supabase
-    .from('Instructor')
-    .select('*')
-    .single()
-  
-  if (error) throw error
-  return data
-}
-
-export default async function AboutPage() {
-  const instructor = await getInstructor()
-
-  if (!instructor) return null
-
+export default function AboutPage() {
   return (
     <main>
       {/* Hero Section */}
@@ -34,7 +26,7 @@ export default async function AboutPage() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-primary opacity-20 blur-lg rounded-lg"></div>
                 <Image
-                  src="https://i.ibb.co/3c9RJm2/1732274222865.jpg"
+                  src={instructor.image}
                   alt={instructor.name}
                   width={600}
                   height={800}
@@ -82,20 +74,112 @@ export default async function AboutPage() {
           <h2 className="text-3xl font-bold text-center mb-16 bg-gradient-to-r from-primary-light to-primary bg-clip-text text-transparent">
             Phương pháp giảng dạy
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="bg-secondary-light p-8 rounded-xl border border-primary/10">
-              <h3 className="text-xl font-semibold text-primary mb-4">Khoa học và Thực tiễn</h3>
+              <h3 className="text-xl font-semibold text-primary mb-4">Khóa học Video</h3>
               <p className="text-gray-300 leading-relaxed">
-                Áp dụng phương pháp giảng dạy dựa trên nền tảng khoa học về âm nhạc, 
-                kết hợp với kinh nghiệm thực tiễn để mang lại hiệu quả tối ưu cho học viên.
+                Các khóa học trực tuyến được thiết kế chi tiết, có hệ thống từ cơ bản đến nâng cao. 
+                Học viên có thể học tập theo tiến độ riêng và xem lại bài học không giới hạn.
               </p>
             </div>
             <div className="bg-secondary-light p-8 rounded-xl border border-primary/10">
-              <h3 className="text-xl font-semibold text-primary mb-4">Cá nhân hóa</h3>
+              <h3 className="text-xl font-semibold text-primary mb-4">Học 1-1 Trực tiếp</h3>
               <p className="text-gray-300 leading-relaxed">
-                Mỗi học viên sẽ được đánh giá và có lộ trình học tập riêng, 
-                phù hợp với khả năng và mục tiêu cá nhân.
+                Đào tạo cá nhân hóa tại nhà hoặc online, với lộ trình được thiết kế riêng cho từng học viên. 
+                Tương tác trực tiếp và nhận phản hồi chi tiết từ giảng viên.
               </p>
+            </div>
+            <div className="bg-secondary-light p-8 rounded-xl border border-primary/10">
+              <h3 className="text-xl font-semibold text-primary mb-4">Kinh nghiệm Thực tiễn</h3>
+              <p className="text-gray-300 leading-relaxed">
+                Nội dung giảng dạy được đúc kết từ hơn 30 năm kinh nghiệm biểu diễn và giảng dạy 
+                thanh nhạc chuyên nghiệp.
+              </p>
+            </div>
+          </div>
+
+          {/* Course Types */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
+            <div className="space-y-6">
+              <h3 className="text-2xl font-semibold text-primary">Khóa học Video</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="text-primary mt-1">•</div>
+                  <p className="text-gray-300">Nội dung được thiết kế có hệ thống, dễ hiểu</p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="text-primary mt-1">•</div>
+                  <p className="text-gray-300">Học tập linh hoạt theo thời gian của bạn</p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="text-primary mt-1">•</div>
+                  <p className="text-gray-300">Xem lại bài học không giới hạn</p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="text-primary mt-1">•</div>
+                  <p className="text-gray-300">Chi phí hợp lý, phù hợp mọi đối tượng</p>
+                </li>
+              </ul>
+            </div>
+            <div className="space-y-6">
+              <h3 className="text-2xl font-semibold text-primary">Học 1-1 với Giảng viên</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="text-primary mt-1">•</div>
+                  <p className="text-gray-300">Lộ trình học tập được cá nhân hóa</p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="text-primary mt-1">•</div>
+                  <p className="text-gray-300">Tương tác trực tiếp và nhận phản hồi ngay lập tức</p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="text-primary mt-1">•</div>
+                  <p className="text-gray-300">Điều chỉnh phương pháp theo tiến độ học tập</p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="text-primary mt-1">•</div>
+                  <p className="text-gray-300">Hỗ trợ tư vấn chuyên sâu về phát triển giọng hát</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Teaching Experience */}
+      <section className="py-24 bg-neutral-light">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-16 bg-gradient-to-r from-primary-light to-primary bg-clip-text text-transparent">
+            Kinh nghiệm giảng dạy
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div className="space-y-8">
+              <h3 className="text-2xl font-semibold text-primary">Thành tựu học viên</h3>
+              <div className="space-y-4">
+                <p className="text-gray-300 leading-relaxed">
+                  Trong suốt hơn 30 năm giảng dạy, tôi đã đào tạo nhiều thế hệ ca sĩ và nghệ sĩ 
+                  thành công trong ngành âm nhạc. Nhiều học viên đã đạt giải cao trong các cuộc thi 
+                  thanh nhạc và phát triển sự nghiệp ca hát chuyên nghiệp.
+                </p>
+                <p className="text-gray-300 leading-relaxed">
+                  Phương pháp giảng dạy của tôi không chỉ tập trung vào kỹ thuật thanh nhạc mà còn 
+                  chú trọng phát triển cá tính âm nhạc và bản sắc riêng của từng học viên.
+                </p>
+              </div>
+            </div>
+            <div className="space-y-8">
+              <h3 className="text-2xl font-semibold text-primary">Tầm nhìn giảng dạy</h3>
+              <div className="space-y-4">
+                <p className="text-gray-300 leading-relaxed">
+                  Tôi tin rằng mỗi người đều có tiềm năng âm nhạc riêng. Nhiệm vụ của người thầy 
+                  là khơi dậy và phát triển tiềm năng đó thông qua phương pháp giảng dạy phù hợp 
+                  và sự kiên nhẫn.
+                </p>
+                <p className="text-gray-300 leading-relaxed">
+                  Mục tiêu của tôi không chỉ là đào tạo ca sĩ chuyên nghiệp mà còn giúp học viên 
+                  tự tin thể hiện bản thân qua âm nhạc và phát triển niềm đam mê với nghệ thuật.
+                </p>
+              </div>
             </div>
           </div>
         </div>

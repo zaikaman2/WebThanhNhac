@@ -35,17 +35,17 @@ export default function InstructorContent() {
             <h3 className="text-4xl text-primary font-bold">Đinh Trung Kiên</h3>
             <div className="space-y-6 max-w-3xl">
               <p className="text-lg text-gray-300 leading-relaxed">
-                Với hơn 10 năm kinh nghiệm trong lĩnh vực đào tạo thanh nhạc, thầy Đinh Trung Kiên 
+                Với hơn 30 năm kinh nghiệm trong lĩnh vực sư phạm thanh nhạc, thầy Đinh Trung Kiên 
                 đã đồng hành và phát triển tài năng cho hàng nghìn học viên trên khắp cả nước.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
-                Là người đạt giải nhất cuộc thi thanh nhạc quốc gia 2020 và từng là huấn luyện viên 
-                The Voice Vietnam 2022, thầy Kiên không chỉ là một người thầy mà còn là người 
-                truyền cảm hứng cho những người đam mê âm nhạc.
+                Là người đạt giải nhất tiếng hát phát thanh năm 2004 và huy chương vàng diễn viên 
+                ca kịch năm 1992. Thầy Kiên đã từng là giảng viên của Đại học Văn hóa nghệ thuật 
+                Quân đội và Cao đẳng văn hóa nghệ thuật TPHCM.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
-                Với phương pháp giảng dạy khoa học và tận tâm, thầy Kiên cam kết sẽ giúp học viên 
-                phát triển kỹ thuật thanh nhạc một cách toàn diện và chuyên nghiệp.
+                Với hơn 30 năm kinh nghiệm làm ca sĩ ở nhiều sự kiện nổi trội, thầy Kiên cam kết 
+                sẽ giúp học viên phát triển kỹ thuật thanh nhạc một cách toàn diện và chuyên nghiệp.
               </p>
             </div>
             <Link 
