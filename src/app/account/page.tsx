@@ -5,6 +5,17 @@ import { useAuth } from '@/hooks/useAuth'
 import LoadingSpinner from '@/components/shared/LoadingSpinner'
 import toast from 'react-hot-toast'
 import { getProfile, updateProfile, type Profile } from '@/lib/profile'
+import { supabase } from '@/lib/supabaseClient'
+import { BookOpen, Clock, CheckCircle } from 'lucide-react'
+import Link from 'next/link'
+
+interface Purchase {
+  id: string
+  course_type: string
+  created_at: string
+  amount: number
+  payment_status: string
+}
 
 export default function AccountPage() {
   const { user, loading } = useAuth()
@@ -15,6 +26,24 @@ export default function AccountPage() {
   const [isEditing, setIsEditing] = useState(false)
   const [updateLoading, setUpdateLoading] = useState(false)
   const [profileLoading, setProfileLoading] = useState(true)
+  const [purchases, setPurchases] = useState<Purchase[]>([])
+
+  const availableCourses = [
+    {
+      type: 'basic',
+      title: 'Khóa học cơ bản',
+      description: 'Nền tảng vững chắc cho người mới bắt đầu',
+      price: 299000,
+      features: ['13 bài học chi tiết', '3 tháng học tập', 'Kỹ thuật cơ bản']
+    },
+    {
+      type: 'intermediate',
+      title: 'Khóa học nâng cao',
+      description: 'Phát triển kỹ năng chuyên nghiệp',
+      price: 499000,
+      features: ['21 bài học chuyên sâu', '6 tháng học tập', 'Kỹ thuật nâng cao']
+    }
+  ]
 
   useEffect(() => {
     async function loadProfile() {
@@ -27,6 +56,17 @@ export default function AccountPage() {
             email: profile.email || user.email || ''
           })
         }
+
+        // Load purchases
+        const { data: purchaseData, error: purchaseError } = await supabase
+          .from('purchases')
+          .select('*')
+          .eq('user_id', user.id)
+          .order('created_at', { ascending: false })
+
+        if (purchaseError) throw purchaseError
+        setPurchases(purchaseData)
+
       } catch (error) {
         console.error('Error loading profile:', error)
         toast.error('Không thể tải thông tin tài khoản')
@@ -75,6 +115,11 @@ export default function AccountPage() {
     }
   }
 
+  const purchasedCourseTypes = purchases.map(p => p.course_type)
+  const unpurchasedCourses = availableCourses.filter(
+    course => !purchasedCourseTypes.includes(course.type)
+  )
+
   return (
     <main className="min-h-screen bg-secondary pt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -82,7 +127,8 @@ export default function AccountPage() {
           Thông tin tài khoản
         </h1>
 
-        <div className="bg-secondary-light p-8 rounded-xl border border-primary/10">
+        {/* Profile Section */}
+        <div className="bg-secondary-light p-8 rounded-xl border border-primary/10 mb-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name input */}
             <div>
@@ -150,6 +196,81 @@ export default function AccountPage() {
             </div>
           </form>
         </div>
+
+        {/* Purchased Courses Section */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-primary mb-6">Khóa học của bạn</h2>
+          {purchases.length > 0 ? (
+            <div className="grid gap-6 md:grid-cols-2">
+              {purchases.map((purchase) => {
+                const course = availableCourses.find(c => c.type === purchase.course_type)
+                if (!course) return null
+                
+                return (
+                  <div key={purchase.id} className="bg-secondary-light p-6 rounded-xl border border-primary/10">
+                    <h3 className="text-xl font-semibold text-primary mb-2">{course.title}</h3>
+                    <p className="text-gray-400 text-sm mb-4">
+                      Ngày mua: {new Date(purchase.created_at).toLocaleDateString('vi-VN')}
+                    </p>
+                    <div className="space-y-2 mb-6">
+                      {course.features.map((feature, index) => (
+                        <div key={index} className="flex items-center gap-2 text-gray-300">
+                          <CheckCircle className="w-4 h-4 text-primary" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <Link
+                      href={`/learn/${course.type}`}
+                      className="block w-full bg-primary text-secondary text-center py-2 rounded-full font-semibold hover:bg-primary-light transition-all duration-300"
+                    >
+                      Vào học
+                    </Link>
+                  </div>
+                )
+              })}
+            </div>
+          ) : (
+            <div className="text-center text-gray-300 py-8">
+              Bạn chưa đăng ký khóa học nào
+            </div>
+          )}
+        </div>
+
+        {/* Available Courses Section */}
+        {unpurchasedCourses.length > 0 && (
+          <div>
+            <h2 className="text-2xl font-bold text-primary mb-6">Khóa học có sẵn</h2>
+            <div className="grid gap-6 md:grid-cols-2">
+              {unpurchasedCourses.map((course) => (
+                <div key={course.type} className="bg-secondary-light p-6 rounded-xl border border-primary/10">
+                  <h3 className="text-xl font-semibold text-primary mb-2">{course.title}</h3>
+                  <p className="text-gray-300 mb-4">{course.description}</p>
+                  <div className="space-y-2 mb-6">
+                    {course.features.map((feature, index) => (
+                      <div key={index} className="flex items-center gap-2 text-gray-300">
+                        <CheckCircle className="w-4 h-4 text-primary" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-gray-300">Học phí</span>
+                    <span className="text-primary text-xl font-bold">
+                      {course.price.toLocaleString('vi-VN')}đ
+                    </span>
+                  </div>
+                  <Link
+                    href={`/courses/${course.type}`}
+                    className="block w-full bg-primary text-secondary text-center py-2 rounded-full font-semibold hover:bg-primary-light transition-all duration-300"
+                  >
+                    Tìm hiểu thêm
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </main>
   )
