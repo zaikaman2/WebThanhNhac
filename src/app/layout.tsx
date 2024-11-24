@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import { Montserrat } from 'next/font/google'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { Toaster } from 'react-hot-toast'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -90,6 +91,7 @@ export default function RootLayout({
           </div>
           <Footer />
           <Toaster position="top-center" />
+          <SpeedInsights />
         </AuthProvider>
       </body>
     </html>
