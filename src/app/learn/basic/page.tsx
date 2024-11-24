@@ -146,7 +146,9 @@ export default function LearnBasicPage() {
             <div className="lg:col-span-2">
               <VideoPlayer 
                 src={currentLesson?.videoUrl || ''}
-                title={currentLesson?.title || ''} 
+                title={currentLesson?.title || ''}
+                courseType="basic"
+                lessonId={currentLesson?.id || 1}
               />
               <div className="mt-6">
                 <h1 className="text-2xl font-bold text-primary mb-2">

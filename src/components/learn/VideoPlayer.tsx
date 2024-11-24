@@ -1,13 +1,16 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
+import LessonComments from './LessonComments'
 
 interface VideoPlayerProps {
   src: string
   title: string
+  courseType: 'basic' | 'intermediate'
+  lessonId: number
 }
 
-export default function VideoPlayer({ src, title }: VideoPlayerProps) {
+export default function VideoPlayer({ src, title, courseType, lessonId }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
@@ -15,6 +18,7 @@ export default function VideoPlayer({ src, title }: VideoPlayerProps) {
       videoRef.current.load()
     }
   }, [src])
+
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault()
   }
@@ -28,21 +32,25 @@ export default function VideoPlayer({ src, title }: VideoPlayerProps) {
   }
 
   return (
-    <div 
-      className="relative w-full aspect-video bg-black rounded-lg overflow-hidden"
-      onContextMenu={handleContextMenu}
-    >
-      <video
-        ref={videoRef}
-        className="w-full h-full"
-        controls
-        controlsList="nodownload"
-        playsInline
+    <div>
+      <div 
+        className="relative w-full aspect-video bg-black rounded-lg overflow-hidden"
         onContextMenu={handleContextMenu}
       >
-        <source src={src} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+        <video
+          ref={videoRef}
+          className="w-full h-full"
+          controls
+          controlsList="nodownload"
+          playsInline
+          onContextMenu={handleContextMenu}
+        >
+          <source src={src} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <LessonComments courseType={courseType} lessonId={lessonId} />
     </div>
   )
 } 
