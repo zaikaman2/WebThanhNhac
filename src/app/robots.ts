@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://kienvocal.vercel.app/sitemap.xml',
+    sitemap: 'https://kienvocal.com/sitemap.xml',
   }
 } 

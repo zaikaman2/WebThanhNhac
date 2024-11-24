@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'KienVocal - Khóa học thanh nhạc online chất lượng cao',
     description: 'Khám phá tiềm năng giọng hát của bạn cùng giảng viên Đinh Trung Kiên qua các khóa học thanh nhạc online chất lượng cao',
-    url: 'https://kienvocal.vercel.app',
+    url: 'https://kienvocal.com',
     siteName: 'KienVocal',
     images: [
       {
