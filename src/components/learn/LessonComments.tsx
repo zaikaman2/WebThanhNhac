@@ -14,8 +14,8 @@ interface Comment {
   user_id: string
   content: string
   likes: number
-  created_at: string
-  updated_at: string
+  createdAt: string
+  updatedAt: string
   parent_id: string | null
   user: {
     name: string
@@ -29,8 +29,8 @@ interface CommentResponse {
   user_id: string
   content: string
   likes: number
-  created_at: string
-  updated_at: string
+  createdAt: string
+  updatedAt: string
   parent_id: string | null
   profile: {
     name: string | null
@@ -264,8 +264,8 @@ export default function LessonComments({ courseType, lessonId }: LessonCommentsP
           user_id: comment.user_id,
           content: comment.content,
           likes: comment.likes || 0,
-          created_at: comment.created_at,
-          updated_at: comment.updated_at,
+          createdAt: comment.createdAt,
+          updatedAt: comment.updatedAt,
           parent_id: comment.parent_id,
           user: {
             name: profile?.name || 'Người dùng',
