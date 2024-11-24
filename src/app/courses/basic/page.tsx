@@ -106,7 +106,7 @@ export default function BasicCoursePage() {
         {
           title: 'Bài 7: Luyện tập rung âm thanh',
           content: [
-            'Tập rung dây thanh bằng rung tự nhiên và dùng ngón tay để hỗ trợ'
+            'Tập rung dây thanh bằng rung tự nhiên và dùng ngón tay đ�� hỗ trợ'
           ]
         },
         {
@@ -266,7 +266,7 @@ export default function BasicCoursePage() {
       id: 6,
       name: "Hoàng Minh Tuấn",
       rating: 5,
-      comment: "Ban đầu mình khá lo lắng vì chưa biết gì về thanh nhạc, nhưng cách dạy của thầy rất dễ hiểu. Giờ mình đã có thể tự tin hát những bài đơn giản.",
+      comment: "Ban đầu mình khá lo lắng vì chưa biết gì về thanh nhạc, nhưng cách dạy của thầy rất dễ hiểu. Giờ mình ��ã có thể tự tin hát những bài đơn giản.",
       date: "20/02/2024"
     }
   ]
@@ -372,6 +372,43 @@ export default function BasicCoursePage() {
       </section>
 
       <ReviewSection reviews={basicReviews} averageRating={4.7} />
+
+      {showDevModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-secondary-light p-6 rounded-xl max-w-md w-full mx-4">
+            <h3 className="text-xl font-bold text-primary mb-4">Developer Access</h3>
+            <form onSubmit={handleDevAccess} className="space-y-4">
+              <div>
+                <input
+                  type="password"
+                  value={devPassword}
+                  onChange={(e) => setDevPassword(e.target.value)}
+                  placeholder="Nhập mật khẩu"
+                  className="w-full bg-secondary border border-primary/10 rounded-lg px-4 py-2 text-white"
+                />
+                {devError && (
+                  <p className="text-red-500 text-sm mt-1">{devError}</p>
+                )}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowDevModal(false)}
+                  className="flex-1 bg-secondary-darker text-primary py-2 rounded-full hover:bg-secondary transition-all duration-300"
+                >
+                  Hủy
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 bg-primary text-secondary py-2 rounded-full hover:bg-primary-light transition-all duration-300"
+                >
+                  Xác nhận
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </main>
   )
 } 
