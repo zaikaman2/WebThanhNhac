@@ -8,9 +8,21 @@ interface TimeAgoProps {
 }
 
 export default function TimeAgo({ date }: TimeAgoProps) {
-  return (
-    <span>
-      {formatDistanceToNow(new Date(date), { addSuffix: true, locale: vi })}
-    </span>
-  )
+  try {
+    // Ensure date is in ISO format
+    const dateObj = new Date(date)
+    
+    // Check if date is valid
+    if (isNaN(dateObj.getTime())) {
+      return <span className="text-gray-400">Vừa xong</span>
+    }
+    
+    return (
+      <span>
+        {formatDistanceToNow(dateObj, { addSuffix: true, locale: vi })}
+      </span>
+    )
+  } catch (error) {
+    return <span className="text-gray-400">Vừa xong</span>
+  }
 } 
