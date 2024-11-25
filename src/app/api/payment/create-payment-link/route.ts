@@ -8,8 +8,8 @@ const payOS = new PayOS(
 )
 
 const COURSE_PRICES = {
-  basic: 299000,
-  intermediate: 499000
+  basic: 399000,
+  intermediate: 599000
 }
 
 export async function POST(request: Request) {
