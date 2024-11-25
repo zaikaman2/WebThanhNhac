@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useUser } from '@/hooks/useUser'
 import toast from 'react-hot-toast'
 import LoadingSpinner from './LoadingSpinner'
 
@@ -12,10 +13,18 @@ interface CourseRegisterButtonProps {
 export default function CourseRegisterButton({ courseType }: CourseRegisterButtonProps) {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
+  const { user } = useUser()
 
   const handlePayment = async () => {
     try {
       setLoading(true)
+
+      // Kiểm tra đăng nhập
+      if (!user) {
+        // Chuyển hướng đến trang đăng nhập với query param để redirect sau khi đăng nhập
+        router.push(`/auth?redirect=/courses/${courseType}`)
+        return
+      }
       
       const response = await fetch('/api/payment/create-payment-link', {
         method: 'POST',

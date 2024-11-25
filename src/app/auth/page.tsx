@@ -24,7 +24,12 @@ export default function AuthPage() {
     try {
       await signIn(formData.email, formData.password)
       toast.success('Đăng nhập thành công!')
-      router.push('/')
+      
+      // Lấy redirect URL từ query params
+      const searchParams = new URLSearchParams(window.location.search)
+      const redirectTo = searchParams.get('redirect') || '/'
+      
+      router.push(redirectTo)
       router.refresh()
     } catch (err) {
       toast.error(err instanceof Error ? err.message : 'Đăng nhập thất bại')

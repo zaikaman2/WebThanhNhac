@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/useAuth'
-import { signOut } from '@/lib/auth'
+import { supabase } from '@/lib/supabase'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import MusicWaves from '@/components/shared/MusicWaves'
@@ -17,12 +17,15 @@ export default function Header() {
   const handleSignOut = async () => {
     setIsLoading(true)
     try {
-      await signOut()
+      const { error } = await supabase.auth.signOut()
+      if (error) throw error
+      
       toast.success('Đăng xuất thành công')
       router.push('/')
       router.refresh()
     } catch (error) {
-      toast.error('Có lỗi xảy ra')
+      console.error('Sign out error:', error)
+      toast.error('Có lỗi xảy ra khi đăng xuất')
     } finally {
       setIsLoading(false)
     }
