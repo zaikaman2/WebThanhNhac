@@ -10,6 +10,7 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "@payos/node": "^1.0.10",
     "@prisma/client": "^5.22.0",
     "@supabase/auth-helpers-nextjs": "^0.10.0",
