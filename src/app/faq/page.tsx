@@ -5,6 +5,10 @@ export default function FAQPage() {
         answer: 'Bạn cần đăng ký tài khoản, sau đó chọn khóa học phù hợp và thanh toán để bắt đầu học.'
       },
       {
+        question: 'Website hỗ trợ các hình thức thanh toán nào?',
+        answer: 'Hiện tại website hỗ trợ thanh toán qua chuyển khoản ngân hàng và quét mã QR.'
+      },
+      {
         question: 'Khóa học có thời hạn không?',
         answer: 'Các khóa học cơ bản và nâng cao không có thời hạn và bạn có thể học bao lâu cũng được.'
       },
