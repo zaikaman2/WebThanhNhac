@@ -154,7 +154,7 @@ Hãy trả lời mọi câu hỏi một cách thân thiện và chuyên nghiệp
 
       {isOpen && (
         <div className="fixed bottom-0 right-0 w-full md:bottom-24 md:right-8 md:w-[440px] z-50">
-          <div className="bg-secondary-light rounded-t-xl md:rounded-xl shadow-xl h-[80vh] md:h-auto flex flex-col">
+          <div className="bg-secondary-light rounded-t-xl md:rounded-xl shadow-xl flex flex-col h-[600px] md:h-[600px]">
             <div className="p-4 border-b border-primary/10 flex justify-between items-center">
               <h3 className="text-xl font-bold text-primary">Chatbot AI KienVocal 🤖</h3>
               <button
@@ -167,7 +167,7 @@ Hãy trả lời mọi câu hỏi một cách thân thiện và chuyên nghiệp
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 h-[calc(600px-120px)]">
               {messages.map((msg, i) => (
                 <div
                   key={i}
