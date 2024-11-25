@@ -106,7 +106,7 @@ export default function BasicCoursePage() {
         {
           title: 'Bài 7: Luyện tập rung âm thanh',
           content: [
-            'Tập rung dây thanh bằng rung tự nhiên và dùng ngón tay đ�� hỗ trợ'
+            'Tập rung dây thanh bằng rung tự nhiên và dùng ngón tay để hỗ trợ'
           ]
         },
         {
@@ -266,7 +266,7 @@ export default function BasicCoursePage() {
       id: 6,
       name: "Hoàng Minh Tuấn",
       rating: 5,
-      comment: "Ban đầu mình khá lo lắng vì chưa biết gì về thanh nhạc, nhưng cách dạy của thầy rất dễ hiểu. Giờ mình ��ã có thể tự tin hát những bài đơn giản.",
+      comment: "Ban đầu mình khá lo lắng vì chưa biết gì về thanh nhạc, nhưng cách dạy của thầy rất dễ hiểu. Giờ mình đã có thể tự tin hát những bài đơn giản.",
       date: "20/02/2024"
     }
   ]
@@ -308,9 +308,19 @@ export default function BasicCoursePage() {
                 <div className="bg-secondary-light p-6 rounded-xl border border-primary/10">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-gray-300">Học phí</span>
-                    <span className="text-primary text-2xl font-bold">
-                      {course.price.toLocaleString('vi-VN')}
-                    </span>
+                    <div className="flex flex-col items-end">
+                      <span className="text-gray-400 line-through text-sm">
+                        499.000
+                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-primary text-2xl font-bold">
+                          {course.price.toLocaleString('vi-VN')}
+                        </span>
+                        <span className="bg-red-500 text-white text-sm px-2 py-1 rounded-full animate-bounce">
+                          -20%
+                        </span>
+                      </div>
+                    </div>
                   </div>
                   <CourseAccessButton courseType="basic" userId={user?.id} />
                 </div>

@@ -365,9 +365,19 @@ export default function IntermediatePage() {
               <div className="bg-secondary-light p-6 rounded-xl border border-primary/10">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-gray-300">Học phí</span>
-                  <span className="text-primary text-2xl font-bold">
-                    {course.price.toLocaleString('vi-VN')}
-                  </span>
+                  <div className="flex flex-col items-end">
+                    <span className="text-gray-400 line-through text-sm">
+                      699.000
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-primary text-2xl font-bold">
+                        {course.price.toLocaleString('vi-VN')}
+                      </span>
+                      <span className="bg-red-500 text-white text-sm px-2 py-1 rounded-full animate-bounce">
+                        -14.4%
+                      </span>
+                    </div>
+                  </div>
                 </div>
                 <CourseAccessButton courseType="intermediate" userId={user?.id} />
               </div>
