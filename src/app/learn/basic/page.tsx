@@ -13,14 +13,14 @@ const courseSections = [
       {
         id: 1,
         title: 'Bài 1: Nguyên tắc lấy hơi trong thanh nhạc',
-        duration: '15:30',
+        duration: '10:28',
         description: 'Hiểu sự khác biệt giữa lấy hơi để thở thường và lấy hơi trong thanh nhạc. Luyện tập lấy hơi nhanh như ngáp và giữ hơi chắc như nén.',
         videoId: 'ePhB5H2B3K8'
       },
       {
         id: 2,
         title: 'Bài 2: Kiểm soát hơi thở khi phát âm',
-        duration: '14:45',
+        duration: '03:02',
         description: 'Kỹ thuật kiểm soát hơi khi hát: ra hơi chậm, đều. Tập kiểm soát hơi thông qua các bài tập nhỏ, vừa, và lớn.',
         videoId: 'kuvtM_Q-7CY'
       }
@@ -32,7 +32,7 @@ const courseSections = [
       {
         id: 3,
         title: 'Bài 3: Đặt âm thanh đúng vị trí',
-        duration: '16:20',
+        duration: '07:45',
         description: 'Học cách phát âm để âm thanh vang từ môi và hướng ra trước mặt. Thực hành âm "O", "A", "E", "I".',
         videoId: '17B-gOEcKyw'
       },
