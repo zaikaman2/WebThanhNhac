@@ -19,6 +19,10 @@ export default function FAQPage() {
       {
         question: 'Tôi có thể học cùng lúc nhiều khóa học không?',
         answer: 'Có, bạn có thể đăng ký và học nhiều khóa học cùng một lúc. Tuy nhiên chúng tôi khuyến nghị nên hoàn thành từng khóa một để đạt hiệu quả tốt nhất.'
+      },
+      {
+        question: 'Tôi bị gặp lỗi bắt phải đăng nhập để xác minh không phải robot khi học bài, làm sao để khắc phục?',
+        answer: 'Bạn vui lòng đăng nhập youtube trên trình duyệt bạn đang sử dụng và thử lại.'
       }
     ]
   
