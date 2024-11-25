@@ -20,6 +20,19 @@ export default function VideoPlayer({ src, videoId, title, courseType, lessonId 
     }
   }, [src])
 
+  useEffect(() => {
+    const handleGlobalContextMenu = (e: MouseEvent) => {
+      e.preventDefault()
+      return false
+    }
+
+    document.addEventListener('contextmenu', handleGlobalContextMenu)
+
+    return () => {
+      document.removeEventListener('contextmenu', handleGlobalContextMenu)
+    }
+  }, [])
+
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault()
   }
@@ -33,27 +46,42 @@ export default function VideoPlayer({ src, videoId, title, courseType, lessonId 
   }
 
   return (
-    <div>
+    <div onContextMenu={handleContextMenu}>
       <div 
-        className="relative w-full aspect-video bg-black rounded-lg overflow-hidden"
+        className="relative w-full aspect-video bg-black rounded-lg overflow-hidden select-none"
         onContextMenu={handleContextMenu}
+        onDragStart={(e) => e.preventDefault()}
       >
         {videoId ? (
-          <iframe
-            className="w-full h-full"
-            src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&showinfo=0&fs=1&playsinline=1&disablekb=1&iv_load_policy=3&vq=hd1080`}
-            title={title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          <div className="relative w-full h-full" onContextMenu={handleContextMenu}>
+            <div 
+              className="absolute inset-0 bottom-12 z-10" 
+              onContextMenu={handleContextMenu}
+            ></div>
+            <div 
+              className="absolute right-[40px] bottom-0 w-24 h-12 z-10"
+              onContextMenu={handleContextMenu}
+            ></div>
+            <iframe
+              className="w-full h-full"
+              src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&showinfo=0&fs=1&playsinline=1&disablekb=1&iv_load_policy=3&vq=hd1080&autoplay=1`}
+              title={title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+              sandbox="allow-same-origin allow-scripts allow-forms allow-presentation"
+            />
+          </div>
         ) : (
           <video
             ref={videoRef}
-            className="w-full h-full"
+            className="w-full h-full pointer-events-none"
             controls
-            controlsList="nodownload"
+            autoPlay
+            controlsList="nodownload noplaybackrate"
             playsInline
             onContextMenu={handleContextMenu}
+            onDragStart={(e) => e.preventDefault()}
           >
             <source src={src} type="video/mp4" />
             Your browser does not support the video tag.
