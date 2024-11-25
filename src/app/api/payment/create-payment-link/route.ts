@@ -8,7 +8,7 @@ const payOS = new PayOS(
 )
 
 const COURSE_PRICES = {
-  basic: 399000,
+  basic: 3000,
   intermediate: 599000
 }
 
