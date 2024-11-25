@@ -15,15 +15,14 @@ const formatResponse = (text: string) => {
       const [title, ...points] = section.split('*')
       return `<div class="mb-4">
         <div class="font-semibold text-primary mb-2">${title}</div>
-        ${points.map(point => 
-          `<div class="flex items-start gap-2 mb-1">
-            <span class="text-primary">•</span>
-            <span>${point.trim()}</span>
-          </div>`
-        ).join('')}
+        <div class="space-y-2">
+          ${points.map(point => 
+            `<div class="pl-4 text-gray-300">${point.trim()}</div>`
+          ).join('')}
+        </div>
       </div>`
     }
-    return `<div class="mb-4">${section}</div>`
+    return `<div class="mb-4 text-gray-300">${section}</div>`
   })
 
   return formatted.join('')
