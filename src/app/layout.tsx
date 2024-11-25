@@ -30,7 +30,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "KienVocal - Khóa học thanh nhạc online chất lượng cao",
   description: "KienVocal - Khóa học thanh nhạc online với giảng viên Đinh Trung Kiên. Học hát chuyên nghiệp, phương pháp khoa học, có lộ trình rõ ràng từ cơ bản đến nâng cao.",
-  keywords: "kienvocal, học hát online, khóa học thanh nhạc, Đinh Trung Kiên, dạy hát online, học thanh nhạc",
+  keywords: "kienvocal, kien vocal, học hát online, khóa học thanh nhạc, Đinh Trung Kiên, dạy hát online, học thanh nhạc, Kien Vocal, Đinh Trung Kien",
   verification: {
     google: 'google28c0039f61be903c.html',
   },
