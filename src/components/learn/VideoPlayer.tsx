@@ -55,7 +55,7 @@ export default function VideoPlayer({ src, videoId, title, courseType, lessonId 
         {videoId ? (
           <div className="relative w-full h-full" onContextMenu={handleContextMenu}>
             <div 
-              className="absolute inset-0 bottom-12 z-10" 
+              className="absolute inset-0 bottom-[70%] z-10"
               onContextMenu={handleContextMenu}
             ></div>
             <div 
@@ -64,7 +64,7 @@ export default function VideoPlayer({ src, videoId, title, courseType, lessonId 
             ></div>
             <iframe
               className="w-full h-full"
-              src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&showinfo=0&fs=1&playsinline=1&disablekb=1&iv_load_policy=3&vq=hd1080&autoplay=1`}
+              src={`https://www.youtube.com/embed/${videoId}?version=3&vq=hd1080&autoplay=1`}
               title={title}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
