@@ -1,7 +1,6 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import LessonComments from './LessonComments'
 
 interface VideoPlayerProps {
   src?: string
@@ -88,8 +87,6 @@ export default function VideoPlayer({ src, videoId, title, courseType, lessonId 
           </video>
         )}
       </div>
-
-      <LessonComments courseType={courseType} lessonId={lessonId} />
     </div>
   )
 } 

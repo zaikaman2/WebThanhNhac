@@ -5,6 +5,7 @@ import { useUser } from '@/hooks/useUser'
 import CourseAccessCheck from '@/components/shared/CourseAccessCheck'
 import VideoPlayer from '@/components/learn/VideoPlayer'
 import CourseContent from '@/components/learn/CourseContent'
+import LessonComments from '@/components/learn/LessonComments'
 
 const courseSections = [
   {
@@ -21,7 +22,7 @@ const courseSections = [
         id: 2,
         title: 'Bài 2: Tăng cường kiểm soát hơi thở',
         duration: '18:45',
-        description: 'Học các bài tập nâng cao về kiểm soát hơi thở, tập trung vào việc duy trì và đi���u chỉnh áp lực không khí. Bạn sẽ được thực hành với các bài tập thở chuyên sâu và ứng dụng vào các đoạn hát khó.',
+        description: 'Học các bài tập nâng cao về kiểm soát hơi thở, tập trung vào việc duy trì và điu chỉnh áp lực không khí. Bạn sẽ được thực hành với các bài tập thở chuyên sâu và ứng dụng vào các đoạn hát khó.',
         videoUrl: 'https://res.cloudinary.com/...'
       },
       {
@@ -47,7 +48,7 @@ const courseSections = [
         id: 5,
         title: 'Bài 5: Phát triển vibrato',
         duration: '19:45',
-        description: 'H���c cách tạo và kiểm soát vibrato tự nhiên trong giọng hát. Khám phá các kỹ thuật để điều chỉnh tốc độ và cường độ vibrato, cùng với các bài tập thực hành để phát triển vibrato ổn định.',
+        description: 'Học cách tạo và kiểm soát vibrato tự nhiên trong giọng hát. Khám phá các kỹ thuật để điều chỉnh tốc độ và cường độ vibrato, cùng với các bài tập thực hành để phát triển vibrato ổn định.',
         videoUrl: 'https://res.cloudinary.com/...'
       },
       {
@@ -68,7 +69,7 @@ const courseSections = [
         id: 8,
         title: 'Bài 8: Xử lý sắc thái nâng cao',
         duration: '23:45',
-        description: 'Nâng cao khả năng diễn đạt cảm xúc thông qua giọng hát. Học cách k��t hợp các yếu tố như âm lượng, cường độ và texture để tạo ra những thay đổi sắc thái tinh tế trong bài hát.',
+        description: 'Nâng cao khả năng diễn đạt cảm xúc thông qua giọng hát. Học cách kết hợp các yếu tố như âm lượng, cường độ và texture để tạo ra những thay đổi sắc thái tinh tế trong bài hát.',
         videoUrl: 'https://res.cloudinary.com/...'
       }
     ]
@@ -219,6 +220,11 @@ export default function LearnIntermediatePage() {
                   </p>
                 </div>
               </div>
+
+              <LessonComments 
+                courseType="intermediate"
+                lessonId={currentLesson?.id || 1}
+              />
             </div>
             
             <div className="lg:col-span-1">

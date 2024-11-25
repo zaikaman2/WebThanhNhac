@@ -5,6 +5,7 @@ import { useUser } from '@/hooks/useUser'
 import CourseAccessCheck from '@/components/shared/CourseAccessCheck'
 import VideoPlayer from '@/components/learn/VideoPlayer'
 import CourseContent from '@/components/learn/CourseContent'
+import LessonComments from '@/components/learn/LessonComments'
 
 const courseSections = [
   {
@@ -164,6 +165,11 @@ export default function LearnBasicPage() {
                   </p>
                 </div>
               </div>
+              
+              <LessonComments 
+                courseType="basic"
+                lessonId={currentLesson?.id || 1}
+              />
             </div>
             
             <div className="lg:col-span-1">
