@@ -145,7 +145,7 @@ Hãy trả lời mọi câu hỏi một cách thân thiện và chuyên nghiệp
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 bg-primary p-3 rounded-full shadow-lg hover:bg-primary-light transition-all duration-300 transform hover:scale-110 z-50"
+        className="fixed bottom-4 right-4 md:bottom-8 md:right-8 bg-primary p-3 rounded-full shadow-lg hover:bg-primary-light transition-all duration-300 transform hover:scale-110 z-50"
       >
         <svg className="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
@@ -153,10 +153,10 @@ Hãy trả lời mọi câu hỏi một cách thân thiện và chuyên nghiệp
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-24 right-8 w-full max-w-md z-50">
-          <div className="bg-secondary-light rounded-xl shadow-xl">
+        <div className="fixed bottom-0 right-0 w-full md:bottom-24 md:right-8 md:w-[440px] z-50">
+          <div className="bg-secondary-light rounded-t-xl md:rounded-xl shadow-xl h-[80vh] md:h-auto flex flex-col">
             <div className="p-4 border-b border-primary/10 flex justify-between items-center">
-              <h3 className="text-xl font-bold text-primary">Chatbot AI KienVocal</h3>
+              <h3 className="text-xl font-bold text-primary">Chatbot AI KienVocal 🤖</h3>
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-gray-400 hover:text-primary"
@@ -167,7 +167,7 @@ Hãy trả lời mọi câu hỏi một cách thân thiện và chuyên nghiệp
               </button>
             </div>
 
-            <div className="h-96 overflow-y-auto p-4 space-y-4">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {messages.map((msg, i) => (
                 <div
                   key={i}
