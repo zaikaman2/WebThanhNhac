@@ -52,7 +52,7 @@ const courseSections = [
       {
         id: 5,
         title: 'Bài 5: Hát các nguyên âm ở âm trung',
-        duration: '18:30',
+        duration: '10:28',
         description: 'Luyện hát ở âm trung (không quá cao, không quá thấp) với các nguyên âm. Ví dụ: "Hô hô hô, hà hà hà".',
         videoId: 'EOtQ1I-KSFs'
       },
