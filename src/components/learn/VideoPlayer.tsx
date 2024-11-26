@@ -20,21 +20,37 @@ export default function VideoPlayer({ src, videoId, title, courseType, lessonId 
   }, [src])
 
   useEffect(() => {
-    const handleGlobalContextMenu = (e: MouseEvent) => {
+    // Chặn inspect element
+    const disableInspect = (e: KeyboardEvent) => {
+      if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+        e.preventDefault()
+      }
+    }
+
+    // Chặn right click
+    const disableContextMenu = (e: MouseEvent) => {
       e.preventDefault()
       return false
     }
 
-    document.addEventListener('contextmenu', handleGlobalContextMenu)
+    // Chặn copy/paste
+    const disableCopyPaste = (e: ClipboardEvent) => {
+      e.preventDefault()
+      return false
+    }
+
+    document.addEventListener('keydown', disableInspect)
+    document.addEventListener('contextmenu', disableContextMenu)
+    document.addEventListener('copy', disableCopyPaste)
+    document.addEventListener('paste', disableCopyPaste)
 
     return () => {
-      document.removeEventListener('contextmenu', handleGlobalContextMenu)
+      document.removeEventListener('keydown', disableInspect)
+      document.removeEventListener('contextmenu', disableContextMenu) 
+      document.removeEventListener('copy', disableCopyPaste)
+      document.removeEventListener('paste', disableCopyPaste)
     }
   }, [])
-
-  const handleContextMenu = (e: React.MouseEvent) => {
-    e.preventDefault()
-  }
 
   if (!src && !videoId) {
     return (
@@ -45,25 +61,19 @@ export default function VideoPlayer({ src, videoId, title, courseType, lessonId 
   }
 
   return (
-    <div onContextMenu={handleContextMenu}>
+    <div className="select-none">
       <div 
-        className="relative w-full aspect-video bg-black rounded-lg overflow-hidden select-none"
-        onContextMenu={handleContextMenu}
+        className="relative w-full aspect-video bg-black rounded-lg overflow-hidden"
+        onContextMenu={(e) => e.preventDefault()}
         onDragStart={(e) => e.preventDefault()}
       >
         {videoId ? (
-          <div className="relative w-full h-full" onContextMenu={handleContextMenu}>
-            <div 
-              className="absolute inset-0 bottom-[70%] z-10"
-              onContextMenu={handleContextMenu}
-            ></div>
-            <div 
-              className="absolute right-[40px] bottom-0 w-24 h-12 z-10"
-              onContextMenu={handleContextMenu}
-            ></div>
+          <div className="relative w-full h-full">
+            <div className="absolute inset-0 bottom-[70%] z-10"></div>
+            <div className="absolute right-[40px] bottom-0 w-24 h-12 z-10"></div>
             <iframe
               className="w-full h-full"
-              src={`https://www.youtube.com/embed/${videoId}?version=3&vq=hd1080&autoplay=1`}
+              src={`https://www.youtube.com/embed/${videoId}?version=3&vq=hd1080&autoplay=1&controls=1&modestbranding=1&playsinline=1&rel=0&showinfo=0&enablejsapi=1`}
               title={title}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -74,12 +84,12 @@ export default function VideoPlayer({ src, videoId, title, courseType, lessonId 
         ) : (
           <video
             ref={videoRef}
-            className="w-full h-full pointer-events-none"
+            className="w-full h-full"
             controls
             autoPlay
             controlsList="nodownload noplaybackrate"
             playsInline
-            onContextMenu={handleContextMenu}
+            onContextMenu={(e) => e.preventDefault()}
             onDragStart={(e) => e.preventDefault()}
           >
             <source src={src} type="video/mp4" />
