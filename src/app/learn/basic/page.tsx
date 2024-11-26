@@ -40,9 +40,9 @@ const courseSections = [
       {
         id: 4,
         title: 'Bài 4: Tập rung môi để phát âm đúng',
-        duration: '12:15',
+        duration: '05:27',
         description: 'Bài tập rung môi giúp âm thanh vang tự nhiên.',
-        videoUrl: 'https://res.cloudinary.com/...'
+        videoId: 'kxebiAUyCw4'
       }
     ]
   },
@@ -54,14 +54,14 @@ const courseSections = [
         title: 'Bài 5: Hát các nguyên âm ở âm trung',
         duration: '18:30',
         description: 'Luyện hát ở âm trung (không quá cao, không quá thấp) với các nguyên âm. Ví dụ: "Hô hô hô, hà hà hà".',
-        videoUrl: 'https://res.cloudinary.com/...'
+        videoId: ''
       },
       {
         id: 6,
         title: 'Bài 6: Kiểm soát âm lượng qua lực hơi',
         duration: '17:45',
         description: 'Tập phát âm với lượng hơi nhỏ, trung bình, và mạnh. Hiểu mối quan hệ giữa lực hơi và độ lớn của âm thanh.',
-        videoUrl: 'https://res.cloudinary.com/...'
+        videoId: ''
       }
     ]
   },
@@ -73,14 +73,14 @@ const courseSections = [
         title: 'Bài 7: Luyện tập rung âm thanh',
         duration: '15:20',
         description: 'Tập rung dây thanh bằng rung tự nhiên và dùng ngón tay để hỗ trợ.',
-        videoUrl: 'https://res.cloudinary.com/...'
+        videoId: 'https://res.cloudinary.com/...'
       },
       {
         id: 8,
         title: 'Bài 8: Phát âm trầm và cảm nhận rung ở ngực',
         duration: '16:40',
         description: 'Luyện âm trầm, tập cảm giác âm thanh chảy xuống ngực. Kiểm tra độ rung của ngực khi phát âm.',
-        videoUrl: 'https://res.cloudinary.com/...'
+        videoId: 'https://res.cloudinary.com/...'
       }
     ]
   },
@@ -92,14 +92,14 @@ const courseSections = [
         title: 'Bài 9: Kỹ thuật lấy hơi và giữ hơi cho nốt cao',
         duration: '19:15',
         description: 'Lấy hơi đầy đủ và giữ hơi chắc ở nền móng. Tập thả lỏng cổ, không gồng khi hát nốt cao.',
-        videoUrl: 'https://res.cloudinary.com/...'
+        videoId: 'https://res.cloudinary.com/...'
       },
       {
         id: 10,
         title: 'Bài 10: Tập âm lượng nhỏ cho nốt cao',
         duration: '14:30',
         description: 'Hát nốt cao với âm lượng trung bình hoặc nhỏ, tránh làm căng dây thanh.',
-        videoUrl: 'https://res.cloudinary.com/...'
+        videoId: 'https://res.cloudinary.com/...'
       }
     ]
   },
@@ -111,21 +111,21 @@ const courseSections = [
         title: 'Bài 11: Cách xử lý cảm xúc trong bài hát',
         duration: '20:25',
         description: 'Hiểu ý nghĩa bài hát và điều chỉnh cách hát cho phù hợp.',
-        videoUrl: 'https://res.cloudinary.com/...'
+        videoId: 'https://res.cloudinary.com/...'
       },
       {
         id: 12,
         title: 'Bài 12: Tập luyện xử lý bài hát mẫu (1)',
         duration: '25:30',
         description: 'Ví dụ bài: Cắt đôi nỗi sầu.',
-        videoUrl: 'https://res.cloudinary.com/...'
+        videoId: 'https://res.cloudinary.com/...'
       },
       {
         id: 13,
         title: 'Bài 13: Tập luyện xử lý bài hát mẫu (2)',
         duration: '23:45',
         description: 'Ví dụ bài: Ngày mai người ta lấy chồng.',
-        videoUrl: 'https://res.cloudinary.com/...'
+        videoId: 'https://res.cloudinary.com/...'
       }
     ]
   }
@@ -147,7 +147,6 @@ export default function LearnBasicPage() {
             <div className="lg:col-span-2">
               <VideoPlayer 
                 videoId={currentLesson?.videoId}
-                src={currentLesson?.videoUrl}
                 title={currentLesson?.title || ''}
                 courseType="basic"
                 lessonId={currentLesson?.id || 1}
