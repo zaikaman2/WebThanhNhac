@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { Play, Pause, Volume2, VolumeX, Maximize, Minimize, Settings } from 'lucide-react'
 import { VimeoQuality } from '@/types/video'
+import type { VimeoPlayer } from '@/types/vimeo'
+import type { VimeoTimeUpdateData } from '@/types/vimeo'
 
 interface VideoControlsProps {
-  player: any
+  player: VimeoPlayer
   duration: number
   isFullscreen: boolean
   onFullscreenToggle: () => void
@@ -21,7 +23,7 @@ export default function VideoControls({ player, duration, isFullscreen, onFullsc
   const [showQualityMenu, setShowQualityMenu] = useState(false)
 
   useEffect(() => {
-    const timeUpdate = (data: { seconds: number }) => {
+    const timeUpdate = (data: VimeoTimeUpdateData) => {
       setCurrentTime(data.seconds)
     }
 

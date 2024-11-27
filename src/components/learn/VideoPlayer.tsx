@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from 'react'
 import Player from '@vimeo/player'
 import VideoControls from './VideoControls'
 import { VimeoQuality } from '@/types/video'
+import type { VimeoPlayer } from '@/types/vimeo'
 
 interface VideoPlayerProps {
   src?: string
@@ -15,7 +16,7 @@ interface VideoPlayerProps {
 
 export default function VideoPlayer({ videoId, title, courseType, lessonId }: VideoPlayerProps) {
   const playerRef = useRef<HTMLDivElement>(null)
-  const [player, setPlayer] = useState<any>(null)
+  const [player, setPlayer] = useState<VimeoPlayer | null>(null)
   const [duration, setDuration] = useState(0)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [currentQuality, setCurrentQuality] = useState<VimeoQuality>('1080p')
@@ -40,18 +41,18 @@ export default function VideoPlayer({ videoId, title, courseType, lessonId }: Vi
       playerRef.current.innerHTML = ''
       playerRef.current.appendChild(iframe)
 
-      // Khởi tạo Vimeo Player
-      const vimeoPlayer = new Player(iframe, {
+      // Cast through unknown first to avoid type mismatch error
+      const vimeoPlayer = (new Player(iframe, {
         id: parseInt(videoId),
-        background: true, // Ẩn UI của Vimeo
+        background: true,
         controls: false,
         responsive: true,
         dnt: true,
-        quality: currentQuality as any,
+        quality: currentQuality,
         transparent: false,
         playsinline: false,
         muted: false
-      })
+      }) as unknown) as VimeoPlayer
 
       vimeoPlayer.setVolume(1)
 
@@ -59,7 +60,7 @@ export default function VideoPlayer({ videoId, title, courseType, lessonId }: Vi
       setPlayer(vimeoPlayer)
 
       // Lấy danh sách chất lượng có sẵn
-      vimeoPlayer.getQualities().then((qualities: any[]) => {
+      vimeoPlayer.getQualities().then((qualities: { id: VimeoQuality }[]) => {
         const validQualities = qualities
           .map(q => q.id)
           .filter((q): q is VimeoQuality => 
