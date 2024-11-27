@@ -1,0 +1,1 @@
+export type VimeoQuality = '4K' | '2K' | '1080p' | '720p' | '540p' | '360p' | '240p' 
