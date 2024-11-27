@@ -78,7 +78,7 @@ export default function VideoControls({ player, duration, isFullscreen, onFullsc
   }
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-16 pb-4 px-4">
       {/* Progress bar */}
       <div 
         ref={progressRef}
