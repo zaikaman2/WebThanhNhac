@@ -78,11 +78,11 @@ export default function VideoControls({ player, duration, isFullscreen, onFullsc
   }
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-16 pb-4 px-4">
+    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-16 pb-4 px-4 pointer-events-none">
       {/* Progress bar */}
       <div 
         ref={progressRef}
-        className="h-1 bg-gray-600 rounded-full mb-4 cursor-pointer group/progress"
+        className="h-1 bg-gray-600 rounded-full mb-4 cursor-pointer group/progress pointer-events-auto"
         onClick={handleProgressClick}
       >
         <div 
@@ -93,7 +93,7 @@ export default function VideoControls({ player, duration, isFullscreen, onFullsc
         </div>
       </div>
 
-      <div className="flex items-center justify-between opacity-100 transition-opacity duration-300">
+      <div className="flex items-center justify-between opacity-100 transition-opacity duration-300 pointer-events-auto">
         <div className="flex items-center gap-4">
           {/* Play/Pause button */}
           <button 

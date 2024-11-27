@@ -143,27 +143,30 @@ export default function VideoPlayer({ videoId, title, courseType, lessonId }: Vi
   const handleMouseMove = () => {
     setIsControlsVisible(true)
     
-    // Clear timeout cũ nếu có
     if (controlsTimeoutRef.current) {
       clearTimeout(controlsTimeoutRef.current)
     }
 
-    // Set timeout mới để ẩn controls sau 3 giây
-    controlsTimeoutRef.current = setTimeout(() => {
-      if (isFullscreen) {
+    if (isFullscreen) {
+      controlsTimeoutRef.current = setTimeout(() => {
         setIsControlsVisible(false)
-      }
-    }, 2000)
+      }, 2000)
+    }
   }
 
   return (
     <div className="select-none">
       <div 
-        className={`relative w-full aspect-video bg-black rounded-lg overflow-hidden video-container group ${
+        className={`relative w-full aspect-video bg-black rounded-lg overflow-hidden video-container ${
           !isControlsVisible && isFullscreen ? 'cursor-none' : ''
         }`}
         onMouseMove={handleMouseMove}
-        onMouseLeave={() => setIsControlsVisible(true)}
+        onMouseEnter={() => setIsControlsVisible(true)}
+        onMouseLeave={() => {
+          if (!isFullscreen) {
+            setIsControlsVisible(false)
+          }
+        }}
       >
         <div 
           ref={playerRef}
@@ -174,9 +177,7 @@ export default function VideoPlayer({ videoId, title, courseType, lessonId }: Vi
         {player && (
           <div 
             className={`absolute inset-0 ${
-              isControlsVisible || !isFullscreen
-                ? 'opacity-100'
-                : 'opacity-0'
+              isControlsVisible ? 'opacity-100' : 'opacity-0'
             } transition-opacity duration-300`}
           >
             <VideoControls 
