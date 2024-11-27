@@ -54,14 +54,14 @@ const courseSections = [
         title: 'Bài 5: Hát các nguyên âm ở âm trung',
         duration: '10:28',
         description: 'Luyện hát ở âm trung (không quá cao, không quá thấp) với các nguyên âm. Ví dụ: "Hô hô hô, hà hà hà".',
-        videoId: '1033729475?h=ba62a89614'
+        videoId: '1033729475'
       },
       {
         id: 6,
         title: 'Bài 6: Kiểm soát âm lượng qua lực hơi',
-        duration: '17:45',
+        duration: '07:05',
         description: 'Tập phát âm với lượng hơi nhỏ, trung bình, và mạnh. Hiểu mối quan hệ giữa lực hơi và độ lớn của âm thanh.',
-        videoId: ''
+        videoId: '1033806012'
       }
     ]
   },
@@ -145,26 +145,12 @@ export default function LearnBasicPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              {currentLessonId === 5 ? (
-                // Embed code trực tiếp cho bài 5
-                <div style={{padding:'56.25% 0 0 0', position:'relative'}}>
-                  <iframe 
-                    src="https://player.vimeo.com/video/1033729475?h=ba62a89614&badge=0&autopause=0&player_id=0&app_id=58479"
-                    style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}}
-                    frameBorder="0"
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                    title="basic5"
-                  />
-                </div>
-              ) : (
-                // VideoPlayer component cho các bài khác
-                <VideoPlayer 
-                  videoId={currentLesson?.videoId}
-                  title={currentLesson?.title || ''}
-                  courseType="basic"
-                  lessonId={currentLesson?.id || 1}
-                />
-              )}
+              <VideoPlayer 
+                videoId={currentLesson?.videoId}
+                title={currentLesson?.title || ''}
+                courseType="basic"
+                lessonId={currentLesson?.id || 1}
+              />
               
               <div className="mt-6">
                 <h1 className="text-2xl font-bold text-primary mb-2">
