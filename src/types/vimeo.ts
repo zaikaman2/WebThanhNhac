@@ -1,18 +1,34 @@
 import type { VimeoQuality } from './video'
 
+export interface VimeoTimeUpdateData {
+  seconds: number
+}
+
+export interface VimeoEventData {
+  timeupdate: VimeoTimeUpdateData
+  play: void
+  pause: void
+  progress: { percent: number }
+  seeking: { seconds: number }
+  seeked: { seconds: number }
+  error: { name: string; message: string }
+}
+
 export interface VimeoPlayer {
   destroy: () => void
   getDuration: () => Promise<number>
   getQualities: () => Promise<{ id: VimeoQuality }[]>
-  on: (event: string, callback: (data: any) => void) => void
-  off: (event: string, callback: (data: any) => void) => void
+  on: <T extends keyof VimeoEventData>(
+    event: T,
+    callback: (data: VimeoEventData[T]) => void
+  ) => void
+  off: <T extends keyof VimeoEventData>(
+    event: T,
+    callback: (data: VimeoEventData[T]) => void
+  ) => void
   play: () => Promise<void>
   pause: () => Promise<void>
   setCurrentTime: (time: number) => Promise<number>
   setVolume: (volume: number) => Promise<number>
   setQuality: (quality: VimeoQuality) => Promise<string>
-}
-
-export interface VimeoTimeUpdateData {
-  seconds: number
 } 
