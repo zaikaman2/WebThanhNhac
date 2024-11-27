@@ -68,17 +68,16 @@ export default function VideoPlayer({ src, videoId, title, courseType, lessonId 
         onDragStart={(e) => e.preventDefault()}
       >
         {videoId ? (
-          <div className="relative w-full h-full">
-            <div className="absolute inset-0 bottom-[70%] z-10"></div>
-            <div className="absolute right-[40px] bottom-0 w-24 h-12 z-10"></div>
+          <div className="relative w-full h-full" style={{padding: '56.25% 0 0 0'}}>
             <iframe
-              className="w-full h-full"
-              src={`https://www.youtube.com/embed/${videoId}?version=3&vq=hd1080&autoplay=1&controls=1&modestbranding=1&playsinline=1&rel=0&showinfo=0&enablejsapi=1`}
-              title={title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              src={`https://player.vimeo.com/video/${videoId}?h=475fb8baf6&badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&controls=1&title=0&byline=0&portrait=0&sidedock=0&background=0&quality=1080p&transparent=0&pip=0`}
+              style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
+              title={title}
               loading="lazy"
-              sandbox="allow-same-origin allow-scripts allow-forms allow-presentation"
+              referrerPolicy="no-referrer"
             />
           </div>
         ) : (

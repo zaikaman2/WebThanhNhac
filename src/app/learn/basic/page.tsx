@@ -16,14 +16,14 @@ const courseSections = [
         title: 'Bài 1: Nguyên tắc lấy hơi trong thanh nhạc',
         duration: '10:28',
         description: 'Hiểu sự khác biệt giữa lấy hơi để thở thường và lấy hơi trong thanh nhạc. Luyện tập lấy hơi nhanh như ngáp và giữ hơi chắc như nén.',
-        videoId: 'ePhB5H2B3K8'
+        videoId: '1033721174'
       },
       {
         id: 2,
         title: 'Bài 2: Kiểm soát hơi thở khi phát âm',
         duration: '03:02',
         description: 'Kỹ thuật kiểm soát hơi khi hát: ra hơi chậm, đều. Tập kiểm soát hơi thông qua các bài tập nhỏ, vừa, và lớn.',
-        videoId: 'kuvtM_Q-7CY'
+        videoId: '1033700924'
       }
     ]
   },
@@ -35,14 +35,14 @@ const courseSections = [
         title: 'Bài 3: Đặt âm thanh đúng vị trí',
         duration: '07:45',
         description: 'Học cách phát âm để âm thanh vang từ môi và hướng ra trước mặt. Thực hành âm "O", "A", "E", "I".',
-        videoId: '17B-gOEcKyw'
+        videoId: '1033722684'
       },
       {
         id: 4,
         title: 'Bài 4: Tập rung môi để phát âm đúng',
         duration: '05:27',
         description: 'Bài tập rung môi giúp âm thanh vang tự nhiên.',
-        videoId: 'kxebiAUyCw4'
+        videoId: '1033700672'
       }
     ]
   },
@@ -54,7 +54,7 @@ const courseSections = [
         title: 'Bài 5: Hát các nguyên âm ở âm trung',
         duration: '10:28',
         description: 'Luyện hát ở âm trung (không quá cao, không quá thấp) với các nguyên âm. Ví dụ: "Hô hô hô, hà hà hà".',
-        videoId: 'EOtQ1I-KSFs'
+        videoId: '1033729475?h=ba62a89614'
       },
       {
         id: 6,
@@ -145,12 +145,27 @@ export default function LearnBasicPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <VideoPlayer 
-                videoId={currentLesson?.videoId}
-                title={currentLesson?.title || ''}
-                courseType="basic"
-                lessonId={currentLesson?.id || 1}
-              />
+              {currentLessonId === 5 ? (
+                // Embed code trực tiếp cho bài 5
+                <div style={{padding:'56.25% 0 0 0', position:'relative'}}>
+                  <iframe 
+                    src="https://player.vimeo.com/video/1033729475?h=ba62a89614&badge=0&autopause=0&player_id=0&app_id=58479"
+                    style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}}
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                    title="basic5"
+                  />
+                </div>
+              ) : (
+                // VideoPlayer component cho các bài khác
+                <VideoPlayer 
+                  videoId={currentLesson?.videoId}
+                  title={currentLesson?.title || ''}
+                  courseType="basic"
+                  lessonId={currentLesson?.id || 1}
+                />
+              )}
+              
               <div className="mt-6">
                 <h1 className="text-2xl font-bold text-primary mb-2">
                   {currentLesson?.title}
