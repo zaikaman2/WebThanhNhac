@@ -10,6 +10,12 @@ interface VideoPlayerProps {
   lessonId: number
 }
 
+interface VimeoFile {
+  quality: string;
+  type: string;
+  link: string;
+}
+
 export default function VideoPlayer({ src, videoId, title, courseType, lessonId }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
 

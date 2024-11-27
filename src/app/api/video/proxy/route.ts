@@ -62,7 +62,11 @@ export async function GET(request: Request) {
     const data = await response.json()
     
     // Get highest quality progressive URL
-    const progressiveFiles = data.files.filter((file: any) => 
+    const progressiveFiles = data.files.filter((file: {
+      quality: string;
+      type: string;
+      link?: string;
+    }) => 
       file.quality === 'source' && 
       file.type === 'video/mp4'
     )
