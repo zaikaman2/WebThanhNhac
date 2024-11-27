@@ -16,6 +16,12 @@ interface VimeoFile {
   link: string;
 }
 
+interface Document extends HTMLDocument {
+  webkitFullscreenElement?: Element;
+  mozFullScreenElement?: Element;
+  msFullscreenElement?: Element;
+}
+
 export default function VideoPlayer({ src, videoId, title, courseType, lessonId }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
@@ -80,8 +86,8 @@ export default function VideoPlayer({ src, videoId, title, courseType, lessonId 
       console.log('Fullscreen change detected')
       
       const fullscreenElement = document.fullscreenElement || 
-        (document as any).webkitFullscreenElement ||
-        (document as any).mozFullScreenElement
+        (document as Document).webkitFullscreenElement ||
+        (document as Document).mozFullScreenElement
       
       console.log('Fullscreen element:', fullscreenElement)
 
