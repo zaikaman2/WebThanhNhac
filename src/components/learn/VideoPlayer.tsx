@@ -101,7 +101,7 @@ export default function VideoPlayer({ src, videoId, title, courseType, lessonId 
           right: 0;
           width: 48px;
           height: 48px;
-          background-color: rgba(255,0,0,0.5); /* Đỏ đậm hơn */
+          background-color: rgba(0,0,0,1);
           cursor: default;
           pointer-events: auto;
         `
@@ -114,7 +114,7 @@ export default function VideoPlayer({ src, videoId, title, courseType, lessonId 
           right: 0;
           width: 48px;
           height: 48px;
-          background-color: rgba(0,255,0,0.5); /* Xanh lá đậm hơn */
+          background-color: rgba(0,0,0,1);
           cursor: default;
           pointer-events: auto;
         `
@@ -165,30 +165,59 @@ export default function VideoPlayer({ src, videoId, title, courseType, lessonId 
   return (
     <div className="select-none">
       <div 
-        className="relative w-full aspect-video bg-black rounded-lg overflow-hidden"
+        className="relative w-full aspect-video bg-black rounded-lg overflow-hidden video-container group"
         onContextMenu={(e) => e.preventDefault()}
         onDragStart={(e) => e.preventDefault()}
       >
         {videoId ? (
           <div className="relative w-full h-full" style={{padding: '56.25% 0 0 0'}}>
             <iframe
-              src={`https://player.vimeo.com/video/${videoId}${config.hash ? `?h=${config.hash}` : ''}&badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&controls=1&title=0&byline=0&portrait=0&sidedock=0&background=0&quality=1080p&transparent=0&pip=0&sharing=0`}
+              src={`https://player.vimeo.com/video/${videoId}${config.hash ? `?h=${config.hash}` : ''}&badge=0&autopause=0&player_id=0&app_id=58479&dnt=1&controls=1&title=0&byline=0&portrait=0&sidedock=0&background=0&quality=1080p&transparent=0&pip=0&sharing=0&fullscreen=0`}
               style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
               frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
+              allow="autoplay; picture-in-picture"
               title={title}
               loading="lazy"
               referrerPolicy="no-referrer"
             />
+            {/* Block nút share */}
             <div 
-              className="absolute top-12 right-0 w-12 h-24 z-50 bg-transparent cursor-default"
+              className="absolute top-12 right-0 w-12 h-24 bg-transparent cursor-default z-50"
               onClick={(e) => e.preventDefault()}
             />
+            {/* Block logo Vimeo */}
             <div 
-              className="absolute bottom-0 right-0 w-20 h-12 z-50 bg-transparent cursor-default"
+              className="absolute bottom-0 right-0 w-20 h-12 bg-transparent cursor-default z-50"
               onClick={(e) => e.preventDefault()}
             />
+            {/* Nút fullscreen tự xử lý */}
+            <button 
+              className="absolute bottom-1 p-1.5 bg-black/50 text-white hover:bg-black/75 transition-colors rounded opacity-0 group-hover:opacity-100"
+              style={{ right: '4.4rem' }}
+              onClick={() => {
+                const container = document.querySelector('.video-container')
+                if (container && document.fullscreenElement === null) {
+                  container.requestFullscreen()
+                } else if (document.fullscreenElement) {
+                  document.exitFullscreen()
+                }
+              }}
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                strokeWidth={1.5} 
+                stroke="currentColor" 
+                className="w-5 h-5"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" 
+                />
+              </svg>
+            </button>
           </div>
         ) : (
           <video
