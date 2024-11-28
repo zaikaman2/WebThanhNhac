@@ -71,16 +71,16 @@ const courseSections = [
       {
         id: 7,
         title: 'Bài 7: Luyện tập rung âm thanh',
-        duration: '15:20',
+        duration: '05:41',
         description: 'Tập rung dây thanh bằng rung tự nhiên và dùng ngón tay để hỗ trợ.',
-        videoId: 'https://res.cloudinary.com/...'
+        videoId: '1034288360'
       },
       {
         id: 8,
         title: 'Bài 8: Phát âm trầm và cảm nhận rung ở ngực',
-        duration: '16:40',
+        duration: '05:15',
         description: 'Luyện âm trầm, tập cảm giác âm thanh chảy xuống ngực. Kiểm tra độ rung của ngực khi phát âm.',
-        videoId: 'https://res.cloudinary.com/...'
+        videoId: '1034279491'
       }
     ]
   },
