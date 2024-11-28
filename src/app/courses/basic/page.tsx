@@ -169,7 +169,7 @@ export default function BasicCoursePage() {
     },
     {
       icon: <Clock className="w-6 h-6" />,
-      title: '3 tháng học tập',
+      title: '13 ngày học tập',
       description: 'Thời gian đủ để nắm vững các kỹ thuật cơ bản'
     },
     {
@@ -231,7 +231,7 @@ export default function BasicCoursePage() {
       id: 1,
       name: "Nguyễn Thị Hương",
       rating: 5,
-      comment: "Khóa học rất phù hợp cho người mới bắt đầu như mình. Thầy dạy rất tận tình và dễ hiểu. Sau 3 tháng, mình đã tự tin hát karaoke với bạn bè!",
+      comment: "Khóa học rất phù hợp cho người mới bắt đầu như mình. Thầy dạy rất tận tình và dễ hiểu. Sau 13 ngày, mình đã tự tin hát karaoke với bạn bè!",
       date: "15/03/2024"
     },
     {

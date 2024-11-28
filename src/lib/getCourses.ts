@@ -9,6 +9,7 @@ export const getCourses = cache(async (): Promise<Course[]> => {
     const { data, error } = await supabase
       .from('Course')
       .select('*')
+      .neq('type', 'intermediate')
     
     if (error) throw error
     return data || []

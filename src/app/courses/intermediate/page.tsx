@@ -50,7 +50,7 @@ export default function IntermediatePage() {
     },
     {
       icon: <Clock className="w-6 h-6" />,
-      title: '6 tháng học tập',
+      title: '21 ngày học tập',
       description: 'Thời gian đủ để phát triển kỹ năng chuyên nghiệp'
     },
     {

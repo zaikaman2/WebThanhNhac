@@ -32,14 +32,14 @@ export default function AccountPage() {
       title: 'Khóa học cơ bản',
       description: 'Nền tảng vững chắc cho người mới bắt đầu',
       price: 399000,
-      features: ['13 bài học chi tiết', '3 tháng học tập', 'Kỹ thuật cơ bản']
+      features: ['13 bài học chi tiết', '13 ngày học tập', 'Kỹ thuật cơ bản']
     },
     {
       type: 'intermediate',
       title: 'Khóa học nâng cao',
       description: 'Phát triển kỹ năng chuyên nghiệp',
       price: 599000,
-      features: ['21 bài học chuyên sâu', '6 tháng học tập', 'Kỹ thuật nâng cao']
+      features: ['21 bài học chuyên sâu', '21 ngày học tập', 'Kỹ thuật nâng cao']
     }
   ]
 

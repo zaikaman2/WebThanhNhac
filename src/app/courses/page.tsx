@@ -3,15 +3,7 @@ import Image from 'next/image'
 import { Course } from '@/components/shared/types'
 import CourseCard from '@/components/shared/CourseCard'
 import { Users, Layers, Target, Award, Star } from 'lucide-react'
-
-async function getCourses(): Promise<Course[]> {
-  const { data, error } = await supabase
-    .from('Course')
-    .select('*')
-  
-  if (error) throw error
-  return data || []
-}
+import { getCourses } from '@/lib/getCourses'
 
 export default async function CoursesPage() {
   const courses = await getCourses()
@@ -62,7 +54,7 @@ export default async function CoursesPage() {
     {
       name: 'Nguyễn Thị Kim',
       avatar: 'https://i.ibb.co/n3H5Nq5/3282224-removebg-preview.png',
-      content: 'Sau 3 tháng học, giọng hát của tôi đã cải thiện rõ rệt. Thầy Kiên dạy rất tận tâm và dễ hiểu.',
+      content: 'Sau 13 ngày học, giọng hát của tôi đã cải thiện rõ rệt. Thầy Kiên dạy rất tận tâm và dễ hiểu.',
       rating: 5
     },
     {
@@ -99,8 +91,8 @@ export default async function CoursesPage() {
 
       {/* Course List */}
       <section className="py-24 bg-neutral-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {courses.map((course) => (
               <CourseCard key={course.id} {...course} />
             ))}
