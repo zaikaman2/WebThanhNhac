@@ -6,7 +6,7 @@ export default function Features() {
     {
       icon: <Diamond className="w-12 h-12 text-primary" />,
       title: "Giảng viên chuyên nghiệp",
-      description: "Được đào tạo bởi giảng viên Đinh Trung Kiên với hơn 30 năm kinh nghiệm trong lĩnh vực sư phạm thanh nhạc."
+      description: "Được đào tạo bởi giảng viên Đinh Trung Kiên với 30+ năm kinh nghiệm trong lĩnh vực sư phạm thanh nhạc."
     },
     {
       icon: <BookOpen className="w-12 h-12 text-primary" />,

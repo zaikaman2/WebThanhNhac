@@ -12,7 +12,7 @@ export default async function CoursesPage() {
     {
       icon: <Users className="w-8 h-8" />,
       title: 'Giảng viên chuyên nghiệp',
-      description: 'Được đào tạo bởi giảng viên có hơn 10 năm kinh nghiệm trong lĩnh vực thanh nhạc'
+      description: 'Được đào tạo bởi giảng viên có hơn 30 năm kinh nghiệm trong lĩnh vực thanh nhạc'
     },
     {
       icon: <Layers className="w-8 h-8" />,
