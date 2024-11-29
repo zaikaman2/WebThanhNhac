@@ -73,7 +73,7 @@ const courseSections = [
         title: 'Bài 7: Luyện tập rung âm thanh',
         duration: '05:41',
         description: 'Tập rung dây thanh bằng rung tự nhiên và dùng ngón tay để hỗ trợ.',
-        videoId: '1034288360'
+        videoId: '1034402221'
       },
       {
         id: 8,
