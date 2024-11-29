@@ -80,7 +80,7 @@ const courseSections = [
         title: 'Bài 8: Phát âm trầm và cảm nhận rung ở ngực',
         duration: '05:15',
         description: 'Luyện âm trầm, tập cảm giác âm thanh chảy xuống ngực. Kiểm tra độ rung của ngực khi phát âm.',
-        videoId: '1034279491'
+        videoId: '1034406282'
       }
     ]
   },
