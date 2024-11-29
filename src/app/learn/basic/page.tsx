@@ -109,9 +109,9 @@ const courseSections = [
       {
         id: 11,
         title: 'Bài 11: Cách xử lý cảm xúc trong bài hát',
-        duration: '20:25',
+        duration: '10:14',
         description: 'Hiểu ý nghĩa bài hát và điều chỉnh cách hát cho phù hợp.',
-        videoId: 'https://res.cloudinary.com/...'
+        videoId: '1034589231'
       },
       {
         id: 12,
