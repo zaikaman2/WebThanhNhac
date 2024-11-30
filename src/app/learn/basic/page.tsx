@@ -116,9 +116,9 @@ const courseSections = [
       {
         id: 12,
         title: 'Bài 12: Tập luyện xử lý bài hát mẫu (1)',
-        duration: '25:30',
+        duration: '08:28',
         description: 'Ví dụ bài: Cắt đôi nỗi sầu.',
-        videoId: 'https://res.cloudinary.com/...'
+        videoId: '1034738744'
       },
       {
         id: 13,
