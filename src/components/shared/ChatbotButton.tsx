@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
-const genAI = new GoogleGenerativeAI('AIzaSyCHkrvy0H4IVLFaNHbayvdko-Atuzc6xok')
+const genAI = new GoogleGenerativeAI('AIzaSyDDV5qSKXqLFTmAEL-39Mp6VYg56fjx9p0')
 
 const formatResponse = (text: string) => {
   // Format các section chính
@@ -79,25 +79,7 @@ Các khóa học:
     - Bài 12: Tập luyện xử lý bài hát mẫu (1)
     - Bài 13: Tập luyện xử lý bài hát mẫu (2)
 
-2. Khóa học thanh nhạc nâng cao (21 bài học):
-- Giá: 599,000đ
-- Học online qua video
-- Dành cho học viên đã có kiến thức cơ bản
-- Nội dung khóa học:
-  * Phần 1: Kỹ thuật thanh nhạc nâng cao
-    - Bài 1-4: Mix voice và chuyển giọng
-  * Phần 2: Phát triển phong cách và màu sắc giọng hát
-    - Bài 5: Phát triển vibrato
-    - Bài 6: Kỹ thuật belting
-    - Bài 7: Tạo màu sắc giọng hát cá nhân
-    - Bài 8: Xử lý sắc thái nâng cao
-  * Phần 3-5: Các kỹ thuật chuyên sâu và thực hành
-    - Bài 9-19: Luyện tập các kỹ thuật chuyên sâu
-  * Phần 6: Tối ưu hóa kỹ năng và hướng phát triển
-    - Bài 20: Phòng tránh và khắc phục chấn thương giọng hát
-    - Bài 21: Định hướng phát triển sự nghiệp ca hát
-
-3. Khóa học 1 kèm 1:
+2. Khóa học 1 kèm 1:
 - Giá: Liên hệ trực tiếp
 - Học offline tại nhà thầy hoặc online qua Messenger
 - Chương trình được cá nhân hóa theo nhu cầu
