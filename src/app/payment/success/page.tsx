@@ -10,8 +10,8 @@ import toast from 'react-hot-toast'
 function SuccessContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const courseType = searchParams.get('courseType')
-  const orderCode = searchParams.get('orderCode')
+  const courseType = searchParams?.get('courseType') ?? 'basic'
+  const orderCode = searchParams?.get('orderCode') ?? ''
 
   const courseTitle = courseType === 'basic' ? 'cơ bản' : 'nâng cao'
   const redirectPath = `/courses/${courseType}`
@@ -25,7 +25,7 @@ function SuccessContent() {
           throw new Error('Lỗi xác thực người dùng')
         }
 
-        const amount = courseType === 'basic' ? 399000 : 599000
+        const amount = courseType === 'basic' ? 10000 : 599000
 
         const { error: purchaseError } = await supabase
           .from('purchases')
