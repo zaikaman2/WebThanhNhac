@@ -85,7 +85,7 @@ const courseSections = [
     ]
   },
   {
-    title: 'Phần 5: Luyện các nốt cao',
+    title: 'Phần 5: Luyện các nốt cao và khẩu hình',
     lessons: [
       {
         id: 9,
@@ -96,9 +96,9 @@ const courseSections = [
       },
       {
         id: 10,
-        title: 'Bài 10: Tập âm lượng nhỏ cho nốt cao',
+        title: 'Bài 10: Khẩu hình trong thanh nhạc',
         duration: '14:30',
-        description: 'Hát nốt cao với âm lượng trung bình hoặc nhỏ, tránh làm căng dây thanh.',
+        description: 'Hướng dẫn như thế nào là khẩu hình đúng trong thanh nhạc.',
         videoId: 'https://res.cloudinary.com/...'
       }
     ]
@@ -119,13 +119,6 @@ const courseSections = [
         duration: '08:28',
         description: 'Ví dụ bài: Cắt đôi nỗi sầu.',
         videoId: '1034738744'
-      },
-      {
-        id: 13,
-        title: 'Bài 13: Tập luyện xử lý bài hát mẫu (2)',
-        duration: '23:45',
-        description: 'Ví dụ bài: Ngày mai người ta lấy chồng.',
-        videoId: 'https://res.cloudinary.com/...'
       }
     ]
   }

@@ -54,7 +54,7 @@ Thành tựu và kinh nghiệm:
 
 Các khóa học:
 
-1. Khóa học thanh nhạc cơ bản (13 bài học):
+1. Khóa học thanh nhạc cơ bản (12 bài học):
 - Giá: 399,000đ
 - Học online qua video
 - Phù hợp cho người mới bắt đầu
@@ -71,13 +71,12 @@ Các khóa học:
   * Phần 4: Tập rung và tạo cảm giác âm thanh
     - Bài 7: Luyện tập rung âm thanh
     - Bài 8: Phát âm trầm và cảm nhận rung ở ngực
-  * Phần 5: Luyện các nốt cao
+  * Phần 5: Luyện các nốt cao và khẩu hình
     - Bài 9: Kỹ thuật lấy hơi và giữ hơi cho nốt cao
-    - Bài 10: Tập âm lượng nhỏ cho nốt cao
+    - Bài 10: Khẩu hình trong thanh nhạc
   * Phần 6: Xử lý bài hát
     - Bài 11: Cách xử lý cảm xúc trong bài hát
     - Bài 12: Tập luyện xử lý bài hát mẫu (1)
-    - Bài 13: Tập luyện xử lý bài hát mẫu (2)
 
 2. Khóa học 1 kèm 1:
 - Giá: Liên hệ trực tiếp

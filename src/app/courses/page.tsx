@@ -54,7 +54,7 @@ export default async function CoursesPage() {
     {
       name: 'Nguyễn Thị Kim',
       avatar: 'https://i.ibb.co/n3H5Nq5/3282224-removebg-preview.png',
-      content: 'Sau 13 ngày học, giọng hát của tôi đã cải thiện rõ rệt. Thầy Kiên dạy rất tận tâm và dễ hiểu.',
+      content: 'Sau 12 ngày học, giọng hát của tôi đã cải thiện rõ rệt. Thầy Kiên dạy rất tận tâm và dễ hiểu.',
       rating: 5
     },
     {

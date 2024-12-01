@@ -119,7 +119,7 @@ export default function BasicCoursePage() {
       ]
     },
     {
-      title: 'Phần 5: Luyện các nốt cao',
+      title: 'Phần 5: Luyện các nốt cao và khẩu hình',
       lessons: [
         {
           title: 'Bài 9: Kỹ thuật lấy hơi và giữ hơi cho nốt cao',
@@ -129,9 +129,9 @@ export default function BasicCoursePage() {
           ]
         },
         {
-          title: 'Bài 10: Tập âm lượng nhỏ cho nốt cao',
+          title: 'Bài 10: Khẩu hình trong thanh nhạc',
           content: [
-            'Hát nốt cao với âm lượng trung bình hoặc nhỏ, tránh làm căng dây thanh'
+            'Hướng dẫn như thế nào mới là khẩu hình miệng đúng trong thanh nhạc'
           ]
         }
       ]
@@ -150,12 +150,6 @@ export default function BasicCoursePage() {
           content: [
             'Ví dụ bài: Cắt đôi nỗi sầu'
           ]
-        },
-        {
-          title: 'Bài 13: Tập luyện xử lý bài hát mẫu (2)',
-          content: [
-            'Ví dụ bài: Ngày mai người ta lấy chồng'
-          ]
         }
       ]
     }
@@ -164,12 +158,12 @@ export default function BasicCoursePage() {
   const highlights = [
     {
       icon: <BookOpen className="w-6 h-6" />,
-      title: '13 bài học chi tiết',
+      title: '12 bài học chi tiết',
       description: 'Nội dung được thiết kế khoa học từ cơ bản đến nâng cao'
     },
     {
       icon: <Clock className="w-6 h-6" />,
-      title: '13 ngày học tập',
+      title: '12 ngày học tập',
       description: 'Thời gian đủ để nắm vững các kỹ thuật cơ bản'
     },
     {
@@ -231,7 +225,7 @@ export default function BasicCoursePage() {
       id: 1,
       name: "Nguyễn Thị Hương",
       rating: 5,
-      comment: "Khóa học rất phù hợp cho người mới bắt đầu như mình. Thầy dạy rất tận tình và dễ hiểu. Sau 13 ngày, mình đã tự tin hát karaoke với bạn bè!",
+      comment: "Khóa học rất phù hợp cho người mới bắt đầu như mình. Thầy dạy rất tận tình và dễ hiểu. Sau 12 ngày, mình đã tự tin hát karaoke với bạn bè!",
       date: "15/03/2024"
     },
     {
