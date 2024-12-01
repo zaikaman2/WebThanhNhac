@@ -90,9 +90,9 @@ const courseSections = [
       {
         id: 9,
         title: 'Bài 9: Kỹ thuật lấy hơi và giữ hơi cho nốt cao',
-        duration: '19:15',
+        duration: '07:47',
         description: 'Lấy hơi đầy đủ và giữ hơi chắc ở nền móng. Tập thả lỏng cổ, không gồng khi hát nốt cao.',
-        videoId: 'https://res.cloudinary.com/...'
+        videoId: '1034883248'
       },
       {
         id: 10,
