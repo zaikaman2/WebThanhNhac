@@ -97,9 +97,9 @@ const courseSections = [
       {
         id: 10,
         title: 'Bài 10: Khẩu hình trong thanh nhạc',
-        duration: '14:30',
+        duration: '06:43',
         description: 'Hướng dẫn như thế nào là khẩu hình đúng trong thanh nhạc.',
-        videoId: 'https://res.cloudinary.com/...'
+        videoId: '1034887413'
       }
     ]
   },
