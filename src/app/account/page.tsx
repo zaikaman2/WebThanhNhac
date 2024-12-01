@@ -31,7 +31,7 @@ export default function AccountPage() {
       type: 'basic',
       title: 'Khóa học cơ bản',
       description: 'Nền tảng vững chắc cho người mới bắt đầu',
-      price: 10000,
+      price: 399000,
       features: ['12 bài học chi tiết', '12 ngày học tập', 'Kỹ thuật cơ bản']
     }
   ]
