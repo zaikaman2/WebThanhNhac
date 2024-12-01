@@ -36,6 +36,24 @@ export default function FAQPage() {
           <h1 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primary-light to-primary bg-clip-text text-transparent">
             Câu hỏi thường gặp
           </h1>
+
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-primary mb-6 text-center">
+              Hướng dẫn sử dụng website
+            </h2>
+            <div className="rounded-xl overflow-hidden shadow-lg border border-primary/10">
+              <div style={{padding:'56.25% 0 0 0', position:'relative'}}>
+                <iframe 
+                  src="https://player.vimeo.com/video/1034889536?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                  style={{position:'absolute',top:0,left:0,width:'100%',height:'100%'}}
+                  frameBorder="0" 
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                  title="Hướng dẫn sử dụng website KienVocal"
+                />
+              </div>
+              <script src="https://player.vimeo.com/api/player.js" async></script>
+            </div>
+          </div>
           
           <div className="space-y-6">
             {faqs.map((faq, index) => (
