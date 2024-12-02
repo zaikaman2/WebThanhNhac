@@ -18,7 +18,7 @@ export default function FAQPage() {
       },
       {
         question: 'Làm sao để liên hệ hỗ trợ kỹ thuật?',
-        answer: 'Bạn có thể liên hệ qua email zaikaman123@gmail.com để được hỗ trợ.'
+        answer: 'Bạn có thể liên hệ qua email zaikaman123@gmail.com để được hỗ trợ về mặt kỹ thuật, nếu có thắc mắc về nhạc lý có thể liên hệ thầy Kiên trục tiếp qua số điện thoại 0903100887.'
       },
       {
         question: 'Tôi có thể học cùng lúc nhiều khóa học không?',
