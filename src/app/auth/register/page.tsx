@@ -36,7 +36,7 @@ export default function RegisterPage() {
 function RegisterForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const courseType = searchParams.get('course')
+  const courseType = searchParams?.get('course')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [formData, setFormData] = useState({
@@ -81,7 +81,9 @@ function RegisterForm() {
         throw new Error(data.message || 'Đăng ký thất bại')
       }
 
-      toast.success('Đăng ký thành công! Vui lòng xác nhận email để tiếp tục.')
+      toast.success('Đăng ký thành công! Vui lòng xác nhận email để tiếp tục.', {
+        duration: 6000
+      })
       router.push('/auth')
 
     } catch (err) {
