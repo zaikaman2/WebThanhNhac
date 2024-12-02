@@ -49,8 +49,8 @@ export default function AdvancedCourseContent({ course }: AdvancedCourseContentP
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Điện thoại',
-      value: '0931816175',
-      href: 'tel:0931816175'
+      value: '0903100887',
+      href: 'tel:0903100887'
     },
     {
       icon: <Facebook className="w-6 h-6" />,
