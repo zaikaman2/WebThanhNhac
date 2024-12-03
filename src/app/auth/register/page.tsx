@@ -81,9 +81,12 @@ function RegisterForm() {
         throw new Error(data.message || 'Đăng ký thất bại')
       }
 
-      toast.success('Đăng ký thành công! Vui lòng xác nhận email để tiếp tục.', {
-        duration: 6000
-      })
+      toast.success(
+        'Đăng ký thành công! Email xác nhận đã được gửi đến hòm thư của bạn. Vui lòng kiểm tra cả thư mục Spam/Rác nếu không thấy email trong hộp thư đến.',
+        {
+          duration: 8000
+        }
+      )
       router.push('/auth')
 
     } catch (err) {
