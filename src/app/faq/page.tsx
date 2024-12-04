@@ -9,6 +9,10 @@ export default function FAQPage() {
         answer: 'Hiện tại website hỗ trợ thanh toán qua chuyển khoản ngân hàng và quét mã QR.'
       },
       {
+        question: 'Tôi thanh toán rồi nhưng vẫn chưa vào được khóa học để học phải làm sao?',
+        answer: 'Bạn vui lòng gửi email đến địa chỉ zaikaman123@gmail.com hoặc có thể nhắn trực tiếp qua kênh TikTok @kienvocal của thầy Kiên để được hỗ trợ sớm nhất có thể.'
+      },
+      {
         question: 'Khóa học có thời hạn không?',
         answer: 'Các khóa học cơ bản và nâng cao không có thời hạn và bạn có thể học bao lâu cũng được.'
       },
@@ -18,7 +22,7 @@ export default function FAQPage() {
       },
       {
         question: 'Làm sao để liên hệ hỗ trợ kỹ thuật?',
-        answer: 'Bạn có thể liên hệ qua email zaikaman123@gmail.com để được hỗ trợ về mặt kỹ thuật, nếu có thắc mắc về nhạc lý có thể liên hệ thầy Kiên trục tiếp qua số điện thoại 0903100887.'
+        answer: 'Bạn có thể liên hệ qua email zaikaman123@gmail.com để được hỗ trợ về mặt kỹ thuật, nếu có thắc mắc về nhạc lý có thể liên hệ thầy Kiên trực tiếp qua số điện thoại 0903100887.'
       },
       {
         question: 'Tôi có thể học cùng lúc nhiều khóa học không?',
