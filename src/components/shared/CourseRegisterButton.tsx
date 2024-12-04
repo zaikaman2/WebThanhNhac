@@ -13,11 +13,19 @@ interface CourseRegisterButtonProps {
 export default function CourseRegisterButton({ courseType }: CourseRegisterButtonProps) {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
-  const { user } = useUser()
+  const { user, loading: userLoading } = useUser()
 
   const handlePayment = async () => {
     try {
       setLoading(true)
+
+      // Đợi một chút để đảm bảo trạng thái user được cập nhật
+      await new Promise(resolve => setTimeout(resolve, 100))
+
+      // Kiểm tra đang loading user
+      if (userLoading) {
+        return
+      }
 
       // Kiểm tra đăng nhập
       if (!user) {
