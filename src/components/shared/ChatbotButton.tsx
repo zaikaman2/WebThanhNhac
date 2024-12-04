@@ -39,7 +39,7 @@ export default function ChatbotButton() {
 Thông tin về giảng viên:
 - Tên: Đinh Trung Kiên
 - Số điện thoại: 0903100887
-- Email: kienalai@gmail.com
+- Email: zaikaman123@gmail.com
 - Địa chỉ: Hồ Chí Minh, Việt Nam
 
 Thành tựu và kinh nghiệm:
