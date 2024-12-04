@@ -31,7 +31,10 @@ export default function CourseRegisterButton({ courseType }: CourseRegisterButto
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ courseType }),
+        body: JSON.stringify({ 
+          courseType,
+          email: user.email 
+        }),
       })
 
       const data = await response.json()

@@ -14,7 +14,7 @@ const COURSE_PRICES = {
 
 export async function POST(request: Request) {
   try {
-    const { courseType } = await request.json()
+    const { courseType, email } = await request.json()
     const orderCode = Number(String(Date.now()).slice(-6))
     const domain = process.env.NEXT_PUBLIC_DOMAIN || 'https://kienvocal.com'
     
@@ -23,10 +23,12 @@ export async function POST(request: Request) {
       throw new Error('Invalid course type')
     }
 
+    const emailPrefix = email.split('@')[0]
+
     const body = {
       orderCode,
       amount,
-      description: `Thanh toán ${courseType}`,
+      description: emailPrefix,
       items: [
         {
           name: `Khóa học ${courseType}`,
