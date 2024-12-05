@@ -36,7 +36,6 @@ export default function TermsPage() {
               <li>Học phí được thanh toán trước khi bắt đầu khóa học</li>
               <li>Nội dung khóa học thuộc quyền sở hữu của KienVocal</li>
               <li>Không chia sẻ tài khoản hoặc nội dung khóa học cho người khác</li>
-              <li>Chính sách hoàn tiền áp dụng trong vòng 7 ngày đầu tiên</li>
             </ul>
           </section>
 
