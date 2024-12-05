@@ -1,5 +1,6 @@
 'use client'
 
+import { redirect } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { useUser } from '@/hooks/useUser'
 import { supabase } from '@/lib/supabase'
@@ -13,6 +14,7 @@ import ReviewSection from '@/components/shared/ReviewSection'
 import { generateMockReviews } from '@/utils/mockReviews'
 
 export default function IntermediatePage() {
+  redirect('/')
   const { user } = useUser()
   const [course, setCourse] = useState<Course | null>(null)
   const [showDevModal, setShowDevModal] = useState(false)
