@@ -23,20 +23,8 @@ export async function signIn(email: string, password: string) {
     if (error) {
       // Nếu lỗi là email chưa xác nhận, vẫn cho phép đăng nhập
       if (error.message.includes('Email not confirmed')) {
-        // Thử đăng nhập lại một lần nữa
-        const { data: retryData, error: retryError } = await supabase.auth.signInWithPassword({
-          email,
-          password
-        })
-        
-        if (retryError) {
-          // Chuyển đổi thông báo lỗi sang tiếng Việt
-          if (retryError.message.includes('Invalid login credentials')) {
-            throw new Error('Email hoặc mật khẩu không chính xác')
-          }
-          throw retryError
-        }
-        return retryData
+        // Chuyển đổi thông báo lỗi sang tiếng Việt
+        throw new Error('Email chưa được xác nhận, vui lòng xác nhận email trước khi đăng nhập')
       }
 
       // Chuyển đổi các thông báo lỗi khác sang tiếng Việt
