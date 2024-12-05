@@ -25,6 +25,20 @@ function SuccessContent() {
           throw new Error('Lỗi xác thực người dùng')
         }
 
+        // Kiểm tra xem user đã mua khóa học này chưa
+        const { data: existingPurchase } = await supabase
+          .from('purchases')
+          .select()
+          .eq('user_id', user.id)
+          .eq('course_type', courseType)
+          .single()
+
+        // Nếu đã có purchase rồi thì chỉ chuyển hướng
+        if (existingPurchase) {
+          router.push(redirectPath)
+          return
+        }
+
         const amount = courseType === 'basic' ? 399000 : 599000
 
         const { error: purchaseError } = await supabase
@@ -45,10 +59,7 @@ function SuccessContent() {
         }
 
         // Redirect sau khi tạo purchase thành công
-        const timer = setTimeout(() => {
-          router.push(redirectPath)
-        }, 3000)
-        return () => clearTimeout(timer)
+        router.push(redirectPath)
 
       } catch (error) {
         console.error('Error creating purchase:', error)
