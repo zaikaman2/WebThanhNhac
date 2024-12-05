@@ -346,8 +346,8 @@ export default function IntermediatePage() {
                   <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-primary-light/30 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
                   <div className="relative">
                     <ImageWithLoading
-                      src={course.image}
-                      alt={course.title}
+                      src={course?.image ?? '/placeholder-image.jpg'}
+                      alt={course?.title ?? 'Course Image'}
                       width={600}
                       height={400}
                       className="rounded-xl shadow-2xl w-full aspect-video object-cover"
@@ -359,10 +359,10 @@ export default function IntermediatePage() {
             
             <div className="md:w-1/2">
               <h1 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-primary">
-                {course.title}
+                {course?.title}
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                {course.description}
+                {course?.description}
               </p>
               <div className="bg-secondary-light p-6 rounded-xl border border-primary/10">
                 <div className="flex items-center justify-between mb-4">
@@ -373,7 +373,7 @@ export default function IntermediatePage() {
                     </span>
                     <div className="flex items-center gap-2">
                       <span className="text-primary text-2xl font-bold">
-                        {course.price.toLocaleString('vi-VN')}
+                        {course?.price.toLocaleString('vi-VN')}
                       </span>
                       <span className="bg-red-500 text-white text-sm px-2 py-1 rounded-full animate-bounce">
                         -14.4%
