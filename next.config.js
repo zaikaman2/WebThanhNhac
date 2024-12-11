@@ -10,6 +10,14 @@ const nextConfig = {
       ],
       domains: ['i.ibb.co', 'images.unsplash.com'],
     },
+    async rewrites() {
+      return [
+        {
+          source: '/tiktok-developers-site-verification.txt',
+          destination: '/api/tiktok-verification',
+        },
+      ]
+    },
   }
   
   module.exports = nextConfig
