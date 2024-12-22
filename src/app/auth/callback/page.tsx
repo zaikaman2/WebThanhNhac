@@ -39,19 +39,36 @@ function CallbackContent() {
   }, [router, searchParams])
 
   return (
-    <div className="text-center">
-      <LoadingSpinner size={40} />
-      <p className="mt-4 text-gray-300">Đang xử lý đăng nhập...</p>
+    <div className="flex flex-col items-center justify-center space-y-6">
+      <div className="relative">
+        <div className="absolute -inset-4 bg-primary opacity-20 blur-lg rounded-full"></div>
+        <LoadingSpinner size={60} />
+      </div>
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl font-semibold text-primary">Đang xử lý đăng nhập</h2>
+        <p className="text-gray-300">Vui lòng đợi trong giây lát...</p>
+      </div>
     </div>
   )
 }
 
 export default function AuthCallbackPage() {
   return (
-    <div className="min-h-screen bg-secondary flex items-center justify-center">
-      <Suspense fallback={<LoadingSpinner size={40} />}>
-        <CallbackContent />
-      </Suspense>
-    </div>
+    <main className="min-h-screen bg-secondary">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center justify-center">
+        <div className="w-full max-w-md">
+          <Suspense 
+            fallback={
+              <div className="flex flex-col items-center justify-center space-y-6">
+                <LoadingSpinner size={60} />
+                <p className="text-gray-300">Đang tải...</p>
+              </div>
+            }
+          >
+            <CallbackContent />
+          </Suspense>
+        </div>
+      </div>
+    </main>
   )
 }
