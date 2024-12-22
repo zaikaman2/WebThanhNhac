@@ -46,4 +46,49 @@ export async function signIn(email: string, password: string) {
 export async function signOut() {
   const { error } = await supabase.auth.signOut()
   if (error) throw error
+}
+
+export async function signInWithGoogle() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: `${window.location.origin}/auth/callback`
+    }
+  })
+
+  if (error) throw error
+  return data
+}
+
+export async function handleGoogleSignUp(user: any) {
+  try {
+    // Kiểm tra xem user đã tồn tại trong bảng profiles chưa
+    const { data: existingProfile } = await supabase
+      .from('profiles')
+      .select()
+      .eq('id', user.id)
+      .single()
+
+    if (!existingProfile) {
+      // Nếu chưa có profile, tạo mới
+      const { error: profileError } = await supabase
+        .from('profiles')
+        .insert([
+          {
+            id: user.id,
+            name: user.user_metadata.full_name || user.user_metadata.name,
+            email: user.email,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+          }
+        ])
+
+      if (profileError) throw profileError
+    }
+
+    return true
+  } catch (error) {
+    console.error('Error handling Google sign up:', error)
+    throw error
+  }
 } 

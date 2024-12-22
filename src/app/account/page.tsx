@@ -40,12 +40,24 @@ export default function AccountPage() {
     async function loadProfile() {
       if (!user) return
       try {
-        const profile = await getProfile(user.id)
-        if (profile) {
+        // Kiểm tra provider của user
+        const isGoogleProvider = user.app_metadata.provider === 'google'
+
+        if (isGoogleProvider) {
+          // Nếu đăng nhập bằng Google, lấy thông tin từ user metadata
           setFormData({
-            name: profile.name || '',
-            email: profile.email || user.email || ''
+            name: user.user_metadata.full_name || user.user_metadata.name || '',
+            email: user.email || ''
           })
+        } else {
+          // Nếu đăng nhập bằng email, lấy thông tin từ profiles
+          const profile = await getProfile(user.id)
+          if (profile) {
+            setFormData({
+              name: profile.name || '',
+              email: profile.email || user.email || ''
+            })
+          }
         }
 
         // Load purchases
@@ -122,6 +134,16 @@ export default function AccountPage() {
               </label>
               <div className="block w-full rounded-lg bg-secondary/50 border border-primary/10 text-gray-300 px-4 py-3">
                 {formData.email}
+              </div>
+            </div>
+
+            {/* Provider display */}
+            <div>
+              <label className="block text-sm font-medium text-gray-400 mb-2">
+                Phương thức đăng nhập
+              </label>
+              <div className="block w-full rounded-lg bg-secondary/50 border border-primary/10 text-gray-300 px-4 py-3">
+                {user.app_metadata.provider === 'google' ? 'Google' : 'Email'}
               </div>
             </div>
           </div>
