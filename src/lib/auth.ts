@@ -1,4 +1,5 @@
 import { supabase } from './supabase'
+import { User } from '@supabase/supabase-js'
 
 export async function signUp(email: string, password: string, name: string) {
   const { data, error } = await supabase.auth.signUp({
@@ -60,7 +61,7 @@ export async function signInWithGoogle() {
   return data
 }
 
-export async function handleGoogleSignUp(user: any) {
+export async function handleGoogleSignUp(user: User) {
   try {
     // Kiểm tra xem user đã tồn tại trong bảng profiles chưa
     const { data: existingProfile } = await supabase
