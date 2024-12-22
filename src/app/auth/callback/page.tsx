@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { handleGoogleSignUp } from '@/lib/auth'
 import LoadingSpinner from '@/components/shared/LoadingSpinner'
 import toast from 'react-hot-toast'
 
-export default function AuthCallbackPage() {
+function CallbackContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
 
@@ -39,11 +39,19 @@ export default function AuthCallbackPage() {
   }, [router, searchParams])
 
   return (
+    <div className="text-center">
+      <LoadingSpinner size={40} />
+      <p className="mt-4 text-gray-300">Đang xử lý đăng nhập...</p>
+    </div>
+  )
+}
+
+export default function AuthCallbackPage() {
+  return (
     <div className="min-h-screen bg-secondary flex items-center justify-center">
-      <div className="text-center">
-        <LoadingSpinner size={40} />
-        <p className="mt-4 text-gray-300">Đang xử lý đăng nhập...</p>
-      </div>
+      <Suspense fallback={<LoadingSpinner size={40} />}>
+        <CallbackContent />
+      </Suspense>
     </div>
   )
 }
