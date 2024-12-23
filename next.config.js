@@ -16,6 +16,14 @@ const nextConfig = {
           source: '/tiktok-developers-site-verification.txt',
           destination: '/api/tiktok-verification',
         },
+        {
+          source: '/.well-known/apple-app-site-association',
+          destination: '/api/apple-app-site-association',
+        },
+        {
+          source: '/.well-known/assetlinks.json',
+          destination: '/api/assetlinks',
+        }
       ]
     },
     async redirects() {
