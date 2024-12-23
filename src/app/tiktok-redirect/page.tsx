@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function TikTokRedirectPage() {
   const router = useRouter()
@@ -57,12 +58,12 @@ export default function TikTokRedirectPage() {
           <div className="relative">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary-light opacity-30 blur rounded-lg">
             </div>
-            <a
+            <Link
               href="/"
               className="relative block w-full bg-secondary py-3 px-6 rounded-lg border border-primary text-primary hover:bg-primary/5 transition-all duration-300"
             >
               Tiếp tục
-            </a>
+            </Link>
           </div>
 
           <p className="text-sm text-gray-400 mt-6">
