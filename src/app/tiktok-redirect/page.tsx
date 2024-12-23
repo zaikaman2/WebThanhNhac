@@ -14,62 +14,53 @@ export default function TikTokRedirectPage() {
     setIsInTikTok(isTikTokBrowser)
   }, [])
 
-  if (!isInTikTok) {
-    return (
-      <div className="min-h-screen bg-secondary flex items-center justify-center p-6">
-        <div className="max-w-md w-full bg-secondary-light p-8 rounded-xl border border-primary/10">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-primary mb-6">Chào mừng đến với KienVocal!</h1>
-            <button
-              onClick={() => router.push('/')}
-              className="w-full bg-primary text-white py-3 px-6 rounded-full font-semibold hover:bg-primary-light transition-all duration-300"
-            >
-              Tiếp tục vào trang web
-            </button>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   return (
-    <div className="min-h-screen bg-secondary flex items-center justify-center p-6">
-      <div className="max-w-md w-full bg-secondary-light p-8 rounded-xl border border-primary/10">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-primary mb-6">Chào mừng đến với KienVocal!</h1>
-          
-          <div className="space-y-6 mb-8">
-            <p className="text-gray-300">Để có trải nghiệm tốt nhất, vui lòng:</p>
-            <ol className="text-gray-300 list-decimal list-inside space-y-4">
-              <li className="flex items-center justify-center gap-2">
-                Nhấn vào biểu tượng
-                <span className="font-bold text-xl leading-none">⋮</span>
-                ở góc phải phía trên
-              </li>
-              <li>
-                Chọn "Mở trong trình duyệt"
-              </li>
-              <li>
-                Sau khi mở trong trình duyệt, nhấn nút "Tiếp tục" bên dưới
-              </li>
-            </ol>
-          </div>
+    <div className="min-h-screen bg-[#121212] flex items-center justify-center">
+      <div className="w-full max-w-md p-6">
+        <div className="text-center mb-12">
+          <h1 className="text-[#FFD700] text-3xl font-bold mb-2">
+            Chào mừng đến với KienVocal!
+          </h1>
+        </div>
 
-          <div className="relative">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary-light opacity-30 blur rounded-lg">
+        {isInTikTok ? (
+          <>
+            <div className="space-y-8 mb-8">
+              <div className="bg-[#1E1E1E] rounded-xl p-6 space-y-4">
+                <p className="text-[#FFD700] font-semibold text-lg mb-4">
+                  Vui lòng làm theo các bước sau:
+                </p>
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <span className="w-8 h-8 rounded-full bg-[#FFD700] text-black flex items-center justify-center font-bold">1</span>
+                    <p className="text-white">Nhấn vào nút <span className="font-bold text-xl">⋮</span> ở góc phải trên màn hình</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="w-8 h-8 rounded-full bg-[#FFD700] text-black flex items-center justify-center font-bold">2</span>
+                    <p className="text-white">Chọn "Mở trong trình duyệt"</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="w-8 h-8 rounded-full bg-[#FFD700] text-black flex items-center justify-center font-bold">3</span>
+                    <p className="text-white">Sau đó quay lại đây và nhấn nút bên dưới</p>
+                  </div>
+                </div>
+              </div>
             </div>
             <Link
               href="/"
-              className="relative block w-full bg-secondary py-3 px-6 rounded-lg border border-primary text-primary hover:bg-primary/5 transition-all duration-300"
+              className="block w-full bg-[#FFD700] text-black py-4 px-6 rounded-full font-bold text-center text-lg hover:bg-[#FFE55C] transition-all duration-300"
             >
-              Tiếp tục
+              Tiếp tục vào trang web
             </Link>
-          </div>
-
-          <p className="text-sm text-gray-400 mt-6">
-            KienVocal - Nơi ươm mầm những tài năng âm nhạc
-          </p>
-        </div>
+          </>
+        ) : (
+          <Link
+            href="/"
+            className="block w-full bg-[#FFD700] text-black py-4 px-6 rounded-full font-bold text-center text-lg hover:bg-[#FFE55C] transition-all duration-300"
+          >
+            Tiếp tục vào trang web
+          </Link>
+        )}
       </div>
     </div>
   )
