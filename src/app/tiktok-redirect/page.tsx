@@ -6,35 +6,41 @@ export default function TikTokRedirectPage() {
   return (
     <div className="min-h-screen bg-[#121212] flex items-center justify-center">
       <div className="w-full max-w-md p-6">
-        <div className="text-center mb-12">
-          <h1 className="text-[#FFD700] text-3xl font-bold mb-2">
-            Chào mừng đến với KienVocal!
+        <div className="text-center mb-16">
+          <h1 className="text-[#FFD700] text-4xl font-bold">
+            Chào mừng đến với<br />KienVocal!
           </h1>
         </div>
 
-        <div className="space-y-8 mb-8">
-          <div className="bg-[#1E1E1E] rounded-xl p-6 space-y-4">
-            <p className="text-[#FFD700] font-semibold text-lg mb-4">
+        <div className="mb-12">
+          <div className="bg-[#1E1E1E] rounded-2xl p-6">
+            <p className="text-[#FFD700] font-semibold text-2xl mb-8">
               Vui lòng làm theo các bước sau:
             </p>
             <div className="space-y-6">
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-[#FFD700] text-black flex items-center justify-center font-bold">
+              <div className="flex gap-5">
+                <div className="w-12 h-12 rounded-full bg-[#FFD700] text-black flex items-center justify-center font-bold text-2xl shrink-0">
                   1
-                </span>
-                <p className="text-white">Nhấn vào nút <span className="font-bold text-xl">⋮</span> ở góc phải trên màn hình</p>
+                </div>
+                <div className="flex items-center">
+                  <p className="text-white text-xl">Nhấn vào nút <span className="font-bold text-2xl">...</span> ở góc phải trên màn hình</p>
+                </div>
               </div>
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-[#FFD700] text-black flex items-center justify-center font-bold">
+              <div className="flex gap-5">
+                <div className="w-12 h-12 rounded-full bg-[#FFD700] text-black flex items-center justify-center font-bold text-2xl shrink-0">
                   2
-                </span>
-                <p className="text-white">Chọn "Mở trong trình duyệt"</p>
+                </div>
+                <div className="flex items-center">
+                  <p className="text-white text-xl">Chọn "Mở trong trình duyệt"</p>
+                </div>
               </div>
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-[#FFD700] text-black flex items-center justify-center font-bold">
+              <div className="flex gap-5">
+                <div className="w-12 h-12 rounded-full bg-[#FFD700] text-black flex items-center justify-center font-bold text-2xl shrink-0">
                   3
-                </span>
-                <p className="text-white">Sau khi làm xong 2 bước trên thì nhấn nút bên dưới</p>
+                </div>
+                <div className="flex items-center">
+                  <p className="text-white text-xl">Sau khi làm xong 2 bước trên thì nhấn nút bên dưới</p>
+                </div>
               </div>
             </div>
           </div>
@@ -42,7 +48,7 @@ export default function TikTokRedirectPage() {
 
         <Link
           href="/"
-          className="block w-full bg-[#FFD700] text-black py-4 px-6 rounded-full font-bold text-center text-lg hover:bg-[#FFE55C] transition-all duration-300"
+          className="block w-full bg-[#FFD700] text-black py-5 px-6 rounded-full font-bold text-center text-xl"
         >
           Tiếp tục vào trang web
         </Link>
