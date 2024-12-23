@@ -18,6 +18,15 @@ const nextConfig = {
         },
       ]
     },
+    async redirects() {
+      return [
+        {
+          source: '/tiktok',
+          destination: '/tiktok-redirect',
+          permanent: false,
+        },
+      ]
+    },
   }
   
   module.exports = nextConfig
