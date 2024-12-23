@@ -316,9 +316,9 @@ export default function BasicCoursePage() {
                       </div>
                     </div>
                   </div>
-                  <div className="text-yellow-500 text-sm mb-4 p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
+                  {/* <div className="text-yellow-500 text-sm mb-4 p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
                     ⚠️ Để có trải nghiệm tốt nhất và không bị lỗi, vui lòng sử dụng máy tính để thanh toán và điện thoại để quét mã
-                  </div>
+                  </div> */}
                   <CourseAccessButton courseType="basic" userId={user?.id} />
                 </div>
               </SlideIn>
