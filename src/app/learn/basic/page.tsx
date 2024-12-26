@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useUser } from '@/hooks/useUser'
 import { useSearchParams } from 'next/navigation'
 import CourseAccessCheck from '@/components/shared/CourseAccessCheck'
@@ -34,7 +34,7 @@ const courseSections = [
     lessons: [
       {
         id: 3,
-        title: 'Bài 3: Đặt âm thanh đúng vị trí',
+        title: 'Bài 3: ��ặt âm thanh đúng vị trí',
         duration: '07:45',
         description: 'Học cách phát âm để âm thanh vang từ môi và hướng ra trước mặt. Thực hành âm "O", "A", "E", "I".',
         videoId: '1033722684'
@@ -72,7 +72,7 @@ const courseSections = [
     lessons: [
       {
         id: 7,
-        title: 'Bài 7: Luyện tập rung âm thanh',
+        title: 'Bài 7: Luyện t��p rung âm thanh',
         duration: '05:41',
         description: 'Tập rung dây thanh bằng rung tự nhiên và dùng ngón tay để hỗ trợ.',
         videoId: '1034402221'
@@ -126,7 +126,7 @@ const courseSections = [
   }
 ]
 
-export default function LearnBasicPage() {
+function LearnBasicContent() {
   const { user } = useUser()
   const [currentLessonId, setCurrentLessonId] = useState(1)
   const searchParams = useSearchParams()
@@ -253,5 +253,17 @@ export default function LearnBasicPage() {
         </CourseAccessCheck>
       )}
     </div>
+  )
+}
+
+export default function LearnBasicPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-secondary pt-24 flex items-center justify-center">
+        <div className="text-primary">Đang tải...</div>
+      </div>
+    }>
+      <LearnBasicContent />
+    </Suspense>
   )
 } 
