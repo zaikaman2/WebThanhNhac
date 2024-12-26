@@ -317,7 +317,7 @@ export default function BasicCoursePage() {
                     </div>
                   </div>
                   <div className="text-yellow-500 text-sm mb-4 p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
-                    ⚠️ Chúng tôi khuyến nghị bạn mở trang này trên máy tính và sử dụng điện thoại để quét mã QR để có trải nghiệm tối ưu. Trong trường hợp không có máy tính, bạn vẫn có thể sử dụng điện thoại.
+                    ⚠️ Chúng tôi khuyến nghị bạn mở trang này trên máy tính và sử dụng điện thoại quét mã QR để có trải nghiệm tối ưu. Trong trường hợp không có máy tính, bạn vẫn có thể sử dụng điện thoại.
                   </div>
                   <div className="flex gap-4 items-center">
                     <div className="flex-[3]">
