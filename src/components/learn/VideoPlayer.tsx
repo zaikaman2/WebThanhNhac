@@ -5,6 +5,7 @@ import Player from '@vimeo/player'
 import VideoControls from './VideoControls'
 import { VimeoQuality } from '@/types/video'
 import type { VimeoPlayer } from '@/types/vimeo'
+import TrialLimitModal from './TrialLimitModal'
 
 interface VideoPlayerProps {
   src?: string
@@ -12,9 +13,12 @@ interface VideoPlayerProps {
   title: string
   courseType: 'basic' | 'intermediate'
   lessonId: number
+  isTrial?: boolean
 }
 
-export default function VideoPlayer({ videoId, title, courseType, lessonId }: VideoPlayerProps) {
+const TRIAL_TIME_LIMIT = 180 // 3 minutes in seconds
+
+export default function VideoPlayer({ videoId, title, courseType, lessonId, isTrial }: VideoPlayerProps) {
   const playerRef = useRef<HTMLDivElement>(null)
   const [player, setPlayer] = useState<VimeoPlayer | null>(null)
   const [duration, setDuration] = useState(0)
@@ -22,6 +26,7 @@ export default function VideoPlayer({ videoId, title, courseType, lessonId }: Vi
   const [currentQuality, setCurrentQuality] = useState<VimeoQuality>('1080p')
   const [availableQualities, setAvailableQualities] = useState<VimeoQuality[]>([])
   const [isControlsVisible, setIsControlsVisible] = useState(true)
+  const [showTrialLimitModal, setShowTrialLimitModal] = useState(false)
   const controlsTimeoutRef = useRef<NodeJS.Timeout>()
 
   useEffect(() => {
@@ -34,16 +39,14 @@ export default function VideoPlayer({ videoId, title, courseType, lessonId }: Vi
       iframe.style.left = '0'
       iframe.style.width = '100%'
       iframe.style.height = '100%'
-      iframe.style.pointerEvents = 'none' // Vô hiệu hóa tương tác với iframe
+      iframe.style.pointerEvents = 'none'
       iframe.setAttribute('frameborder', '0')
       iframe.setAttribute('allow', 'autoplay; picture-in-picture')
       iframe.setAttribute('title', title)
       
-      // Xóa nội dung cũ và thêm iframe mới
       playerRef.current.innerHTML = ''
       playerRef.current.appendChild(iframe)
 
-      // Cast through unknown first to avoid type mismatch error
       const vimeoPlayer = (new Player(iframe, {
         id: parseInt(videoId),
         background: true,
@@ -57,11 +60,20 @@ export default function VideoPlayer({ videoId, title, courseType, lessonId }: Vi
       }) as unknown) as VimeoPlayer
 
       vimeoPlayer.setVolume(1)
-
       vimeoPlayer.getDuration().then(setDuration)
+
+      // Add time update listener for trial mode
+      if (isTrial) {
+        vimeoPlayer.on('timeupdate', (data: { seconds: number }) => {
+          if (data.seconds >= TRIAL_TIME_LIMIT) {
+            vimeoPlayer.pause()
+            setShowTrialLimitModal(true)
+          }
+        })
+      }
+
       setPlayer(vimeoPlayer)
 
-      // Lấy danh sách chất lượng có sẵn
       vimeoPlayer.getQualities().then((qualities: { id: VimeoQuality }[]) => {
         const validQualities = qualities
           .map(q => q.id)
@@ -118,7 +130,7 @@ export default function VideoPlayer({ videoId, title, courseType, lessonId }: Vi
         document.removeEventListener('keydown', disableInspect)
       }
     }
-  }, [videoId, title, currentQuality])
+  }, [videoId, title, currentQuality, isTrial])
 
   const handleFullscreenToggle = () => {
     const container = document.querySelector('.video-container')
@@ -192,6 +204,10 @@ export default function VideoPlayer({ videoId, title, courseType, lessonId }: Vi
           </div>
         )}
       </div>
+
+      {showTrialLimitModal && (
+        <TrialLimitModal onClose={() => setShowTrialLimitModal(false)} />
+      )}
     </div>
   )
 } 

@@ -168,6 +168,7 @@ function LearnBasicContent() {
                   title={currentLesson?.title || ''}
                   courseType="basic"
                   lessonId={currentLesson?.id || 1}
+                  isTrial={isTrial}
                 />
                 
                 <div className="mt-6">
@@ -215,6 +216,7 @@ function LearnBasicContent() {
                     title={currentLesson?.title || ''}
                     courseType="basic"
                     lessonId={currentLesson?.id || 1}
+                    isTrial={isTrial}
                   />
                   
                   <div className="mt-6">
