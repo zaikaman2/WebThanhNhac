@@ -319,7 +319,17 @@ export default function BasicCoursePage() {
                   <div className="text-yellow-500 text-sm mb-4 p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
                     ⚠️ Chúng tôi khuyến nghị bạn mở trang này trên máy tính và sử dụng điện thoại để quét mã QR để có trải nghiệm tối ưu. Trong trường hợp không có máy tính, bạn vẫn có thể sử dụng điện thoại.
                   </div>
-                  <CourseAccessButton courseType="basic" userId={user?.id} />
+                  <div className="flex gap-4 items-center">
+                    <div className="flex-[3]">
+                      <CourseAccessButton courseType="basic" userId={user?.id} />
+                    </div>
+                    <a 
+                      href="/learn/basic?trial=true"
+                      className="flex-[2] text-sm bg-transparent text-primary border border-primary/30 hover:bg-secondary-light transition-all duration-300 rounded-full py-2.5 px-4 text-center"
+                    >
+                      Học thử miễn phí
+                    </a>
+                  </div>
                 </div>
               </SlideIn>
             </div>
@@ -359,7 +369,14 @@ export default function BasicCoursePage() {
                   <div className="space-y-4">
                     {section.lessons.map((lesson, lessonIndex) => (
                       <div key={lessonIndex} className="pl-4">
-                        <h4 className="text-lg font-medium text-gray-200 mb-2">{lesson.title}</h4>
+                        <div className="flex items-center gap-2">
+                          <h4 className="text-lg font-medium text-gray-200 mb-2">{lesson.title}</h4>
+                          {index === 0 && lessonIndex === 0 && (
+                            <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">
+                              Học thử miễn phí
+                            </span>
+                          )}
+                        </div>
                         <ul className="space-y-2">
                           {lesson.content.map((item, itemIndex) => (
                             <li key={itemIndex} className="flex items-start gap-2 text-gray-300">

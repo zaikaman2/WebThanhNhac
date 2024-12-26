@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown, ChevronUp, PlayCircle, CheckCircle } from 'lucide-react'
+import { ChevronDown, ChevronUp, PlayCircle, CheckCircle, Lock } from 'lucide-react'
 
 interface Lesson {
   id: number
@@ -19,9 +19,10 @@ interface CourseContentProps {
   sections: Section[]
   currentLessonId: number
   onSelectLesson: (lessonId: number) => void
+  isTrial?: boolean
 }
 
-export default function CourseContent({ sections, currentLessonId, onSelectLesson }: CourseContentProps) {
+export default function CourseContent({ sections, currentLessonId, onSelectLesson, isTrial }: CourseContentProps) {
   const [expandedSections, setExpandedSections] = useState<number[]>([0]) // First section expanded by default
   
   const toggleSection = (index: number) => {
@@ -30,6 +31,10 @@ export default function CourseContent({ sections, currentLessonId, onSelectLesso
         ? prev.filter(i => i !== index)
         : [...prev, index]
     )
+  }
+
+  const isLessonLocked = (sectionIndex: number, lessonIndex: number) => {
+    return isTrial && !(sectionIndex === 0 && lessonIndex === 0)
   }
   
   return (
@@ -50,25 +55,32 @@ export default function CourseContent({ sections, currentLessonId, onSelectLesso
           
           {expandedSections.includes(sectionIndex) && (
             <div className="px-4 pb-3">
-              {section.lessons.map(lesson => (
-                <button
-                  key={lesson.id}
-                  onClick={() => onSelectLesson(lesson.id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
-                    currentLessonId === lesson.id 
-                      ? 'bg-primary/10 text-primary' 
-                      : 'hover:bg-secondary-darker text-gray-300'
-                  }`}
-                >
-                  {lesson.completed ? (
-                    <CheckCircle className="w-5 h-5 text-green-500" />
-                  ) : (
-                    <PlayCircle className="w-5 h-5" />
-                  )}
-                  <span className="flex-1 text-left">{lesson.title}</span>
-                  <span className="text-sm opacity-60">{lesson.duration}</span>
-                </button>
-              ))}
+              {section.lessons.map((lesson, lessonIndex) => {
+                const isLocked = isLessonLocked(sectionIndex, lessonIndex)
+                return (
+                  <button
+                    key={lesson.id}
+                    onClick={() => !isLocked && onSelectLesson(lesson.id)}
+                    className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
+                      currentLessonId === lesson.id 
+                        ? 'bg-primary/10 text-primary' 
+                        : isLocked
+                        ? 'text-gray-500 cursor-not-allowed'
+                        : 'hover:bg-secondary-darker text-gray-300'
+                    }`}
+                  >
+                    {lesson.completed ? (
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                    ) : isLocked ? (
+                      <Lock className="w-5 h-5" />
+                    ) : (
+                      <PlayCircle className="w-5 h-5" />
+                    )}
+                    <span className="flex-1 text-left">{lesson.title}</span>
+                    <span className="text-sm opacity-60">{lesson.duration}</span>
+                  </button>
+                )
+              })}
             </div>
           )}
         </div>

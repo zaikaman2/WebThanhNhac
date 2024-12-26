@@ -1,11 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useUser } from '@/hooks/useUser'
+import { useSearchParams } from 'next/navigation'
 import CourseAccessCheck from '@/components/shared/CourseAccessCheck'
 import VideoPlayer from '@/components/learn/VideoPlayer'
 import CourseContent from '@/components/learn/CourseContent'
 import LessonComments from '@/components/learn/LessonComments'
+import Link from 'next/link'
 
 const courseSections = [
   {
@@ -16,7 +18,7 @@ const courseSections = [
         title: 'Bài 1: Nguyên tắc lấy hơi trong thanh nhạc',
         duration: '10:28',
         description: 'Hiểu sự khác biệt giữa lấy hơi để thở thường và lấy hơi trong thanh nhạc. Luyện tập lấy hơi nhanh như ngáp và giữ hơi chắc như nén.',
-        videoId: '1033721174'
+        videoId: '1042217138'
       },
       {
         id: 2,
@@ -127,57 +129,129 @@ const courseSections = [
 export default function LearnBasicPage() {
   const { user } = useUser()
   const [currentLessonId, setCurrentLessonId] = useState(1)
+  const searchParams = useSearchParams()
+  const isTrial = searchParams?.get('trial') === 'true'
   
   const currentLesson = courseSections
     .flatMap(section => section.lessons)
     .find(lesson => lesson.id === currentLessonId)
 
+  // Prevent access to other lessons in trial mode
+  const handleLessonSelect = (lessonId: number) => {
+    if (isTrial && lessonId !== 1) {
+      return
+    }
+    setCurrentLessonId(lessonId)
+  }
+
+  if (isTrial && currentLessonId !== 1) {
+    setCurrentLessonId(1)
+  }
+
   return (
-    <CourseAccessCheck courseType="basic" userId={user?.id}>
-      <main className="min-h-screen bg-secondary pt-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <VideoPlayer 
-                videoId={currentLesson?.videoId}
-                title={currentLesson?.title || ''}
-                courseType="basic"
-                lessonId={currentLesson?.id || 1}
-              />
-              
-              <div className="mt-6">
-                <h1 className="text-2xl font-bold text-primary mb-2">
-                  {currentLesson?.title}
-                </h1>
-                <p className="text-gray-400 mb-4">
-                  Thời lượng: {currentLesson?.duration}
-                </p>
-                <div className="bg-secondary-light p-6 rounded-lg border border-primary/10">
-                  <p className="text-gray-300 leading-relaxed">
-                    {currentLesson?.description}
+    <div>
+      {isTrial ? (
+        <main className="min-h-screen bg-secondary pt-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 mb-8">
+              <p className="text-primary text-center">
+                Bạn đang xem bài học thử nghiệm. 
+                <Link href="/courses/basic" className="underline ml-2 hover:text-primary-light">
+                  Đăng ký khóa học
+                </Link> để truy cập tất cả các bài học.
+              </p>
+            </div>
+            <div className="grid lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <VideoPlayer 
+                  videoId={currentLesson?.videoId}
+                  title={currentLesson?.title || ''}
+                  courseType="basic"
+                  lessonId={currentLesson?.id || 1}
+                />
+                
+                <div className="mt-6">
+                  <h1 className="text-2xl font-bold text-primary mb-2">
+                    {currentLesson?.title}
+                  </h1>
+                  <p className="text-gray-400 mb-4">
+                    Thời lượng: {currentLesson?.duration}
                   </p>
+                  <div className="bg-secondary-light p-6 rounded-lg border border-primary/10">
+                    <p className="text-gray-300 leading-relaxed">
+                      {currentLesson?.description}
+                    </p>
+                  </div>
                 </div>
+                
+                <LessonComments 
+                  courseType="basic"
+                  lessonId={currentLesson?.id || 1}
+                />
               </div>
               
-              <LessonComments 
-                courseType="basic"
-                lessonId={currentLesson?.id || 1}
-              />
-            </div>
-            
-            <div className="lg:col-span-1">
-              <h2 className="text-xl font-bold text-primary mb-4">
-                Nội dung khóa học
-              </h2>
-              <CourseContent 
-                sections={courseSections}
-                currentLessonId={currentLessonId}
-                onSelectLesson={setCurrentLessonId}
-              />
+              <div className="lg:col-span-1">
+                <h2 className="text-xl font-bold text-primary mb-4">
+                  Nội dung khóa học
+                </h2>
+                <CourseContent 
+                  sections={courseSections}
+                  currentLessonId={currentLessonId}
+                  onSelectLesson={handleLessonSelect}
+                  isTrial={true}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </main>
-    </CourseAccessCheck>
+        </main>
+      ) : (
+        <CourseAccessCheck courseType="basic" userId={user?.id}>
+          <main className="min-h-screen bg-secondary pt-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+              <div className="grid lg:grid-cols-3 gap-8">
+                <div className="lg:col-span-2">
+                  <VideoPlayer 
+                    videoId={currentLesson?.videoId}
+                    title={currentLesson?.title || ''}
+                    courseType="basic"
+                    lessonId={currentLesson?.id || 1}
+                  />
+                  
+                  <div className="mt-6">
+                    <h1 className="text-2xl font-bold text-primary mb-2">
+                      {currentLesson?.title}
+                    </h1>
+                    <p className="text-gray-400 mb-4">
+                      Thời lượng: {currentLesson?.duration}
+                    </p>
+                    <div className="bg-secondary-light p-6 rounded-lg border border-primary/10">
+                      <p className="text-gray-300 leading-relaxed">
+                        {currentLesson?.description}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <LessonComments 
+                    courseType="basic"
+                    lessonId={currentLesson?.id || 1}
+                  />
+                </div>
+                
+                <div className="lg:col-span-1">
+                  <h2 className="text-xl font-bold text-primary mb-4">
+                    Nội dung khóa học
+                  </h2>
+                  <CourseContent 
+                    sections={courseSections}
+                    currentLessonId={currentLessonId}
+                    onSelectLesson={handleLessonSelect}
+                  />
+                </div>
+              </div>
+            </div>
+          </main>
+        </CourseAccessCheck>
+      )}
+    </div>
   )
 } 
