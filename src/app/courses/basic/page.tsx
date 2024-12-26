@@ -317,18 +317,20 @@ export default function BasicCoursePage() {
                     </div>
                   </div>
                   <div className="text-yellow-500 text-sm mb-4 p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
-                    ⚠️ Chúng tôi khuyến nghị bạn mở trang này trên máy tính và sử dụng điện thoại quét mã QR để có trải nghiệm tối ưu. Trong trường hợp không có máy tính, bạn vẫn có thể sử dụng điện thoại.
+                    ⚠️ Chúng tôi khuyến nghị bạn mở trang này trên máy tính và sử dụng điện thoại để quét mã QR để có trải nghiệm tối ưu. Trong trường hợp không có máy tính, bạn vẫn có thể sử dụng điện thoại.
                   </div>
                   <div className="flex gap-4 items-center">
-                    <div className="flex-[3]">
+                    <div className={user?.id ? 'w-full' : 'flex-[3]'}>
                       <CourseAccessButton courseType="basic" userId={user?.id} />
                     </div>
-                    <a 
-                      href="/learn/basic?trial=true"
-                      className="flex-[2] text-sm bg-transparent text-primary border border-primary/30 hover:bg-secondary-light transition-all duration-300 rounded-full py-2.5 px-4 text-center"
-                    >
-                      Học thử miễn phí
-                    </a>
+                    {!user?.id && (
+                      <a 
+                        href="/learn/basic?trial=true"
+                        className="flex-[2] text-sm bg-transparent text-primary border border-primary/30 hover:bg-secondary-light transition-all duration-300 rounded-full py-2.5 px-4 text-center"
+                      >
+                        Học thử miễn phí
+                      </a>
+                    )}
                   </div>
                 </div>
               </SlideIn>
