@@ -283,7 +283,7 @@ export default function BasicCoursePage() {
                       alt={course.title}
                       width={600}
                       height={400}
-                      className="rounded-xl shadow-2xl w-full aspect-video object-cover"
+                      className="rounded-xl shadow-2xl w-full aspect-[16/11] object-cover"
                     />
                   </div>
                 </div>
