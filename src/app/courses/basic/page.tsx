@@ -320,10 +320,10 @@ export default function BasicCoursePage() {
                     ⚠️ Chúng tôi khuyến nghị bạn mở trang này trên máy tính và sử dụng điện thoại để quét mã QR để có trải nghiệm tối ưu. Trong trường hợp không có máy tính, bạn vẫn có thể sử dụng điện thoại.
                   </div>
                   <div className="flex gap-4 items-center">
-                    <div className={user?.id ? 'w-full' : 'flex-[3]'}>
+                    <div className={hasPurchased ? 'w-full' : 'flex-[3]'}>
                       <CourseAccessButton courseType="basic" userId={user?.id} />
                     </div>
-                    {!user?.id && (
+                    {!hasPurchased && (
                       <a 
                         href="/learn/basic?trial=true"
                         className="flex-[2] text-sm bg-transparent text-primary border border-primary/30 hover:bg-secondary-light transition-all duration-300 rounded-full py-2.5 px-4 text-center"
