@@ -3,10 +3,12 @@ import PayOS from '@payos/node'
 import { createClient } from '@supabase/supabase-js'
 import crypto from 'crypto'
 
+const CHECKSUM_KEY = 'eb595d3d425dff516fb5fcd31264171ca1b0afe5918716822d350c61101f7e4d'
+
 const payOS = new PayOS(
   '82071c6c-cd8a-4266-bf48-dbb5e241e5fa',
   '50859d56-e4c6-4e89-8987-c3116999cbf0', 
-  'eb595d3d425dff516fb5fcd31264171ca1b0afe5918716822d350c61101f7e4d'
+  CHECKSUM_KEY
 )
 
 // Khởi tạo Supabase Admin Client để có thể thêm purchase mà không cần auth
@@ -15,11 +17,47 @@ const supabaseAdmin = createClient(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnbW15a3ZzYnpmZ3BkbG9hZHZiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMjI2MTkwNCwiZXhwIjoyMDQ3ODM3OTA0fQ.CFvf9eksZ5dVEuARVhxIGbtDCazXKZSUxeCui5dWedc'
 )
 
-// Verify webhook signature
-function verifySignature(body: string, signature: string): boolean {
-  const webhookSecretKey = 'eb595d3d425dff516fb5fcd31264171ca1b0afe5918716822d350c61101f7e4d'
-  const hmac = crypto.createHmac('sha256', webhookSecretKey)
-  const computedSignature = hmac.update(body).digest('hex')
+function sortObjDataByKey(object: any) {
+  const orderedObject = Object.keys(object)
+    .sort()
+    .reduce((obj: any, key) => {
+      obj[key] = object[key]
+      return obj
+    }, {})
+  return orderedObject
+}
+
+function convertObjToQueryStr(object: any) {
+  return Object.keys(object)
+    .filter((key) => object[key] !== undefined)
+    .map((key) => {
+      let value = object[key]
+      // Sort nested object
+      if (value && Array.isArray(value)) {
+        value = JSON.stringify(value.map((val) => sortObjDataByKey(val)))
+      }
+      // Set empty string if null
+      if ([null, undefined, 'undefined', 'null'].includes(value)) {
+        value = ''
+      }
+      return `${key}=${value}`
+    })
+    .join('&')
+}
+
+function verifySignature(data: any, signature: string): boolean {
+  const sortedDataByKey = sortObjDataByKey(data)
+  const dataQueryStr = convertObjToQueryStr(sortedDataByKey)
+  console.log('Data query string:', dataQueryStr)
+  
+  const computedSignature = crypto
+    .createHmac('sha256', CHECKSUM_KEY)
+    .update(dataQueryStr)
+    .digest('hex')
+  
+  console.log('Computed signature:', computedSignature)
+  console.log('Received signature:', signature)
+  
   return computedSignature === signature
 }
 
@@ -28,18 +66,20 @@ export async function POST(request: Request) {
     const rawBody = await request.text()
     const body = JSON.parse(rawBody)
     
-    // Verify webhook signature
-    const signature = request.headers.get('x-payment-signature')
-    if (!signature || !verifySignature(rawBody, signature)) {
+    console.log('Received webhook data:', body)
+    
+    // Verify signature
+    if (!body.signature || !verifySignature(body.data, body.signature)) {
+      console.log('Signature verification failed')
       return NextResponse.json(
-        { message: 'Invalid signature' },
+        { success: false },
         { status: 401 }
       )
     }
 
-    // Chỉ xử lý event payment_success
-    if (body.event !== 'payment_success') {
-      return NextResponse.json({ message: 'Ignored non-success event' })
+    // Chỉ xử lý khi code = 00 (thành công)
+    if (body.code !== '00') {
+      return NextResponse.json({ success: true })
     }
 
     const orderCode = body.data.orderCode
@@ -54,7 +94,8 @@ export async function POST(request: Request) {
       .single()
 
     if (!profile?.id) {
-      throw new Error('User not found')
+      console.error('User not found:', description)
+      return NextResponse.json({ success: true })
     }
 
     // Xác định course type từ amount
@@ -73,7 +114,7 @@ export async function POST(request: Request) {
 
     // Nếu đã có purchase rồi thì không tạo nữa
     if (existingPurchase) {
-      return NextResponse.json({ message: 'Purchase already exists' })
+      return NextResponse.json({ success: true })
     }
 
     // Tạo purchase record
@@ -91,16 +132,14 @@ export async function POST(request: Request) {
       ])
 
     if (purchaseError) {
-      throw new Error('Failed to create purchase')
+      console.error('Failed to create purchase:', purchaseError)
+      return NextResponse.json({ success: true })
     }
 
-    return NextResponse.json({ message: 'Success' })
+    return NextResponse.json({ success: true })
 
   } catch (error) {
     console.error('Webhook error:', error)
-    return NextResponse.json(
-      { message: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ success: true })
   }
 }
