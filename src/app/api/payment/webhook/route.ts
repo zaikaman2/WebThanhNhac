@@ -46,16 +46,19 @@ const supabaseAdmin = createClient(
 )
 
 function sortObjDataByKey(object: Record<string, unknown>): Record<string, unknown> {
-  return Object.keys(object)
-    .sort()
-    .reduce((obj, key) => {
-      obj[key] = object[key]
-      return obj
-    }, { ...object })
+  const sortedKeys = Object.keys(object).sort()
+  const sortedObject: Record<string, unknown> = {}
+  
+  for (const key of sortedKeys) {
+    sortedObject[key] = object[key]
+  }
+  
+  return sortedObject
 }
 
 function convertObjToQueryStr(object: Record<string, unknown>): string {
   return Object.keys(object)
+    .sort()
     .filter((key) => object[key] !== undefined)
     .map((key) => {
       let value = object[key]
