@@ -317,7 +317,7 @@ export default function BasicCoursePage() {
                     </div>
                   </div>
                   <div className="text-yellow-500 text-sm mb-4 p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
-                    ⚠️ Trong trường hợp đã chuyển khoản nhưng chưa được xác nhận thanh toán tự động bởi hệ thống để mở khóa học, hãy gửi yêu cầu hỗ trợ tới email zaikaman123@gmail.com để được mở khóa học.
+                    ⚠️ Trong trường hợp đã chuyển khoản nhưng chưa được xác nhận thanh toán tự động bởi hệ thống, hãy gửi yêu cầu hỗ trợ tới email zaikaman123@gmail.com để được mở khóa học.
                   </div>
                   <div className="flex gap-4 items-center">
                     <div className={hasPurchased ? 'w-full' : 'flex-[3]'}>
