@@ -91,13 +91,38 @@ function verifySignature(data: PaymentData, signature: string): boolean {
 export async function POST(request: Request) {
   try {
     const rawBody = await request.text()
-    const body = JSON.parse(rawBody) as WebhookBody
+    console.log('Raw webhook body:', rawBody)
     
-    console.log('Received webhook data:', body)
+    const body = JSON.parse(rawBody) as WebhookBody
+    console.log('Parsed webhook data:', JSON.stringify(body, null, 2))
+    console.log('Webhook signature:', body.signature)
+    console.log('Webhook data to verify:', JSON.stringify(body.data, null, 2))
     
     // Verify signature
-    if (!body.signature || !verifySignature(body.data, body.signature)) {
+    if (!body.signature) {
+      console.log('Missing signature in webhook data')
+      return NextResponse.json(
+        { success: false },
+        { status: 401 }
+      )
+    }
+
+    const sortedDataByKey = sortObjDataByKey(body.data)
+    console.log('Sorted data:', JSON.stringify(sortedDataByKey, null, 2))
+    
+    const dataQueryStr = convertObjToQueryStr(sortedDataByKey)
+    console.log('Data query string:', dataQueryStr)
+    
+    const computedSignature = crypto
+      .createHmac('sha256', CHECKSUM_KEY)
+      .update(dataQueryStr)
+      .digest('hex')
+    console.log('Computed signature:', computedSignature)
+    console.log('Expected signature:', body.signature)
+    
+    if (computedSignature !== body.signature) {
       console.log('Signature verification failed')
+      console.log('Checksum key used:', CHECKSUM_KEY)
       return NextResponse.json(
         { success: false },
         { status: 401 }
