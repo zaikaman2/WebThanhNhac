@@ -3,6 +3,34 @@ import PayOS from '@payos/node'
 import { createClient } from '@supabase/supabase-js'
 import crypto from 'crypto'
 
+interface PaymentData {
+  orderCode: number
+  amount: number
+  description: string
+  accountNumber?: string
+  reference?: string
+  transactionDateTime?: string
+  currency?: string
+  paymentLinkId?: string
+  code?: string
+  desc?: string
+  counterAccountBankId?: string
+  counterAccountBankName?: string
+  counterAccountName?: string
+  counterAccountNumber?: string
+  virtualAccountName?: string
+  virtualAccountNumber?: string
+  [key: string]: string | number | undefined
+}
+
+interface WebhookBody {
+  code: string
+  desc: string
+  success: boolean
+  data: PaymentData
+  signature: string
+}
+
 const CHECKSUM_KEY = 'eb595d3d425dff516fb5fcd31264171ca1b0afe5918716822d350c61101f7e4d'
 
 const payOS = new PayOS(
@@ -17,27 +45,26 @@ const supabaseAdmin = createClient(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnbW15a3ZzYnpmZ3BkbG9hZHZiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMjI2MTkwNCwiZXhwIjoyMDQ3ODM3OTA0fQ.CFvf9eksZ5dVEuARVhxIGbtDCazXKZSUxeCui5dWedc'
 )
 
-function sortObjDataByKey(object: any) {
-  const orderedObject = Object.keys(object)
+function sortObjDataByKey(object: Record<string, unknown>): Record<string, unknown> {
+  return Object.keys(object)
     .sort()
-    .reduce((obj: any, key) => {
+    .reduce((obj, key) => {
       obj[key] = object[key]
       return obj
-    }, {})
-  return orderedObject
+    }, { ...object })
 }
 
-function convertObjToQueryStr(object: any) {
+function convertObjToQueryStr(object: Record<string, unknown>): string {
   return Object.keys(object)
     .filter((key) => object[key] !== undefined)
     .map((key) => {
       let value = object[key]
       // Sort nested object
       if (value && Array.isArray(value)) {
-        value = JSON.stringify(value.map((val) => sortObjDataByKey(val)))
+        value = JSON.stringify(value.map((val) => sortObjDataByKey(val as Record<string, unknown>)))
       }
       // Set empty string if null
-      if ([null, undefined, 'undefined', 'null'].includes(value)) {
+      if ([null, undefined, 'undefined', 'null'].includes(value as string)) {
         value = ''
       }
       return `${key}=${value}`
@@ -45,7 +72,7 @@ function convertObjToQueryStr(object: any) {
     .join('&')
 }
 
-function verifySignature(data: any, signature: string): boolean {
+function verifySignature(data: PaymentData, signature: string): boolean {
   const sortedDataByKey = sortObjDataByKey(data)
   const dataQueryStr = convertObjToQueryStr(sortedDataByKey)
   console.log('Data query string:', dataQueryStr)
@@ -64,7 +91,7 @@ function verifySignature(data: any, signature: string): boolean {
 export async function POST(request: Request) {
   try {
     const rawBody = await request.text()
-    const body = JSON.parse(rawBody)
+    const body = JSON.parse(rawBody) as WebhookBody
     
     console.log('Received webhook data:', body)
     
