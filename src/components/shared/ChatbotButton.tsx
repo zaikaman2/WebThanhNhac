@@ -55,7 +55,7 @@ Thành tựu và kinh nghiệm:
 Các khóa học:
 
 1. Khóa học thanh nhạc cơ bản (12 bài học):
-- Giá: 399,000đ
+- Giá: 499,000đ
 - Học online qua video
 - Phù hợp cho người mới bắt đầu
 - Nội dung khóa học:

@@ -39,7 +39,7 @@ function SuccessContent() {
           return
         }
 
-        const amount = courseType === 'basic' ? 399000 : 599000
+        const amount = courseType === 'basic' ? 499000 : 599000
 
         const { error: purchaseError } = await supabase
           .from('purchases')
