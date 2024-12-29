@@ -659,10 +659,13 @@ export default function AdminPage() {
                 <h3 className="text-xl font-bold text-primary mb-6">Doanh thu theo tháng</h3>
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={statistics.revenueByMonth}>
+                    <LineChart 
+                      data={statistics.revenueByMonth}
+                      margin={{ top: 10, right: 30, left: 40, bottom: 10 }}
+                    >
                       <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                       <XAxis dataKey="month" stroke="#9CA3AF" />
-                      <YAxis stroke="#9CA3AF" />
+                      <YAxis stroke="#9CA3AF" width={80} />
                       <Tooltip 
                         contentStyle={{ 
                           backgroundColor: '#1F2937',
@@ -688,14 +691,17 @@ export default function AdminPage() {
                 <h3 className="text-xl font-bold text-primary mb-6">Doanh thu theo ngày (tháng {new Date().getMonth() + 1})</h3>
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={statistics.revenueByDay}>
+                    <BarChart 
+                      data={statistics.revenueByDay}
+                      margin={{ top: 10, right: 30, left: 40, bottom: 10 }}
+                    >
                       <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                       <XAxis 
                         dataKey="date" 
                         stroke="#9CA3AF"
                         interval={2}
                       />
-                      <YAxis stroke="#9CA3AF" />
+                      <YAxis stroke="#9CA3AF" width={80} />
                       <Tooltip 
                         contentStyle={{ 
                           backgroundColor: '#1F2937',
@@ -722,7 +728,7 @@ export default function AdminPage() {
                   <h3 className="text-xl font-bold text-primary mb-6">Phân bố khóa học</h3>
                   <div className="h-80">
                     <ResponsiveContainer width="100%" height="100%">
-                      <PieChart>
+                      <PieChart margin={{ top: 10, right: 30, left: 40, bottom: 10 }}>
                         <Pie
                           data={statistics.purchasesByType}
                           dataKey="count"
@@ -758,10 +764,13 @@ export default function AdminPage() {
                   <h3 className="text-xl font-bold text-primary mb-6">Trạng thái thanh toán</h3>
                   <div className="h-80">
                     <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={statistics.purchasesByStatus}>
+                      <BarChart 
+                        data={statistics.purchasesByStatus}
+                        margin={{ top: 10, right: 30, left: 40, bottom: 10 }}
+                      >
                         <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                         <XAxis dataKey="status" stroke="#9CA3AF" />
-                        <YAxis stroke="#9CA3AF" />
+                        <YAxis stroke="#9CA3AF" width={80} />
                         <Tooltip 
                           contentStyle={{ 
                             backgroundColor: '#1F2937',
