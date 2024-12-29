@@ -34,6 +34,18 @@ CREATE TABLE public."Testimonial" (
   CONSTRAINT Testimonial_pkey PRIMARY KEY (id)
 );
 
+CREATE TABLE public.affiliate_codes (
+  id uuid NOT NULL DEFAULT extensions.uuid_generate_v4(),
+  user_id uuid NULL,
+  code text NOT NULL,
+  created_at timestamp with time zone NULL DEFAULT now(),
+  total_earnings integer NULL DEFAULT 0,
+  available_balance integer NULL DEFAULT 0,
+  CONSTRAINT affiliate_codes_pkey PRIMARY KEY (id),
+  CONSTRAINT affiliate_codes_code_key UNIQUE (code),
+  CONSTRAINT affiliate_codes_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id)
+);
+
 CREATE TABLE public.comment_likes (
   id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
   comment_id uuid NULL,
@@ -90,6 +102,7 @@ CREATE TABLE public.profiles (
   "updatedAt" timestamp with time zone NULL DEFAULT now(),
   email text NULL,
   role text NOT NULL DEFAULT 'user'::text,
+  created_at timestamp with time zone NULL,
   CONSTRAINT profiles_pkey PRIMARY KEY (id),
   CONSTRAINT profiles_id_fkey FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE
 );
@@ -111,10 +124,39 @@ CREATE TABLE public.purchases (
 CREATE INDEX IF NOT EXISTS purchases_user_id_idx ON public.purchases USING btree (user_id);
 CREATE INDEX IF NOT EXISTS purchases_course_type_idx ON public.purchases USING btree (course_type);
 
+CREATE TABLE public.referral_history (
+  id uuid NOT NULL DEFAULT extensions.uuid_generate_v4(),
+  referrer_id uuid NULL,
+  referred_id uuid NULL,
+  purchase_id uuid NULL,
+  commission integer NOT NULL,
+  discount integer NOT NULL,
+  status text NULL DEFAULT 'pending'::text,
+  created_at timestamp with time zone NULL DEFAULT now(),
+  CONSTRAINT referral_history_pkey PRIMARY KEY (id),
+  CONSTRAINT referral_history_purchase_id_fkey FOREIGN KEY (purchase_id) REFERENCES purchases(id),
+  CONSTRAINT referral_history_referred_id_fkey FOREIGN KEY (referred_id) REFERENCES auth.users(id),
+  CONSTRAINT referral_history_referrer_id_fkey FOREIGN KEY (referrer_id) REFERENCES auth.users(id)
+);
+
 CREATE TABLE public.videos (
   id uuid NOT NULL DEFAULT extensions.uuid_generate_v4(),
   youtube_id text NOT NULL,
   title text NOT NULL,
   created_at timestamp with time zone NOT NULL DEFAULT timezone('utc'::text, now()),
   CONSTRAINT videos_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.withdrawal_requests (
+  id uuid NOT NULL DEFAULT extensions.uuid_generate_v4(),
+  user_id uuid NULL,
+  amount integer NOT NULL,
+  bank_name text NOT NULL,
+  bank_account_number text NOT NULL,
+  bank_account_name text NOT NULL,
+  status text NULL DEFAULT 'pending'::text,
+  processed_at timestamp with time zone NULL,
+  created_at timestamp with time zone NULL DEFAULT now(),
+  CONSTRAINT withdrawal_requests_pkey PRIMARY KEY (id),
+  CONSTRAINT withdrawal_requests_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id)
 );
