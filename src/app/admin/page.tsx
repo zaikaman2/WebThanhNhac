@@ -70,6 +70,20 @@ export default function AdminPage() {
   const [editModal, setEditModal] = useState<EditModalType | null>(null)
   const [deleteConfirm, setDeleteConfirm] = useState<{id: string, type: 'profile' | 'purchase'} | null>(null)
   const [statistics, setStatistics] = useState<StatisticsData | null>(null)
+  const [createModal, setCreateModal] = useState<{type: 'profile' | 'purchase'} | null>(null)
+  const [formData, setFormData] = useState({
+    profile: {
+      name: '',
+      email: '',
+      role: 'user'
+    },
+    purchase: {
+      user_id: '',
+      course_type: 'basic',
+      amount: 0,
+      payment_status: 'completed'
+    }
+  })
 
   useEffect(() => {
     async function checkAdminAndLoadData() {
@@ -363,6 +377,86 @@ export default function AdminPage() {
     }
   }
 
+  const handleCreate = async () => {
+    if (!createModal) return
+
+    try {
+      const { type } = createModal
+      const table = type === 'profile' ? 'profiles' : 'purchases'
+      let data = {}
+
+      if (type === 'profile') {
+        if (!formData.profile.email) {
+          toast.error('Vui lòng nhập email')
+          return
+        }
+        data = {
+          name: formData.profile.name,
+          email: formData.profile.email,
+          role: formData.profile.role,
+          createdAt: new Date().toISOString()
+        }
+      } else {
+        if (!formData.purchase.user_id) {
+          toast.error('Vui lòng chọn người dùng')
+          return
+        }
+        if (formData.purchase.amount <= 0) {
+          toast.error('Vui lòng nhập số tiền hợp lệ')
+          return
+        }
+        data = {
+          user_id: formData.purchase.user_id,
+          course_type: formData.purchase.course_type,
+          order_code: `ORDER${Date.now()}`,
+          amount: formData.purchase.amount,
+          payment_status: formData.purchase.payment_status,
+          created_at: new Date().toISOString()
+        }
+      }
+
+      const { data: newData, error } = await supabase
+        .from(table)
+        .insert(data)
+        .select()
+        .single()
+
+      if (error) throw error
+
+      // Refresh data
+      if (type === 'profile') {
+        setProfiles([newData, ...profiles])
+      } else {
+        const purchaseWithUser = {
+          ...newData,
+          user: profiles.find(p => p.id === newData.user_id)
+        }
+        setPurchases([purchaseWithUser, ...purchases])
+      }
+
+      // Reset form
+      setFormData({
+        profile: {
+          name: '',
+          email: '',
+          role: 'user'
+        },
+        purchase: {
+          user_id: '',
+          course_type: 'basic',
+          amount: 0,
+          payment_status: 'completed'
+        }
+      })
+
+      toast.success('Tạo mới thành công')
+      setCreateModal(null)
+    } catch (err) {
+      console.error('Create error:', err)
+      toast.error('Không thể tạo mới. Vui lòng thử lại')
+    }
+  }
+
   if (loading || isLoading) {
     return (
       <div className="min-h-screen bg-secondary pt-24 flex items-center justify-center">
@@ -447,7 +541,10 @@ export default function AdminPage() {
             <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-500" />
           </div>
           
-          <button className="ml-4 bg-primary text-secondary px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-primary-light transition-all">
+          <button 
+            onClick={() => setCreateModal({ type: activeTab === 'profiles' ? 'profile' : 'purchase' })}
+            className="ml-4 bg-primary text-secondary px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-primary-light transition-all"
+          >
             <Plus className="h-5 w-5" />
             <span>Thêm mới</span>
           </button>
@@ -921,6 +1018,164 @@ export default function AdminPage() {
                 className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
               >
                 Xóa
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Create Modal */}
+      {createModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-secondary-light p-6 rounded-xl max-w-md w-full mx-4">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-bold text-primary">
+                {createModal.type === 'profile' ? 'Thêm người dùng mới' : 'Thêm đơn hàng mới'}
+              </h3>
+              <button 
+                onClick={() => setCreateModal(null)}
+                className="text-gray-400 hover:text-gray-300"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {createModal.type === 'profile' && (
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">
+                    Tên
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.profile.name}
+                    onChange={(e) => setFormData({
+                      ...formData,
+                      profile: { ...formData.profile, name: e.target.value }
+                    })}
+                    placeholder="Nhập tên người dùng"
+                    className="w-full bg-secondary border border-primary/10 rounded-lg px-4 py-2 text-gray-300"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    value={formData.profile.email}
+                    onChange={(e) => setFormData({
+                      ...formData,
+                      profile: { ...formData.profile, email: e.target.value }
+                    })}
+                    placeholder="Nhập email"
+                    className="w-full bg-secondary border border-primary/10 rounded-lg px-4 py-2 text-gray-300"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">
+                    Vai trò
+                  </label>
+                  <select
+                    value={formData.profile.role}
+                    onChange={(e) => setFormData({
+                      ...formData,
+                      profile: { ...formData.profile, role: e.target.value }
+                    })}
+                    className="w-full bg-secondary border border-primary/10 rounded-lg px-4 py-2 text-gray-300"
+                  >
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                  </select>
+                </div>
+              </div>
+            )}
+
+            {createModal.type === 'purchase' && (
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">
+                    Người dùng
+                  </label>
+                  <select
+                    value={formData.purchase.user_id}
+                    onChange={(e) => setFormData({
+                      ...formData,
+                      purchase: { ...formData.purchase, user_id: e.target.value }
+                    })}
+                    className="w-full bg-secondary border border-primary/10 rounded-lg px-4 py-2 text-gray-300"
+                  >
+                    <option value="">Chọn người dùng</option>
+                    {profiles.map(profile => (
+                      <option key={profile.id} value={profile.id}>
+                        {profile.email} ({profile.name || 'Chưa cập nhật'})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">
+                    Khóa học
+                  </label>
+                  <select
+                    value={formData.purchase.course_type}
+                    onChange={(e) => setFormData({
+                      ...formData,
+                      purchase: { ...formData.purchase, course_type: e.target.value }
+                    })}
+                    className="w-full bg-secondary border border-primary/10 rounded-lg px-4 py-2 text-gray-300"
+                  >
+                    <option value="basic">Cơ bản</option>
+                    <option value="intermediate">Nâng cao</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">
+                    Số tiền
+                  </label>
+                  <input
+                    type="number"
+                    value={formData.purchase.amount}
+                    onChange={(e) => setFormData({
+                      ...formData,
+                      purchase: { ...formData.purchase, amount: Number(e.target.value) }
+                    })}
+                    placeholder="Nhập số tiền"
+                    className="w-full bg-secondary border border-primary/10 rounded-lg px-4 py-2 text-gray-300"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">
+                    Trạng thái
+                  </label>
+                  <select
+                    value={formData.purchase.payment_status}
+                    onChange={(e) => setFormData({
+                      ...formData,
+                      purchase: { ...formData.purchase, payment_status: e.target.value }
+                    })}
+                    className="w-full bg-secondary border border-primary/10 rounded-lg px-4 py-2 text-gray-300"
+                  >
+                    <option value="completed">Hoàn thành</option>
+                    <option value="refunded">Hoàn tiền</option>
+                    <option value="cancelled">Đã hủy</option>
+                  </select>
+                </div>
+              </div>
+            )}
+
+            <div className="flex justify-end gap-2 mt-6">
+              <button
+                onClick={() => setCreateModal(null)}
+                className="px-4 py-2 text-gray-300 hover:text-white"
+              >
+                Hủy
+              </button>
+              <button
+                onClick={handleCreate}
+                className="px-4 py-2 bg-primary text-secondary rounded-lg hover:bg-primary-light"
+              >
+                Tạo mới
               </button>
             </div>
           </div>
