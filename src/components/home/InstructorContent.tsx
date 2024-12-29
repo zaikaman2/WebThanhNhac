@@ -15,7 +15,7 @@ export default function InstructorContent() {
       </SlideIn>
       
       <div className="flex flex-col md:flex-row items-start gap-20">
-        <SlideIn direction="left">
+        <SlideIn direction="up" delay={100}>
           <div className="w-[300px] h-[300px]">
             <GlowingEffect intensity={0.4} duration={4}>
               <Image
@@ -30,7 +30,7 @@ export default function InstructorContent() {
           </div>
         </SlideIn>
         
-        <SlideIn direction="right" delay={200}>
+        <SlideIn direction="up" delay={200}>
           <div className="flex-1 space-y-8">
             <h3 className="text-4xl text-primary font-bold">Đinh Trung Kiên</h3>
             <div className="space-y-6 max-w-3xl">
