@@ -19,7 +19,7 @@ export default function CourseCard({ id, type, title, description, price, image 
   return (
     <Link 
       href={routePath}
-      className="block bg-secondary-light rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border border-primary/10 relative"
+      className="flex flex-col h-full bg-secondary-light rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border border-primary/10 relative"
     >
       {showSale && (
         <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold z-10 animate-bounce">
@@ -35,9 +35,9 @@ export default function CourseCard({ id, type, title, description, price, image 
         />
         <div className="absolute inset-0 bg-gradient-to-t from-secondary-darker to-transparent opacity-60"></div>
       </div>
-      <div className="p-6">
+      <div className="flex flex-col flex-1 p-6">
         <h3 className="text-xl font-semibold mb-2 text-primary">{title}</h3>
-        <p className="text-gray-300 mb-4 line-clamp-2">{description}</p>
+        <p className="text-gray-300 mb-4 line-clamp-2 flex-1">{description}</p>
         <div className="flex justify-between items-center">
           <div className="flex flex-col">
             {showSale && (
