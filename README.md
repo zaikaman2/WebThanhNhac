@@ -1,4 +1,4 @@
-Đây là 1 dự án web thanh nhạc. Cấu trúc database:
+Đây là 1 dự án web thanh nhạc. Sử dụng Supabase. Cấu trúc database:
 CREATE TABLE public."Course" (
   id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
   title text NOT NULL,

@@ -99,4 +99,12 @@ export async function handleGoogleSignUp(user: User) {
     console.error('Error handling Google sign up:', error)
     throw error
   }
+}
+
+export async function resetPassword(email: string) {
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${window.location.origin}/auth/reset-password`
+  })
+  
+  if (error) throw error
 } 

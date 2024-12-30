@@ -91,6 +91,11 @@ export default function AuthPage() {
                   className="mt-1 block w-full rounded-md bg-secondary border border-primary/10 text-gray-300 px-4 py-2"
                   required
                 />
+                <div className="mt-2 text-right">
+                  <Link href="/auth/forgot-password" className="text-primary hover:text-primary-light text-sm">
+                    Quên mật khẩu?
+                  </Link>
+                </div>
               </div>
 
               <button
