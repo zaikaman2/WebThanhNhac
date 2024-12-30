@@ -33,7 +33,12 @@ export default function ResetPasswordPage() {
         password: password
       })
 
-      if (error) throw error
+      if (error) {
+        if (error.message.includes('New password should be different from old password')) {
+          throw new Error('Mật khẩu mới phải khác mật khẩu cũ')
+        }
+        throw error
+      }
 
       toast.success('Đặt lại mật khẩu thành công!')
       router.push('/auth')
