@@ -34,7 +34,7 @@ export default function ResetPasswordPage() {
       })
 
       if (error) {
-        if (error.message.includes('New password should be different from old password')) {
+        if (error.message.includes('New password should be different from the old password')) {
           throw new Error('Mật khẩu mới phải khác mật khẩu cũ')
         }
         throw error
