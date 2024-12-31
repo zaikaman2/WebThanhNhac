@@ -10,43 +10,41 @@ export async function middleware(request: NextRequest) {
   // Ưu tiên lấy IP theo thứ tự: cloudflare > x-real-ip > x-forwarded-for
   const ip = cloudflareIP || realIP || (forwardedFor ? forwardedFor.split(',')[0].trim() : 'unknown')
   
-  // Lấy thông tin request
-  const method = request.method
   const path = request.nextUrl.pathname
 
   // Tạo message mô tả hành động
-  let message = `IP ${ip} `
+  let action = ''
   switch (path) {
     case '/api/payment/create-payment-link':
-      message += 'initiated payment'
+      action = 'đang thanh toán khóa học'
       break
     case '/api/courses/basic':
-      message += 'accessed basic course'
+      action = 'đang xem thông tin khóa cơ bản'
       break
     case '/auth/callback':
-      message += 'completed authentication'
+      action = 'đã đăng nhập thành công'
       break
     case '/auth/forgot-password':
-      message += 'requested password reset'
+      action = 'đang yêu cầu đặt lại mật khẩu'
       break
     case '/auth/register':
-      message += 'attempted registration'
+      action = 'đang đăng ký tài khoản'
       break
     case '/auth/login':
-      message += 'attempted login'
+      action = 'đang đăng nhập'
       break
     case '/courses/basic':
-      message += 'viewed basic course'
+      action = 'đang xem khóa học cơ bản'
       break
     case '/courses/advanced':
-      message += 'viewed advanced course'
+      action = 'đang xem khóa học nâng cao'
       break
     default:
-      message += `accessed ${path}`
+      action = `đang truy cập ${path}`
   }
 
   // Log thông tin
-  console.log(`${method} ${path} - ${message}`)
+  console.log(`IP ${ip} ${action}`)
 
   return NextResponse.next()
 }
