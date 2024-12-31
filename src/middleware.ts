@@ -2,9 +2,21 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  // Lấy thông tin user từ cookie session nếu có
-  const session = request.cookies.get('session')?.value
-  const userEmail = session ? JSON.parse(session).email : 'anonymous'
+  // Lấy thông tin user từ next-auth session token
+  const authToken = request.cookies.get('next-auth.session-token')?.value
+  let userEmail = 'anonymous'
+  
+  if (authToken) {
+    try {
+      // Decode JWT token để lấy email
+      const base64Payload = authToken.split('.')[1]
+      const payload = Buffer.from(base64Payload, 'base64').toString('ascii')
+      const session = JSON.parse(payload)
+      userEmail = session.email || 'anonymous'
+    } catch (error) {
+      console.error('Error decoding session token:', error)
+    }
+  }
   
   // Lấy thông tin request
   const method = request.method
