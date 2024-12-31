@@ -16,31 +16,31 @@ export async function middleware(request: NextRequest) {
   let action = ''
   switch (path) {
     case '/api/payment/create-payment-link':
-      action = 'đang thanh toán khóa học'
+      action = 'is making a payment'
       break
     case '/api/courses/basic':
-      action = 'đang xem thông tin khóa cơ bản'
+      action = 'is viewing basic course info'
       break
     case '/auth/callback':
-      action = 'đã đăng nhập thành công'
+      action = 'logged in successfully'
       break
     case '/auth/forgot-password':
-      action = 'đang yêu cầu đặt lại mật khẩu'
+      action = 'requested password reset'
       break
     case '/auth/register':
-      action = 'đang đăng ký tài khoản'
+      action = 'is registering account'
       break
     case '/auth/login':
-      action = 'đang đăng nhập'
+      action = 'is logging in'
       break
     case '/courses/basic':
-      action = 'đang xem khóa học cơ bản'
+      action = 'is viewing basic course'
       break
     case '/courses/advanced':
-      action = 'đang xem khóa học nâng cao'
+      action = 'is viewing advanced course'
       break
     default:
-      action = `đang truy cập ${path}`
+      action = `is accessing ${path}`
   }
 
   // Log thông tin
