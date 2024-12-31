@@ -2,19 +2,30 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  // Lấy thông tin user từ next-auth session token
-  const authToken = request.cookies.get('next-auth.session-token')?.value
+  // Lấy thông tin user từ Supabase session
+  const supabaseToken = request.cookies.get('sb-access-token')?.value
   let userEmail = 'anonymous'
   
-  if (authToken) {
+  if (supabaseToken) {
     try {
-      // Decode JWT token để lấy email
-      const base64Payload = authToken.split('.')[1]
+      // Decode JWT token từ Supabase
+      const base64Payload = supabaseToken.split('.')[1]
       const payload = Buffer.from(base64Payload, 'base64').toString('ascii')
       const session = JSON.parse(payload)
       userEmail = session.email || 'anonymous'
     } catch (error) {
-      console.error('Error decoding session token:', error)
+      // Thử lấy từ sb-refresh-token nếu access token hết hạn
+      const refreshToken = request.cookies.get('sb-refresh-token')?.value
+      if (refreshToken) {
+        try {
+          const base64Payload = refreshToken.split('.')[1]
+          const payload = Buffer.from(base64Payload, 'base64').toString('ascii')
+          const session = JSON.parse(payload)
+          userEmail = session.email || 'anonymous'
+        } catch (error) {
+          console.error('Error decoding Supabase tokens:', error)
+        }
+      }
     }
   }
   
