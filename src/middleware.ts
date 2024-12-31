@@ -2,39 +2,20 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  // Lấy thông tin user từ Supabase session
-  const supabaseToken = request.cookies.get('sb-access-token')?.value
-  let userEmail = 'anonymous'
+  // Lấy IP của người dùng từ các headers khác nhau
+  const forwardedFor = request.headers.get('x-forwarded-for')
+  const realIP = request.headers.get('x-real-ip')
+  const cloudflareIP = request.headers.get('cf-connecting-ip')
   
-  if (supabaseToken) {
-    try {
-      // Decode JWT token từ Supabase
-      const base64Payload = supabaseToken.split('.')[1]
-      const payload = Buffer.from(base64Payload, 'base64').toString('ascii')
-      const session = JSON.parse(payload)
-      userEmail = session.email || 'anonymous'
-    } catch (error) {
-      // Thử lấy từ sb-refresh-token nếu access token hết hạn
-      const refreshToken = request.cookies.get('sb-refresh-token')?.value
-      if (refreshToken) {
-        try {
-          const base64Payload = refreshToken.split('.')[1]
-          const payload = Buffer.from(base64Payload, 'base64').toString('ascii')
-          const session = JSON.parse(payload)
-          userEmail = session.email || 'anonymous'
-        } catch (error) {
-          console.error('Error decoding Supabase tokens:', error)
-        }
-      }
-    }
-  }
+  // Ưu tiên lấy IP theo thứ tự: cloudflare > x-real-ip > x-forwarded-for
+  const ip = cloudflareIP || realIP || (forwardedFor ? forwardedFor.split(',')[0].trim() : 'unknown')
   
   // Lấy thông tin request
   const method = request.method
   const path = request.nextUrl.pathname
 
   // Tạo message mô tả hành động
-  let message = `User ${userEmail} `
+  let message = `IP ${ip} `
   switch (path) {
     case '/api/payment/create-payment-link':
       message += 'initiated payment'
