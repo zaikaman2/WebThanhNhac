@@ -11,8 +11,8 @@ export default function CourseCard({ id, type, title, description, price, image 
     'advanced': '/courses/advanced'
   }[type] || '/courses'
 
-  const originalPrice = type === 'basic' ? 599000 : type === 'intermediate' ? 699000 : price
-  const discount = type === 'basic' ? 16.69 : type === 'intermediate' ? 14.4 : 0
+  const originalPrice = type === 'basic' ? 499000 : type === 'intermediate' ? 699000 : price
+  const discount = type === 'basic' ? 20 : type === 'intermediate' ? 14.4 : 0
   const showSale = discount > 0
   const savings = originalPrice - price
 

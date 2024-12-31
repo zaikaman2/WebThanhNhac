@@ -304,14 +304,14 @@ export default function BasicCoursePage() {
                     <span className="text-gray-300">Học phí</span>
                     <div className="flex flex-col items-end">
                       <span className="text-gray-400 line-through text-sm">
-                        599.000
+                        499.000
                       </span>
                       <div className="flex items-center gap-2">
                         <span className="text-primary text-2xl font-bold">
                           {course.price.toLocaleString('vi-VN')}
                         </span>
                         <span className="bg-red-500 text-white text-sm px-2 py-1 rounded-full animate-bounce">
-                          -16.69%
+                          -20%
                         </span>
                       </div>
                     </div>
