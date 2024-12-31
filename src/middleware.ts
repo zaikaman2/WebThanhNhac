@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { getToken } from 'next-auth/jwt'
 
 export async function middleware(request: NextRequest) {
-  const token = await getToken({ req: request })
-  const userEmail = token?.email || 'anonymous'
+  // Lấy thông tin user từ cookie session nếu có
+  const session = request.cookies.get('session')?.value
+  const userEmail = session ? JSON.parse(session).email : 'anonymous'
   
   // Lấy thông tin request
   const method = request.method
@@ -25,6 +25,18 @@ export async function middleware(request: NextRequest) {
       break
     case '/auth/forgot-password':
       message += 'requested password reset'
+      break
+    case '/auth/register':
+      message += 'attempted registration'
+      break
+    case '/auth/login':
+      message += 'attempted login'
+      break
+    case '/courses/basic':
+      message += 'viewed basic course'
+      break
+    case '/courses/advanced':
+      message += 'viewed advanced course'
       break
     default:
       message += `accessed ${path}`
