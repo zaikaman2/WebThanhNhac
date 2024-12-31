@@ -9,7 +9,6 @@ export async function middleware(request: NextRequest) {
   // Lấy thông tin request
   const method = request.method
   const path = request.nextUrl.pathname
-  const timestamp = new Date().toISOString()
 
   // Tạo message mô tả hành động
   let message = `User ${userEmail} `
@@ -43,7 +42,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Log thông tin
-  console.log(`[${timestamp}] ${method} ${path} - ${message}`)
+  console.log(`${method} ${path} - ${message}`)
 
   return NextResponse.next()
 }
