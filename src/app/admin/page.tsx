@@ -180,20 +180,16 @@ export default function AdminPage() {
           setPurchases(purchasesWithUsers)
         }
 
-        // Load statistics data
-        const now = new Date()
-        const startOfYear = new Date(now.getFullYear(), 0, 1)
-
         // Get total users
+        const now = new Date()
         const { count: totalUsers } = await supabase
           .from('profiles')
           .select('*', { count: 'exact' })
 
-        // Get purchases data for statistics
+        // Get all purchases for statistics
         const { data: statsData, error: statsError } = await supabase
           .from('purchases')
           .select('*')
-          .gte('created_at', startOfYear.toISOString())
           .order('created_at', { ascending: true })
 
         if (statsError) {
@@ -201,44 +197,52 @@ export default function AdminPage() {
           throw new Error('Không thể tải dữ liệu thống kê')
         }
 
-        if (statsData) {
+        // Initialize statistics with default values
+        const statistics = {
+          totalUsers: totalUsers || 0,
+          totalPurchases: 0,
+          totalRevenue: 0,
+          revenueByMonth: Array.from({ length: 12 }, (_, i) => ({
+            month: new Date(now.getFullYear(), i, 1).toLocaleDateString('vi-VN', { month: 'short' }),
+            revenue: 0
+          })),
+          revenueByDay: statsData.reduce((acc: { date: string; revenue: number }[], purchase) => {
+            const date = new Date(purchase.created_at).toISOString().split('T')[0];
+            const existingDay = acc.find(item => item.date === date);
+            if (existingDay) {
+              existingDay.revenue += purchase.amount;
+            } else {
+              acc.push({ date, revenue: purchase.amount });
+            }
+            return acc;
+          }, []).sort((a, b) => a.date.localeCompare(b.date)),
+          purchasesByType: [
+            { type: 'Cơ bản', count: 0 },
+            { type: 'Nâng cao', count: 0 }
+          ],
+          purchasesByStatus: [
+            { status: 'Hoàn thành', count: 0 },
+            { status: 'Hoàn tiền', count: 0 },
+            { status: 'Đã hủy', count: 0 }
+          ]
+        }
+
+        if (statsData && statsData.length > 0) {
           // Calculate total revenue and purchases
-          const totalPurchases = statsData.length
-          const totalRevenue = statsData.reduce((sum, p) => sum + p.amount, 0)
+          statistics.totalPurchases = statsData.length
+          statistics.totalRevenue = statsData.reduce((sum, p) => sum + (p.amount || 0), 0)
 
           // Calculate revenue by month
-          const revenueByMonth = Array.from({ length: 12 }, (_, i) => {
-            const monthPurchases = statsData.filter(p => 
-              new Date(p.created_at).getMonth() === i &&
-              p.payment_status === 'completed'
-            )
-            return {
-              month: new Date(now.getFullYear(), i, 1).toLocaleDateString('vi-VN', { month: 'short' }),
-              revenue: monthPurchases.reduce((sum, p) => sum + p.amount, 0)
+          statsData.forEach(purchase => {
+            if (purchase.payment_status === 'completed' && purchase.amount) {
+              const purchaseDate = new Date(purchase.created_at)
+              const monthIndex = purchaseDate.getMonth()
+              statistics.revenueByMonth[monthIndex].revenue += purchase.amount
             }
           })
 
-          // Calculate revenue by day for current month
-          const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1)
-          const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0)
-
-          const revenueByDay = Array.from(
-            { length: endOfMonth.getDate() },
-            (_, i) => {
-              const date = new Date(now.getFullYear(), now.getMonth(), i + 1)
-              const dayPurchases = statsData.filter(p => 
-                new Date(p.created_at).toDateString() === date.toDateString() &&
-                p.payment_status === 'completed'
-              )
-              return {
-                date: date.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' }),
-                revenue: dayPurchases.reduce((sum, p) => sum + p.amount, 0)
-              }
-            }
-          )
-
           // Calculate purchases by type
-          const purchasesByType = [
+          statistics.purchasesByType = [
             {
               type: 'Cơ bản',
               count: statsData.filter(p => p.course_type === 'basic').length
@@ -250,7 +254,7 @@ export default function AdminPage() {
           ]
 
           // Calculate purchases by status
-          const purchasesByStatus = [
+          statistics.purchasesByStatus = [
             {
               status: 'Hoàn thành',
               count: statsData.filter(p => p.payment_status === 'completed').length
@@ -264,17 +268,9 @@ export default function AdminPage() {
               count: statsData.filter(p => p.payment_status === 'cancelled').length
             }
           ]
-
-          setStatistics({
-            totalUsers: totalUsers || 0,
-            totalPurchases,
-            totalRevenue,
-            revenueByMonth,
-            revenueByDay,
-            purchasesByType,
-            purchasesByStatus
-          })
         }
+
+        setStatistics(statistics)
 
         console.log('Data loaded successfully')
 
@@ -769,6 +765,7 @@ export default function AdminPage() {
                           border: 'none',
                           borderRadius: '0.5rem'
                         }}
+                        formatter={(value) => `${Number(value).toLocaleString('vi-VN')}đ`}
                       />
                       <Legend />
                       <Line 
@@ -779,41 +776,6 @@ export default function AdminPage() {
                         strokeWidth={2}
                       />
                     </LineChart>
-                  </ResponsiveContainer>
-                </div>
-              </div>
-
-              {/* Daily Revenue Chart */}
-              <div className="bg-secondary-light p-6 rounded-xl border border-primary/10">
-                <h3 className="text-xl font-bold text-primary mb-6">Doanh thu theo ngày (tháng {new Date().getMonth() + 1})</h3>
-                <div className="h-80">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart 
-                      data={statistics.revenueByDay}
-                      margin={{ top: 10, right: 30, left: 40, bottom: 10 }}
-                    >
-                      <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                      <XAxis 
-                        dataKey="date" 
-                        stroke="#9CA3AF"
-                        interval={2}
-                      />
-                      <YAxis stroke="#9CA3AF" width={80} />
-                      <Tooltip 
-                        contentStyle={{ 
-                          backgroundColor: '#1F2937',
-                          border: 'none',
-                          borderRadius: '0.5rem'
-                        }}
-                        formatter={(value) => `${Number(value).toLocaleString('vi-VN')}đ`}
-                      />
-                      <Legend />
-                      <Bar 
-                        dataKey="revenue" 
-                        name="Doanh thu"
-                        fill="#FFD700"
-                      />
-                    </BarChart>
                   </ResponsiveContainer>
                 </div>
               </div>
