@@ -323,14 +323,6 @@ export default function BasicCoursePage() {
                     <div className={hasPurchased ? 'w-full' : 'flex-[3]'}>
                       <CourseAccessButton courseType="basic" userId={user?.id} />
                     </div>
-                    {!hasPurchased && (
-                      <a 
-                        href="/learn/basic?trial=true"
-                        className="flex-[2] text-sm bg-transparent text-primary border border-primary/30 hover:bg-secondary-light transition-all duration-300 rounded-full py-2.5 px-4 text-center"
-                      >
-                        Học thử miễn phí
-                      </a>
-                    )}
                   </div>
                 </div>
               </SlideIn>
@@ -373,11 +365,6 @@ export default function BasicCoursePage() {
                       <div key={lessonIndex} className="pl-4">
                         <div className="flex items-center gap-2">
                           <h4 className="text-lg font-medium text-gray-200 mb-2">{lesson.title}</h4>
-                          {index === 0 && lessonIndex === 0 && (
-                            <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">
-                              Học thử miễn phí
-                            </span>
-                          )}
                         </div>
                         <ul className="space-y-2">
                           {lesson.content.map((item, itemIndex) => (
