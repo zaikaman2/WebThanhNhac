@@ -121,6 +121,13 @@ const courseSections = [
         duration: '08:28',
         description: 'Ví dụ bài: Cắt đôi nỗi sầu.',
         videoId: '1034738744'
+      },
+      {
+        id: 13,
+        title: 'Bài 13: Tập luyện xử lý bài hát mẫu (2)',
+        duration: '04:23',
+        description: 'Ví dụ bài: Tái sinh.',
+        videoId: '1045209684'
       }
     ]
   }
