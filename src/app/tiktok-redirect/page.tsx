@@ -23,7 +23,7 @@ export default function TikTokRedirectPage() {
                   1
                 </div>
                 <div className="flex items-center">
-                  <p className="text-white text-xl">Nhấn vào nút <span className="font-bold text-2xl">...</span> ở góc phải trên màn hình</p>
+                  <p className="text-white text-xl">Nhấn vào nút <span className="font-bold text-2xl -translate-y-1 inline-block">...</span> ở góc phải trên màn hình</p>
                 </div>
               </div>
               <div className="flex gap-5">
