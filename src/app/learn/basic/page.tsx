@@ -102,6 +102,13 @@ const courseSections = [
         duration: '06:43',
         description: 'Hướng dẫn như thế nào là khẩu hình đúng trong thanh nhạc.',
         videoId: '1034887413'
+      },
+      {
+        id: 11,
+        title: 'Bài 11: Giọng giả thanh và giọng pha',
+        duration: '11:18',
+        description: 'Hướng dẫn cách luyện tập giọng giả thanh và giọng pha.',
+        videoId: '1046815285'
       }
     ]
   },
@@ -109,22 +116,22 @@ const courseSections = [
     title: 'Phần 6: Xử lý bài hát',
     lessons: [
       {
-        id: 11,
-        title: 'Bài 11: Cách xử lý cảm xúc trong bài hát',
+        id: 12,
+        title: 'Bài 12: Cách xử lý cảm xúc trong bài hát',
         duration: '10:14',
         description: 'Hiểu ý nghĩa bài hát và điều chỉnh cách hát cho phù hợp.',
         videoId: '1034589231'
       },
       {
-        id: 12,
-        title: 'Bài 12: Tập luyện xử lý bài hát mẫu (1)',
+        id: 13,
+        title: 'Bài 13: Tập luyện xử lý bài hát mẫu (1)',
         duration: '08:28',
         description: 'Ví dụ bài: Cắt đôi nỗi sầu.',
         videoId: '1034738744'
       },
       {
-        id: 13,
-        title: 'Bài 13: Tập luyện xử lý bài hát mẫu (2)',
+        id: 14,
+        title: 'Bài 14: Tập luyện xử lý bài hát mẫu (2)',
         duration: '04:23',
         description: 'Ví dụ bài: Tái sinh.',
         videoId: '1045209684'

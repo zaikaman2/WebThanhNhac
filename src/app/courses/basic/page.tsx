@@ -133,6 +133,12 @@ export default function BasicCoursePage() {
           content: [
             'Hướng dẫn như thế nào mới là khẩu hình miệng đúng trong thanh nhạc'
           ]
+        },
+        {
+          title: 'Bài 11: Giọng giả thanh và giọng pha',
+          content: [
+            'Hướng dẫn cách luyện tập giọng giả thanh và giọng pha'
+          ]
         }
       ]
     },
@@ -140,19 +146,19 @@ export default function BasicCoursePage() {
       title: 'Phần 6: Xử lý bài hát',
       lessons: [
         {
-          title: 'Bài 11: Cách xử lý cảm xúc trong bài hát',
+          title: 'Bài 12: Cách xử lý cảm xúc trong bài hát',
           content: [
             'Hiểu ý nghĩa bài hát và điều chỉnh cách hát cho phù hợp'
           ]
         },
         {
-          title: 'Bài 12: Tập luyện xử lý bài hát mẫu (1)',
+          title: 'Bài 13: Tập luyện xử lý bài hát mẫu (1)',
           content: [
             'Ví dụ bài: Cắt đôi nỗi sầu'
           ]
         },
         {
-          title: 'Bài 13: Tập luyện xử lý bài hát mẫu (2)',
+          title: 'Bài 14: Tập luyện xử lý bài hát mẫu (2)',
           content: [
             'Ví dụ bài: Tái sinh'
           ]
@@ -164,12 +170,12 @@ export default function BasicCoursePage() {
   const highlights = [
     {
       icon: <BookOpen className="w-6 h-6" />,
-      title: '13 bài học chi tiết',
+      title: '14 bài học chi tiết',
       description: 'Nội dung được thiết kế khoa học từ cơ bản đến nâng cao'
     },
     {
       icon: <Clock className="w-6 h-6" />,
-      title: '13 ngày học tập',
+      title: '14 ngày học tập',
       description: 'Thời gian đủ để nắm vững các kỹ thuật cơ bản'
     },
     {
@@ -231,7 +237,7 @@ export default function BasicCoursePage() {
       id: 1,
       name: "Nguyễn Thị Hương",
       rating: 5,
-      comment: "Khóa học rất phù hợp cho người mới bắt đầu như mình. Thầy dạy rất tận tình và dễ hiểu. Sau 13 ngày, mình đã tự tin hát karaoke với bạn bè!",
+      comment: "Khóa học rất phù hợp cho người mới bắt đầu như mình. Thầy dạy rất tận tình và dễ hiểu. Sau 14 ngày, mình đã tự tin hát karaoke với bạn bè!",
       date: "15/03/2024"
     },
     {
