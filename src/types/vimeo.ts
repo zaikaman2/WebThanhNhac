@@ -12,6 +12,11 @@ export interface VimeoEventData {
   seeking: { seconds: number }
   seeked: { seconds: number }
   error: { name: string; message: string }
+  ended: void
+  volumechange: { volume: number }
+  loaded: void
+  bufferstart: void
+  bufferend: void
 }
 
 export interface VimeoPlayer {

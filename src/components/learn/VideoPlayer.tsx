@@ -6,6 +6,7 @@ import VideoControls from './VideoControls'
 import { VimeoQuality } from '@/types/video'
 import type { VimeoPlayer } from '@/types/vimeo'
 import TrialLimitModal from './TrialLimitModal'
+import { Loader2 } from 'lucide-react'
 
 interface VideoPlayerProps {
   src?: string
@@ -27,7 +28,12 @@ export default function VideoPlayer({ videoId, title, courseType, lessonId, isTr
   const [availableQualities, setAvailableQualities] = useState<VimeoQuality[]>([])
   const [isControlsVisible, setIsControlsVisible] = useState(true)
   const [showTrialLimitModal, setShowTrialLimitModal] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const controlsTimeoutRef = useRef<NodeJS.Timeout>()
+
+  useEffect(() => {
+    setIsLoading(true)
+  }, [videoId])
 
   useEffect(() => {
     if (playerRef.current && videoId) {
@@ -61,6 +67,23 @@ export default function VideoPlayer({ videoId, title, courseType, lessonId, isTr
 
       vimeoPlayer.setVolume(1)
       vimeoPlayer.getDuration().then(setDuration)
+
+      // Add loading state listeners
+      vimeoPlayer.on('loaded', () => {
+        setIsLoading(false)
+      })
+
+      vimeoPlayer.on('play', () => {
+        setIsLoading(false)
+      })
+
+      vimeoPlayer.on('bufferstart', () => {
+        setIsLoading(true)
+      })
+
+      vimeoPlayer.on('bufferend', () => {
+        setIsLoading(false)
+      })
 
       // Add time update listener for trial mode
       if (isTrial) {
@@ -185,6 +208,12 @@ export default function VideoPlayer({ videoId, title, courseType, lessonId, isTr
           className="relative w-full h-full" 
           style={{padding: '56.25% 0 0 0'}}
         />
+        
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+            <Loader2 className="w-12 h-12 text-primary animate-spin" />
+          </div>
+        )}
         
         {player && (
           <div 
