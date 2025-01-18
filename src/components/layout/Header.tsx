@@ -43,6 +43,9 @@ export default function Header() {
           </div>
 
           <nav className="hidden md:flex space-x-8 items-center">
+            <Link href="/blog" className="text-gray-300 hover:text-primary transition-colors">
+              Blog
+            </Link>
             <Link href="/faq" className="text-gray-300 hover:text-primary transition-colors">
               Hỗ trợ
             </Link>
@@ -98,6 +101,9 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden bg-secondary-light border-t border-primary/10">
             <div className="px-2 pt-2 pb-3 space-y-1">
+              <Link href="/blog" className="block px-3 py-2 text-gray-300 hover:text-primary">
+                Blog
+              </Link>
               <Link href="/faq" className="block px-3 py-2 text-gray-300 hover:text-primary">
                 Hỗ trợ
               </Link>

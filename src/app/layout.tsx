@@ -29,22 +29,23 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "KienVocal - Khóa học thanh nhạc online chất lượng cao",
-  description: "KienVocal - Khóa học thanh nhạc online với giảng viên Đinh Trung Kiên. Học hát chuyên nghiệp, phương pháp khoa học, có lộ trình rõ ràng từ cơ bản đến nâng cao.",
-  keywords: "kienvocal, kien vocal, học hát online, khóa học thanh nhạc, Đinh Trung Kiên, dạy hát online, học thanh nhạc, Kien Vocal, Đinh Trung Kien",
+  title: "KienVocal - Học Thanh Nhạc Online | Khóa Học Thanh Nhạc Chất Lượng Cao",
+  description: "Khóa học thanh nhạc online uy tín với giảng viên Đinh Trung Kiên. Phương pháp học hát chuyên nghiệp, khoa học từ cơ bản đến nâng cao. Học thanh nhạc online mọi lúc mọi nơi với giáo trình chuẩn và hỗ trợ 1-1.",
+  keywords: "học thanh nhạc, khóa học thanh nhạc, học thanh nhạc online, khóa học thanh nhạc online, kienvocal, đinh trung kiên, thanh nhạc, cách hát hay, dạy hát, học hát online, luyện giọng hát, kỹ thuật thanh nhạc, học hát cơ bản, học thanh nhạc cơ bản, học hát chuyên nghiệp",
   verification: {
     google: 'google28c0039f61be903c.html',
   },
   openGraph: {
-    title: 'KienVocal - Khóa học thanh nhạc online chất lượng cao',
-    description: 'Khám phá tiềm năng giọng hát của bạn cùng giảng viên Đinh Trung Kiên qua các khóa học thanh nhạc online chất lượng cao',
+    title: 'KienVocal - Học Thanh Nhạc Online | Khóa Học Thanh Nhạc Chất Lượng Cao',
+    description: 'Khám phá và phát triển giọng hát của bạn cùng giảng viên Đinh Trung Kiên qua các khóa học thanh nhạc online chất lượng cao. Phương pháp học hát chuyên nghiệp, khoa học từ cơ bản đến nâng cao.',
     url: 'https://kienvocal.com',
-    siteName: 'KienVocal',
+    siteName: 'KienVocal - Học Thanh Nhạc Online',
     images: [
       {
         url: 'https://i.ibb.co/YhSY2QK/logo.png',
         width: 800,
         height: 600,
+        alt: 'KienVocal - Khóa học thanh nhạc online cùng Đinh Trung Kiên'
       }
     ],
     locale: 'vi_VN',
