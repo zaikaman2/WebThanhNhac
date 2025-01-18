@@ -9,6 +9,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: 'https://kienvocal.com/blog',
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kienvocal.com/blog/ky-thuat-ho-tro-giong-hat',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://kienvocal.com/blog/bai-tap-luyen-giong-co-ban',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://kienvocal.com/blog/cach-luyen-hat-dung-tong',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://kienvocal.com/blog/khoi-dong-giong-hat',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://kienvocal.com/blog/phat-trien-giong-hat-tram',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: 'https://kienvocal.com/courses',
       lastModified: new Date(),
       changeFrequency: 'weekly',
