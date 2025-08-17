@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
-const genAI = new GoogleGenerativeAI('AIzaSyDDV5qSKXqLFTmAEL-39Mp6VYg56fjx9p0')
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!)
 
 const formatResponse = (text: string) => {
   // Format các section chính

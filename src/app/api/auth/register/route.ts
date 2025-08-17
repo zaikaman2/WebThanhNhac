@@ -14,8 +14,8 @@ export async function POST(request: Request) {
     }
 
     const supabaseAdmin = createClient(
-      'https://fgmmykvsbzfgpdloadvb.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnbW15a3ZzYnpmZ3BkbG9hZHZiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMjI2MTkwNCwiZXhwIjoyMDQ3ODM3OTA0fQ.CFvf9eksZ5dVEuARVhxIGbtDCazXKZSUxeCui5dWedc'
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
     )
 
     const { data: existingProfile } = await supabaseAdmin
