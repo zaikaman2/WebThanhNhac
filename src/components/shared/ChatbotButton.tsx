@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!)
+const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GOOGLE_API_KEY!)
 
 const formatResponse = (text: string) => {
   // Format các section chính
@@ -99,7 +99,7 @@ Hãy trả lời mọi câu hỏi một cách thân thiện và chuyên nghiệp
     setIsLoading(true)
 
     try {
-      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' })
+      const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
 
       const fullPrompt = `${systemPrompt}\n\nLịch sử chat:\n${messages
         .map(msg => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`)
