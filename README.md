@@ -292,17 +292,17 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=key_production
 <div align="center">
 
 **👨‍💻 Thông Tin Developer**  
-📧 **Email:** your.email@example.com  
-🔗 **LinkedIn:** [Your LinkedIn Profile]  
-🐙 **GitHub:** [Your GitHub Profile]  
-💼 **Portfolio:** [Your Portfolio Website]
+📧 **Email:** zaikaman123@gmail.com
+🔗 **LinkedIn:** https://www.linkedin.com/in/%C4%91inh-ph%C3%BAc-th%E1%BB%8Bnh-2561b5274/  
+🐙 **GitHub:** https://github.com/zaikaman  
+💼 **Portfolio:** https://dinhphucthinh.vercel.app/
 
 ---
 
 **🎵 KienVocal - Giảng Viên Thanh Nhạc**  
 👨‍🎤 **Giảng viên:** Đinh Trung Kiên  
 📞 **Điện thoại:** 0903100887  
-📧 **Email:** zaikaman123@gmail.com  
+📧 **Email:** kienalai@gmail.com 
 🏆 **Kinh nghiệm:** 30+ năm giảng dạy thanh nhạc  
 🎯 **Thành tựu:** Hơn 1000+ học viên thành công
 
@@ -333,5 +333,5 @@ Dự án này được cấp phép theo **MIT License** - xem file [LICENSE](LIC
   
   <br/>
   
-  **[🚀 Website Live](https://kienvocal.com)** | **[📖 Tài Liệu](https://github.com/your-repo/docs)** | **[🐛 Báo Lỗi](https://github.com/your-repo/issues)**
+  **[🚀 Website Live](https://kienvocal.com)**
 </div>
