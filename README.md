@@ -1,4 +1,4 @@
-# 🎵 KienVocal - Nền Tảng Đào Tạo Thanh Nhạc Trực Tuyến
+# 🎵 KienVocal - Online Vocal Training Platform
 
 <div align="center">
   <img src="https://img.shields.io/badge/Next.js-15.0.3-black?style=for-the-badge&logo=next.js" alt="Next.js" />
@@ -9,197 +9,197 @@
 </div>
 
 <p align="center">
-  <strong>🚀 Nền tảng học thanh nhạc trực tuyến hiện đại</strong>
+  <strong>🚀 Modern online vocal training platform</strong>
 </p>
 
 <p align="center">
-  Website học thanh nhạc của giảng viên Đinh Trung Kiên - với 30+ năm kinh nghiệm giảng dạy thanh nhạc chuyên nghiệp
+  Professional vocal training website by instructor Dinh Trung Kien - with 30+ years of teaching experience
 </p>
 
 ---
 
-## 🌟 Tính Năng Chính
+## 🌟 Key Features
 
-### 🎯 **Học Tập Trực Tuyến**
-- **📚 Khóa học có cấu trúc**: Khóa cơ bản (14 bài) và trung cấp với nội dung chi tiết
-- **🎥 Video chất lượng cao**: Tích hợp Vimeo player để học tập mượt mà
-- **📖 Theo dõi tiến độ**: Hệ thống đánh dấu bài học đã hoàn thành
-- **💬 Bình luận tương tác**: Học viên có thể thảo luận và đặt câu hỏi trên từng bài học
+### 🎯 **Online Learning**
+- **📚 Structured Courses**: Basic course (14 lessons) and intermediate level with detailed content
+- **🎥 High-Quality Videos**: Seamless learning with integrated Vimeo player
+- **📖 Progress Tracking**: System to mark completed lessons
+- **💬 Interactive Comments**: Students can discuss and ask questions on each lesson
 
-### 🤖 **Trợ Lý AI Thông Minh**
-- **💭 Chatbot tư vấn**: Sử dụng Google Gemini AI để tư vấn học viên 24/7
-- **🎯 Hỗ trợ cá nhân hóa**: Trả lời câu hỏi về kỹ thuật thanh nhạc và khóa học
-- **📞 Thông tin liên hệ**: Cung cấp thông tin giảng viên và lịch học
+### 🤖 **Smart AI Assistant**
+- **💭 Chatbot Consultation**: 24/7 student support using Google Gemini AI
+- **🎯 Personalized Support**: Answers questions about vocal techniques and courses
+- **📞 Contact Information**: Provides instructor information and schedules
 
-### 💳 **Thanh Toán & Quản Lý**
-- **💸 Thanh toán trực tuyến**: Tích hợp PayOS hỗ trợ nhiều phương thức thanh toán
-- **👤 Quản lý tài khoản**: Đăng ký, đăng nhập và quản lý thông tin cá nhân
-- **🔐 Bảo mật cao**: Xác thực người dùng an toàn với Supabase Auth
+### 💳 **Payment & Management**
+- **💸 Online Payment**: PayOS integration supporting multiple payment methods
+- **👤 Account Management**: Registration, login, and personal information management
+- **🔐 High Security**: Secure user authentication with Supabase Auth
 
-### 📝 **Nội Dung Giáo Dục**
-- **📰 Blog thanh nhạc**: Bài viết chuyên sâu về kỹ thuật và phương pháp học hát
-- **💡 Kiến thức thực tế**: Chia sẻ kinh nghiệm từ giảng viên chuyên nghiệp
-- **📱 Thiết kế responsive**: Giao diện thân thiện trên mọi thiết bị
-
----
-
-## 🛠️ Công Nghệ Sử Dụng
-
-### **Frontend - Giao Diện Người Dùng**
-- ⚡ **Next.js 15.0.3** - Framework React hiện đại với App Router
-- 🎨 **Tailwind CSS** - Framework CSS tiện ích
-- 📱 **Responsive Design** - Thiết kế tương thích đa thiết bị
-- 🎭 **Lucide React** - Thư viện icon đẹp mắt
-- 🔥 **React Hot Toast** - Thông báo người dùng
-
-### **Backend & Cơ Sở Dữ Liệu**
-- 🗃️ **Supabase** - Nền tảng backend đám mây
-- 🔒 **Supabase Auth** - Hệ thống xác thực bảo mật
-- 📊 **PostgreSQL** - Cơ sở dữ liệu quan hệ mạnh mẽ
-- 🔍 **Prisma ORM** - Công cụ quản lý database an toàn kiểu
-
-### **Tích Hợp & AI**
-- 🤖 **Google Gemini AI** - Trí tuệ nhân tạo cho chatbot
-- 🎥 **Vimeo Player** - Phát video chất lượng cao
-- 💳 **PayOS** - Cổng thanh toán Việt Nam
-- 📧 **Email Templates** - Gửi email tự động
+### 📝 **Educational Content**
+- **📰 Vocal Blog**: In-depth articles on singing techniques and methods
+- **💡 Practical Knowledge**: Experience sharing from professional instructors
+- **📱 Responsive Design**: User-friendly interface across all devices
 
 ---
 
-## 🏗️ Kiến Trúc Hệ Thống
+## 🛠️ Tech Stack
+
+### **Frontend - User Interface**
+- ⚡ **Next.js 15.0.3** - Modern React framework with App Router
+- 🎨 **Tailwind CSS** - Utility-first CSS framework
+- 📱 **Responsive Design** - Multi-device compatible design
+- 🎭 **Lucide React** - Beautiful icon library
+- 🔥 **React Hot Toast** - User notifications
+
+### **Backend & Database**
+- 🗃️ **Supabase** - Cloud backend platform
+- 🔒 **Supabase Auth** - Secure authentication system
+- 📊 **PostgreSQL** - Powerful relational database
+- 🔍 **Prisma ORM** - Type-safe database management tool
+
+### **Integrations & AI**
+- 🤖 **Google Gemini AI** - Artificial intelligence for chatbot
+- 🎥 **Vimeo Player** - High-quality video streaming
+- 💳 **PayOS** - Vietnamese payment gateway
+- 📧 **Email Templates** - Automated email sending
+
+---
+
+## 🏗️ System Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Người Dùng    │ ←→ │   Next.js Web   │ ←→ │    Supabase     │
-│   (Web/Mobile)  │    │   Application   │    │    Backend      │
+│     Users       │ ←→ │   Next.js Web   │ ←→ │    Supabase     │
+│  (Web/Mobile)   │    │   Application   │    │    Backend      │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                               │                        │
                               ↓                        ↓
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │  Google Gemini  │    │      PayOS      │    │   PostgreSQL    │
-│   AI Chatbot    │    │   Thanh Toán    │    │   Cơ Sở Dữ Liệu │
+│   AI Chatbot    │    │    Payment      │    │    Database     │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                               │
                               ↓
                     ┌─────────────────┐
                     │  Vimeo Player   │
-                    │   Video Học     │
+                    │  Video Learning │
                     └─────────────────┘
 ```
 
 ---
 
-## 📊 Cơ Sở Dữ Liệu
+## 📊 Database Schema
 
-### **Bảng Chính**
-| Bảng | Mô Tả | Tính Năng |
-|------|-------|-----------|
-| **Course** | Quản lý khóa học | Giá động, nhiều loại khóa học |
-| **Instructor** | Thông tin giảng viên | Thành tựu, tiểu sử chi tiết |
-| **Testimonial** | Đánh giá học viên | Hệ thống phản hồi người dùng |
-| **Purchases** | Đơn hàng | Theo dõi trạng thái thanh toán |
+### **Core Tables**
+| Table | Description | Features |
+|-------|-------------|----------|
+| **Course** | Course management | Dynamic pricing, multiple course types |
+| **Instructor** | Instructor information | Achievements, detailed biography |
+| **Testimonial** | Student reviews | User feedback system |
+| **Purchases** | Orders | Payment status tracking |
 
-### **Bảng Tương Tác**
-| Bảng | Mô Tả | Tính Năng |
-|------|-------|-----------|
-| **profiles** | Thông tin người dùng | Quản lý tài khoản cá nhân |
-| **lesson_comments** | Bình luận bài học | Thảo luận có phân cấp và like |
-| **videos** | Quản lý video | Liên kết với Vimeo ID |
+### **Interactive Tables**
+| Table | Description | Features |
+|-------|-------------|----------|
+| **profiles** | User information | Personal account management |
+| **lesson_comments** | Lesson comments | Hierarchical discussions with likes |
+| **videos** | Video management | Vimeo ID integration |
 
 ---
 
-## 🚀 Hướng Dẫn Cài Đặt
+## 🚀 Getting Started
 
-### **Yêu Cầu Hệ Thống**
+### **System Requirements**
 ```bash
 Node.js >= 18.0.0
 npm >= 8.0.0
-Tài khoản Supabase (miễn phí)
+Supabase account (free)
 ```
 
-### **Cài Đặt Dự Án**
+### **Project Installation**
 ```bash
-# 1. Tải mã nguồn
-git clone https://github.com/yourusername/webthanhnhac.git
+# 1. Clone the repository
+git clone https://github.com/zaikaman/webthanhnhac.git
 cd webthanhnhac
 
-# 2. Cài đặt dependencies
+# 2. Install dependencies
 npm install
 
-# 3. Thiết lập biến môi trường
+# 3. Setup environment variables
 cp .env.example .env.local
-# Cấu hình Supabase, PayOS, và Google AI API
+# Configure Supabase, PayOS, and Google AI API
 
-# 4. Chạy server phát triển
+# 4. Run development server
 npm run dev
 ```
 
-### **Biến Môi Trường**
+### **Environment Variables**
 ```bash
-# Cấu hình Supabase
-NEXT_PUBLIC_SUPABASE_URL=url_supabase_của_bạn
-NEXT_PUBLIC_SUPABASE_ANON_KEY=anon_key_supabase
-SUPABASE_SERVICE_KEY=service_key_supabase
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_KEY=your_service_key
 
-# Google AI cho Chatbot
-NEXT_PUBLIC_GOOGLE_API_KEY=api_key_google_gemini
+# Google AI for Chatbot
+NEXT_PUBLIC_GOOGLE_API_KEY=your_google_gemini_api_key
 
-# PayOS cho thanh toán
-PAYOS_CLIENT_ID=client_id_payos
-PAYOS_API_KEY=api_key_payos
-PAYOS_CHECKSUM_KEY=checksum_key_payos
+# PayOS for Payment
+PAYOS_CLIENT_ID=your_payos_client_id
+PAYOS_API_KEY=your_payos_api_key
+PAYOS_CHECKSUM_KEY=your_payos_checksum_key
 
-# Vimeo cho video
-VIMEO_ACCESS_TOKEN=access_token_vimeo
+# Vimeo for Videos
+VIMEO_ACCESS_TOKEN=your_vimeo_access_token
 ```
 
 ---
 
-## 📁 Cấu Trúc Dự Án
+## 📁 Project Structure
 
 ```
 webthanhnhac/
 ├── 📂 src/
-│   ├── 📂 app/                    # Trang web chính (Next.js App Router)
+│   ├── 📂 app/                    # Main application (Next.js App Router)
 │   │   ├── 📂 api/               # API endpoints
-│   │   ├── 📂 auth/              # Trang xác thực (đăng nhập/ký)
-│   │   ├── 📂 courses/           # Trang khóa học
-│   │   ├── 📂 learn/             # Trang học tập (video)
-│   │   ├── 📂 blog/              # Blog thanh nhạc
-│   │   └── 📂 payment/           # Trang thanh toán
-│   ├── 📂 components/            # Component React tái sử dụng
-│   │   ├── 📂 home/              # Trang chủ
-│   │   ├── 📂 learn/             # Phần học tập
-│   │   ├── 📂 shared/            # Shared UI
+│   │   ├── 📂 auth/              # Authentication pages (login/register)
+│   │   ├── 📂 courses/           # Course pages
+│   │   ├── 📂 learn/             # Learning pages (videos)
+│   │   ├── 📂 blog/              # Vocal blog
+│   │   └── 📂 payment/           # Payment pages
+│   ├── 📂 components/            # Reusable React components
+│   │   ├── 📂 home/              # Homepage components
+│   │   ├── 📂 learn/             # Learning section
+│   │   ├── 📂 shared/            # Shared UI components
 │   │   └── 📂 layout/            # Header, Footer
-│   ├── 📂 lib/                   # Thư viện tiện ích
+│   ├── 📂 lib/                   # Utility libraries
 │   ├── 📂 hooks/                 # Custom React hooks
 │   ├── 📂 contexts/              # React contexts
-│   └── 📂 content/               # Nội dung blog (Markdown)
-├── 📂 public/                    # Tài nguyên tĩnh (hình ảnh, icons)
-└── 📄 README.md                  # Tài liệu dự án
+│   └── 📂 content/               # Blog content (Markdown)
+├── 📂 public/                    # Static assets (images, icons)
+└── 📄 README.md                  # Project documentation
 ```
 
 ---
 
-## 🎯 Điểm Nổi Bật Kỹ Thuật
+## 🎯 Technical Highlights
 
-### **🤖 AI Chatbot Thông Minh**
+### **🤖 Smart AI Chatbot**
 ```typescript
-// Tích hợp Google Gemini AI tư vấn 24/7
+// Google Gemini AI integration for 24/7 consultation
 const genAI = new GoogleGenerativeAI(apiKey)
 const response = await genAI.generateContent(userQuery)
 
-// Định dạng phản hồi thông minh
+// Smart response formatting
 const formatResponse = (text: string) => {
   const sections = text.split('***').map(section => section.trim())
   return sections.map(section => formatSection(section))
 }
 ```
 
-### **💳 Hệ Thống Thanh Toán PayOS**
+### **💳 PayOS Payment System**
 ```typescript
-// Tích hợp PayOS cho thanh toán Việt Nam
+// PayOS integration for Vietnamese payments
 const createPaymentLink = async (courseData) => {
   const paymentLink = await payOS.createPaymentLink({
     orderCode: Number(String(Date.now()).slice(-6)),
@@ -211,17 +211,17 @@ const createPaymentLink = async (courseData) => {
 }
 ```
 
-### **🎥 Video Player Tùy Chỉnh**
+### **🎥 Custom Video Player**
 ```typescript
-// Player Vimeo với theo dõi tiến độ
+// Vimeo player with progress tracking
 const VideoPlayer = ({ videoId, courseType, lessonId }) => {
   const handleTimeUpdate = (currentTime: number) => {
-    // Cập nhật tiến độ học tập real-time
+    // Update learning progress in real-time
     updateUserProgress(courseType, lessonId, currentTime)
   }
   
   const handleVideoComplete = () => {
-    // Đánh dấu bài học hoàn thành
+    // Mark lesson as completed
     markLessonCompleted(courseType, lessonId)
   }
 }
@@ -229,109 +229,109 @@ const VideoPlayer = ({ videoId, courseType, lessonId }) => {
 
 ---
 
-## 📈 Hiệu Suất & Tối Ưu
+## 📈 Performance & Optimization
 
-### **Tốc Độ Website**
-- ⚡ **LCP**: < 2.5s (Tải nội dung chính)
-- 🎯 **FID**: < 100ms (Phản hồi tương tác)  
-- 📐 **CLS**: < 0.1 (Ổn định giao diện)
+### **Website Speed**
+- ⚡ **LCP**: < 2.5s (Largest Contentful Paint)
+- 🎯 **FID**: < 100ms (First Input Delay)  
+- 📐 **CLS**: < 0.1 (Cumulative Layout Shift)
 
-### **Tối Ưu SEO**
-- 🔍 Meta tags động cho từng trang
-- 📱 Responsive design chuẩn mobile-first
-- 🗺️ Tự động tạo sitemap XML
+### **SEO Optimization**
+- 🔍 Dynamic meta tags for each page
+- 📱 Mobile-first responsive design
+- 🗺️ Automatic XML sitemap generation
 - 🤖 Structured data markup
 
-### **Phân Tích & Theo Dõi**
-- 📊 Tích hợp Vercel Analytics
-- ⚡ Speed Insights theo dõi tốc độ
-- 👥 Theo dõi hành vi người dùng
+### **Analytics & Monitoring**
+- 📊 Vercel Analytics integration
+- ⚡ Speed Insights performance tracking
+- 👥 User behavior monitoring
 
 ---
 
-## 🔒 Bảo Mật
+## 🔒 Security
 
-- 🛡️ **Row Level Security (RLS)** trên Supabase
-- 🔐 **JWT Authentication** bảo vệ API
-- 🔒 **Kiểm tra input** và validation dữ liệu
-- 💳 **Thanh toán an toàn** chuẩn PCI
+- 🛡️ **Row Level Security (RLS)** on Supabase
+- 🔐 **JWT Authentication** for API protection
+- 🔒 **Input validation** and data sanitization
+- 💳 **Secure payments** with PCI compliance
 
 ---
 
-## 🚀 Triển Khai
+## 🚀 Deployment
 
-### **Vercel (Khuyến nghị)**
+### **Vercel (Recommended)**
 ```bash
-# Triển khai lên Vercel
+# Deploy to Vercel
 npm i -g vercel
 vercel --prod
 ```
 
-### **Thiết Lập Production**
+### **Production Setup**
 ```bash
-# Biến môi trường production
-NEXT_PUBLIC_SUPABASE_URL=url_production
-NEXT_PUBLIC_SUPABASE_ANON_KEY=key_production
-# ... các cấu hình khác
+# Production environment variables
+NEXT_PUBLIC_SUPABASE_URL=production_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=production_key
+# ... other production configs
 ```
 
 ---
 
-## 🤝 Đóng Góp
+## 🤝 Contributing
 
-1. **Fork** repository này
-2. **Tạo** branch cho tính năng mới (`git checkout -b feature/TinhNangMoi`)
-3. **Commit** thay đổi (`git commit -m 'Thêm tính năng mới'`)
-4. **Push** lên branch (`git push origin feature/TinhNangMoi`)
-5. **Tạo** Pull Request
+1. **Fork** this repository
+2. **Create** a feature branch (`git checkout -b feature/AmazingFeature`)
+3. **Commit** your changes (`git commit -m 'Add some AmazingFeature'`)
+4. **Push** to the branch (`git push origin feature/AmazingFeature`)
+5. **Open** a Pull Request
 
 ---
 
-## 📞 Liên Hệ
+## 📞 Contact
 
 <div align="center">
 
-**👨‍💻 Thông Tin Developer**  
-📧 **Email:** zaikaman123@gmail.com
+**👨‍💻 Developer Information**  
+📧 **Email:** zaikaman123@gmail.com  
 🔗 **LinkedIn:** https://www.linkedin.com/in/%C4%91inh-ph%C3%BAc-th%E1%BB%8Bnh-2561b5274/  
 🐙 **GitHub:** https://github.com/zaikaman  
 💼 **Portfolio:** https://dinhphucthinh.vercel.app/
 
 ---
 
-**🎵 KienVocal - Giảng Viên Thanh Nhạc**  
-👨‍🎤 **Giảng viên:** Đinh Trung Kiên  
-📞 **Điện thoại:** 0903100887  
-📧 **Email:** kienalai@gmail.com 
-🏆 **Kinh nghiệm:** 30+ năm giảng dạy thanh nhạc  
-🎯 **Thành tựu:** Hơn 1000+ học viên thành công
+**🎵 KienVocal - Vocal Instructor**  
+👨‍🎤 **Instructor:** Dinh Trung Kien  
+📞 **Phone:** 0903100887  
+📧 **Email:** kienalai@gmail.com  
+🏆 **Experience:** 30+ years in vocal training  
+🎯 **Achievement:** 1000+ successful students
 
 </div>
 
 ---
 
-## 📊 Thống Kê Dự Án
+## 📊 Project Statistics
 
-- 🎯 **Tính năng hoàn chỉnh:** 95%+
-- 📦 **Kích thước tối ưu:** < 500KB
-- ⚡ **Tốc độ tải:** < 3 giây
+- 🎯 **Feature Completion:** 95%+
+- 📦 **Bundle Size:** Optimized < 500KB
+- ⚡ **Load Time:** < 3 seconds
 - 🔄 **Uptime:** 99.9%
-- 👥 **Người dùng:** Đang tăng trưởng
+- 👥 **Users:** Growing daily
 
 ---
 
-## 📝 Giấy Phép
+## 📝 License
 
-Dự án này được cấp phép theo **MIT License** - xem file [LICENSE](LICENSE) để biết chi tiết.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 <div align="center">
-  <p><strong>⭐ Hãy star repository này nếu bạn thấy hữu ích!</strong></p>
-  <p><strong>🔔 Watch để nhận thông báo cập nhật mới</strong></p>
-  <p>Được tạo với ❤️ tại Việt Nam 🇻🇳</p>
+  <p><strong>⭐ Star this repository if you find it helpful!</strong></p>
+  <p><strong>🔔 Watch for updates and new features</strong></p>
+  <p>Made with ❤️ in Vietnam 🇻🇳</p>
   
   <br/>
   
-  **[🚀 Website Live](https://kienvocal.com)**
+  **[🚀 Live Website](https://kienvocal.com)**
 </div>
