@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://kienvocal.com
+Host: https://kienvocal.site
 
 # Sitemaps
-Sitemap: https://kienvocal.com/sitemap.xml 
+Sitemap: https://kienvocal.site/sitemap.xml 

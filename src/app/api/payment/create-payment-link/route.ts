@@ -16,7 +16,7 @@ export async function POST(request: Request) {
   try {
     const { courseType, email } = await request.json()
     const orderCode = Number(String(Date.now()).slice(-6))
-    const domain = process.env.NEXT_PUBLIC_DOMAIN || 'https://kienvocal.com'
+    const domain = process.env.NEXT_PUBLIC_DOMAIN || 'https://kienvocal.site'
     
     const amount = COURSE_PRICES[courseType as keyof typeof COURSE_PRICES]
     if (!amount) {

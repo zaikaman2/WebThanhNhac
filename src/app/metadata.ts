@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 const defaultMetadata: Metadata = {
-  metadataBase: new URL('https://kienvocal.com'),
+  metadataBase: new URL('https://kienvocal.site'),
   title: {
     default: 'KienVocal - Học Thanh Nhạc Online Cùng Chuyên Gia',
     template: '%s - KienVocal'
@@ -21,7 +21,7 @@ const defaultMetadata: Metadata = {
   authors: [
     {
       name: 'Đinh Trung Kiên',
-      url: 'https://kienvocal.com/about',
+      url: 'https://kienvocal.site/about',
     }
   ],
   creator: 'Đinh Trung Kiên',
@@ -34,7 +34,7 @@ const defaultMetadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'vi_VN',
-    url: 'https://kienvocal.com',
+    url: 'https://kienvocal.site',
     siteName: 'KienVocal',
     title: 'KienVocal - Học Thanh Nhạc Online Cùng Chuyên Gia',
     description: 'Khóa học thanh nhạc online chất lượng cao với giảng viên Đinh Trung Kiên - 30 năm kinh nghiệm. Học hát từ cơ bản đến nâng cao, phù hợp mọi trình độ.',
@@ -56,7 +56,7 @@ const defaultMetadata: Metadata = {
     site: '@kienvocal',
   },
   alternates: {
-    canonical: 'https://kienvocal.com',
+    canonical: 'https://kienvocal.site',
   },
   robots: {
     index: true,
