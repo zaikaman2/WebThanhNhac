@@ -99,7 +99,7 @@ Hãy trả lời mọi câu hỏi một cách thân thiện và chuyên nghiệp
     setIsLoading(true)
 
     try {
-      const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
+      const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-lite' })
 
       const fullPrompt = `${systemPrompt}\n\nLịch sử chat:\n${messages
         .map(msg => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`)
