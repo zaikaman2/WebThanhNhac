@@ -8,7 +8,7 @@ export default function Footer() {
     <>
       <footer className="bg-secondary-darker text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
             {/* Logo và thông tin */}
             <div className="col-span-1">
               <Link href="/" className="text-3xl font-bold text-primary">
@@ -47,7 +47,34 @@ export default function Footer() {
               <ul className="space-y-3 text-gray-400">
                 <li className="hover:text-primary transition-colors">Email: zaikaman123@gmail.com</li>
                 <li className="hover:text-primary transition-colors">Điện thoại: 0903100887</li>
-                <li className="hover:text-primary transition-colors">Địa chỉ: Hồ Chí Minh, Việt Nam</li>
+                <li className="hover:text-primary transition-colors">Địa chỉ: 536/43/68A Âu Cơ, Phường Bảy Hiền, TP. Hồ Chí Minh</li>
+              </ul>
+            </div>
+
+            {/* Chính sách */}
+            <div>
+              <h3 className="text-lg font-semibold mb-6 text-primary">Chính sách</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/huong-dan-mua-hang" className="text-gray-400 hover:text-primary transition-colors">
+                    Hướng dẫn mua hàng
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/chinh-sach-giao-hang" className="text-gray-400 hover:text-primary transition-colors">
+                    Chính sách giao hàng
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/hinh-thuc-thanh-toan" className="text-gray-400 hover:text-primary transition-colors">
+                    Hình thức thanh toán
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/chinh-sach-bao-hanh-doi-tra" className="text-gray-400 hover:text-primary transition-colors">
+                    Chính sách bảo hành đổi trả
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -82,6 +109,9 @@ export default function Footer() {
             <div className="text-center">
               <p className="text-gray-400">
                 © 2024 KienVocal. Tất cả quyền được bảo lưu.
+              </p>
+              <p className="mt-2 text-gray-400">
+                Mã số thuế: 060067004568
               </p>
               <div className="mt-4 space-x-8">
                 <Link href="/privacy" className="text-gray-400 hover:text-primary transition-colors">

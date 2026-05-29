@@ -2,9 +2,9 @@ import { NextResponse } from 'next/server'
 import PayOS from '@payos/node'
 
 const payOS = new PayOS(
-  '82071c6c-cd8a-4266-bf48-dbb5e241e5fa',
-  '50859d56-e4c6-4e89-8987-c3116999cbf0', 
-  'eb595d3d425dff516fb5fcd31264171ca1b0afe5918716822d350c61101f7e4d'
+  process.env.PAYOS_CLIENT_ID!,
+  process.env.PAYOS_API_KEY!,
+  process.env.PAYOS_CHECKSUM_KEY!
 )
 
 const COURSE_PRICES = {

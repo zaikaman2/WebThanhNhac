@@ -31,18 +31,18 @@ interface WebhookBody {
   signature: string
 }
 
-const CHECKSUM_KEY = 'eb595d3d425dff516fb5fcd31264171ca1b0afe5918716822d350c61101f7e4d'
+const CHECKSUM_KEY = process.env.PAYOS_CHECKSUM_KEY!
 
 const payOS = new PayOS(
-  '82071c6c-cd8a-4266-bf48-dbb5e241e5fa',
-  '50859d56-e4c6-4e89-8987-c3116999cbf0', 
+  process.env.PAYOS_CLIENT_ID!,
+  process.env.PAYOS_API_KEY!,
   CHECKSUM_KEY
 )
 
 // Khởi tạo Supabase Admin Client để có thể thêm purchase mà không cần auth
 const supabaseAdmin = createClient(
-  'https://fgmmykvsbzfgpdloadvb.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnbW15a3ZzYnpmZ3BkbG9hZHZiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMjI2MTkwNCwiZXhwIjoyMDQ3ODM3OTA0fQ.CFvf9eksZ5dVEuARVhxIGbtDCazXKZSUxeCui5dWedc'
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
 )
 
 function sortObjDataByKey(object: Record<string, unknown>): Record<string, unknown> {

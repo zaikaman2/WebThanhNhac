@@ -109,6 +109,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.3,
+    },
+    {
+      url: 'https://kienvocal.site/huong-dan-mua-hang',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: 'https://kienvocal.site/chinh-sach-giao-hang',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: 'https://kienvocal.site/hinh-thuc-thanh-toan',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: 'https://kienvocal.site/chinh-sach-bao-hanh-doi-tra',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
     }
   ]
 } 
