@@ -7,7 +7,6 @@ import { AuthProvider } from '@/contexts/AuthContext'
 import { Toaster } from 'react-hot-toast'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
-import Script from 'next/script'
 import defaultMetadata from './metadata'
 import { Metadata } from 'next'
 
@@ -46,12 +45,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <head>
-        <Script 
-          src="https://player.vimeo.com/api/player.js"
-          strategy="beforeInteractive"
-        />
-      </head>
       <body className={`${montserrat.variable} ${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <AuthProvider>
           <Header />

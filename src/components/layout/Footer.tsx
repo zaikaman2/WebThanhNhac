@@ -1,13 +1,11 @@
 "use client"
 
 import Link from 'next/link'
-import ChatbotButton from '../shared/ChatbotButton'
 
 export default function Footer() {
   return (
-    <>
-      <footer className="bg-secondary-darker text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <footer className="bg-secondary-darker text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
             {/* Logo và thông tin */}
             <div className="col-span-1">
@@ -125,8 +123,6 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-      <ChatbotButton />
-    </>
   )
 }
 

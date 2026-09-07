@@ -26,10 +26,6 @@
 - **📖 Progress Tracking**: System to mark completed lessons
 - **💬 Interactive Comments**: Students can discuss and ask questions on each lesson
 
-### 🤖 **Smart AI Assistant**
-- **💭 Chatbot Consultation**: 24/7 student support using Google Gemini AI
-- **🎯 Personalized Support**: Answers questions about vocal techniques and courses
-- **📞 Contact Information**: Provides instructor information and schedules
 
 ### 💳 **Payment & Management**
 - **💸 Online Payment**: PayOS integration supporting multiple payment methods
@@ -58,8 +54,7 @@
 - 📊 **PostgreSQL** - Powerful relational database
 - 🔍 **Prisma ORM** - Type-safe database management tool
 
-### **Integrations & AI**
-- 🤖 **Google Gemini AI** - Artificial intelligence for chatbot
+### **Integrations & Services**
 - 🎥 **Vimeo Player** - High-quality video streaming
 - 💳 **PayOS** - Vietnamese payment gateway
 - 📧 **Email Templates** - Automated email sending
@@ -75,16 +70,16 @@
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                               │                        │
                               ↓                        ↓
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│  Google Gemini  │    │      PayOS      │    │   PostgreSQL    │
-│   AI Chatbot    │    │    Payment      │    │    Database     │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
+                       ┌─────────────────┐    ┌─────────────────┐
+                       │      PayOS      │    │   PostgreSQL    │
+                       │    Payment      │    │    Database     │
+                       └─────────────────┘    └─────────────────┘
                               │
                               ↓
-                    ┌─────────────────┐
-                    │  Vimeo Player   │
-                    │  Video Learning │
-                    └─────────────────┘
+                     ┌─────────────────┐
+                     │  Vimeo Player   │
+                     │  Video Learning │
+                     └─────────────────┘
 ```
 
 ---
@@ -141,9 +136,6 @@ NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_KEY=your_service_key
 
-# Google AI for Chatbot
-NEXT_PUBLIC_GOOGLE_API_KEY=your_google_gemini_api_key
-
 # PayOS for Payment
 PAYOS_CLIENT_ID=your_payos_client_id
 PAYOS_API_KEY=your_payos_api_key
@@ -183,19 +175,6 @@ webthanhnhac/
 ---
 
 ## 🎯 Technical Highlights
-
-### **🤖 Smart AI Chatbot**
-```typescript
-// Google Gemini AI integration for 24/7 consultation
-const genAI = new GoogleGenerativeAI(apiKey)
-const response = await genAI.generateContent(userQuery)
-
-// Smart response formatting
-const formatResponse = (text: string) => {
-  const sections = text.split('***').map(section => section.trim())
-  return sections.map(section => formatSection(section))
-}
-```
 
 ### **💳 PayOS Payment System**
 ```typescript
