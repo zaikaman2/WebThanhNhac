@@ -12,19 +12,19 @@ const FALLBACK_TESTIMONIALS: TestimonialData[] = [
   {
     id: '1',
     name: 'Nguyễn Thị Kim',
-    avatar: 'https://i.ibb.co/n3H5Nq5/3282224-removebg-preview.png',
+    avatar: '/images/testimonials/default-avatar.png',
     content: 'Sau 12 ngày học và làm theo bài tập nén hơi của Thầy Kiên, giọng hát của mình đã cải thiện rõ rệt, không còn bị đuối khi lên nốt cao. Thầy dạy rất dễ hiểu.',
   },
   {
     id: '2',
     name: 'Trần Thị Diễm',
-    avatar: 'https://i.ibb.co/n3H5Nq5/3282224-removebg-preview.png',
+    avatar: '/images/testimonials/default-avatar.png',
     content: 'Phương pháp giảng dạy của Thầy vô cùng khoa học và gần gũi. Trước đây mình hát bị nghẹt cổ, giờ đã biết cách mở khẩu hình vòm họng vang sáng hơn rất nhiều.',
   },
   {
     id: '3',
     name: 'Lê Minh Hải',
-    avatar: 'https://i.ibb.co/n3H5Nq5/3282224-removebg-preview.png',
+    avatar: '/images/testimonials/default-avatar.png',
     content: 'Khóa học thực sự rất đáng giá tiền. Nội dung chi tiết, bài tập bám sát thực tế và được Thầy góp ý chỉnh sửa tận tình khi gửi bài tập.',
   },
 ]

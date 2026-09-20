@@ -66,10 +66,11 @@ export default function WelcomeSection() {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-md rounded-2xl overflow-hidden shadow-2xl border-2 border-primary/30 bg-secondary">
               <Image
-                src="https://i.ibb.co/3c9RJm2/1732274222865.jpg"
+                src="/images/instructor/dinh-trung-kien.jpg"
                 alt="Giảng viên Đinh Trung Kiên"
                 width={500}
                 height={600}
+                sizes="(max-width: 1024px) 100vw, 450px"
                 className="w-full h-auto object-cover aspect-[4/5]"
                 priority
               />

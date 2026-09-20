@@ -295,6 +295,8 @@ export default function BasicCoursePage() {
                       alt={course.title}
                       width={600}
                       height={400}
+                      priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="rounded-xl shadow-2xl w-full aspect-[16/11] object-cover"
                     />
                   </div>

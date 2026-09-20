@@ -346,10 +346,12 @@ export default function IntermediatePage() {
                   <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-primary-light/30 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
                   <div className="relative">
                     <ImageWithLoading
-                      src={course?.image ?? '/placeholder-image.jpg'}
+                      src={course?.image ?? '/images/courses/course-intermediate.jpg'}
                       alt={course?.title ?? 'Course Image'}
                       width={600}
                       height={400}
+                      priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="rounded-xl shadow-2xl w-full aspect-video object-cover"
                     />
                   </div>

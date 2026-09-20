@@ -31,11 +31,13 @@ export default function BannerContent({ instructor }: { instructor: Instructor }
         <div className="md:w-1/2 mt-12 md:mt-0">
           <GlowingEffect>
             <Image
-              src="https://i.ibb.co/8sB3D1B/img-t6-Bs-Gd3nm0i0-LYXai-D9z1.jpg"
+              src="/images/hero/hero-banner.jpg"
               alt={instructor?.name || 'Giảng viên'}
               width={600}
               height={400}
-              className="rounded-lg shadow-2xl relative"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+              className="rounded-lg shadow-2xl relative object-cover"
             />
           </GlowingEffect>
         </div>

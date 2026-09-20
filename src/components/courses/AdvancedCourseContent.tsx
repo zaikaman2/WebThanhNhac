@@ -82,6 +82,8 @@ export default function AdvancedCourseContent({ course }: AdvancedCourseContentP
                       alt={course.title}
                       width={600}
                       height={400}
+                      priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="rounded-xl shadow-2xl w-full aspect-video object-cover"
                     />
                   </div>

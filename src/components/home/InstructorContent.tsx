@@ -19,10 +19,11 @@ export default function InstructorContent() {
           <div className="w-[300px] h-[300px]">
             <GlowingEffect intensity={0.4} duration={4}>
               <Image
-                src="https://i.ibb.co/3c9RJm2/1732274222865.jpg"
+                src="/images/instructor/dinh-trung-kien.jpg"
                 alt="Giảng viên Đinh Trung Kiên"
                 width={300}
                 height={300}
+                sizes="300px"
                 className="rounded-lg relative aspect-square object-cover"
                 priority
               />

@@ -3,7 +3,7 @@ import Image from 'next/image'
 const instructor = {
   name: 'Đinh Trung Kiên',
   bio: 'Với hơn 30 năm kinh nghiệm trong lĩnh vực sư phạm thanh nhạc, thầy Đinh Trung Kiên đã đồng hành và phát triển tài năng cho hàng nghìn học viên trên khắp cả nước.',
-  image: 'https://i.ibb.co/3c9RJm2/1732274222865.jpg',
+  image: '/images/instructor/dinh-trung-kien.jpg',
   achievements: [
     'Giải nhất tiếng hát phát thanh năm 2004',
     'Huy chương vàng diễn viên ca kịch năm 1992',
@@ -30,6 +30,7 @@ export default function AboutPage() {
                   alt={instructor.name}
                   width={600}
                   height={800}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="rounded-lg shadow-2xl relative object-cover"
                   priority
                 />

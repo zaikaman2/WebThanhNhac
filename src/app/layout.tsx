@@ -32,9 +32,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   ...defaultMetadata,
   icons: {
-    icon: 'https://i.ibb.co/YhSY2QK/logo.png',
-    shortcut: 'https://i.ibb.co/YhSY2QK/logo.png',
-    apple: 'https://i.ibb.co/YhSY2QK/logo.png',
+    icon: '/images/logo.png',
+    shortcut: '/images/logo.png',
+    apple: '/images/logo.png',
   },
 }
 

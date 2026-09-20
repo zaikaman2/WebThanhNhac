@@ -40,9 +40,9 @@ const defaultMetadata: Metadata = {
     description: 'Khóa học thanh nhạc online chất lượng cao với giảng viên Đinh Trung Kiên - 30 năm kinh nghiệm. Học hát từ cơ bản đến nâng cao, phù hợp mọi trình độ.',
     images: [
       {
-        url: 'https://i.ibb.co/YhSY2QK/logo.png',
-        width: 800,
-        height: 600,
+        url: 'https://kienvocal.site/images/logo.png',
+        width: 512,
+        height: 512,
         alt: 'KienVocal - Học Thanh Nhạc Online',
       }
     ],
@@ -51,7 +51,7 @@ const defaultMetadata: Metadata = {
     card: 'summary_large_image',
     title: 'KienVocal - Học Thanh Nhạc Online Cùng Chuyên Gia',
     description: 'Khóa học thanh nhạc online chất lượng cao với giảng viên Đinh Trung Kiên - 30 năm kinh nghiệm. Học hát từ cơ bản đến nâng cao, phù hợp mọi trình độ.',
-    images: ['https://i.ibb.co/YhSY2QK/logo.png'],
+    images: ['https://kienvocal.site/images/logo.png'],
     creator: '@kienvocal',
     site: '@kienvocal',
   },

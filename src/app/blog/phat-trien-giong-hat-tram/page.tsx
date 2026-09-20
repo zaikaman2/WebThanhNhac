@@ -298,7 +298,7 @@ export default function BlogPostPage() {
             <div className="mt-12 pt-8 border-t border-white/10">
               <div className="flex items-center gap-6">
                 <Image
-                  src="https://i.ibb.co/3c9RJm2/1732274222865.jpg"
+                  src="/images/instructor/dinh-trung-kien.jpg"
                   alt="Đinh Trung Kiên"
                   width={80}
                   height={80}

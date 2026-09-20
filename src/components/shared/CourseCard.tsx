@@ -1,8 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Course } from './types'
+import { getOptimizedImageUrl } from '@/lib/imageMap'
 
 type CourseCardProps = Course
+
+const LOCAL_COURSE_IMAGES: Record<string, string> = {
+  basic: '/images/courses/course-basic.jpg',
+  intermediate: '/images/courses/course-intermediate.jpg',
+  advanced: '/images/courses/course-1-on-1.jpg',
+}
 
 export default function CourseCard({ id, type, title, description, price, image }: CourseCardProps) {
   const routePath = {
@@ -11,6 +18,7 @@ export default function CourseCard({ id, type, title, description, price, image 
     'advanced': '/courses/advanced'
   }[type] || '/courses'
 
+  const imageSrc = LOCAL_COURSE_IMAGES[type] || getOptimizedImageUrl(image)
   const originalPrice = type === 'basic' ? 499000 : type === 'intermediate' ? 699000 : price
   const discount = type === 'basic' ? 20 : type === 'intermediate' ? 14.4 : 0
   const showSale = discount > 0
@@ -28,9 +36,10 @@ export default function CourseCard({ id, type, title, description, price, image 
       )}
       <div className="relative h-48">
         <Image
-          src={image}
+          src={imageSrc}
           alt={title}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-secondary-darker to-transparent opacity-60"></div>

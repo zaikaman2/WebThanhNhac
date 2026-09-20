@@ -53,19 +53,19 @@ export default async function CoursesPage() {
   const testimonials = [
     {
       name: 'Nguyễn Thị Kim',
-      avatar: 'https://i.ibb.co/n3H5Nq5/3282224-removebg-preview.png',
+      avatar: '/images/testimonials/default-avatar.png',
       content: 'Sau 12 ngày học, giọng hát của tôi đã cải thiện rõ rệt. Thầy Kiên dạy rất tận tâm và dễ hiểu.',
       rating: 5
     },
     {
       name: 'Trần Thị Diễm', 
-      avatar: 'https://i.ibb.co/n3H5Nq5/3282224-removebg-preview.png',
+      avatar: '/images/testimonials/default-avatar.png',
       content: 'Phương pháp giảng dạy rất khoa học và hiệu quả. Tôi đã tự tin hơn nhiều khi hát.',
       rating: 5
     },
     {
       name: 'Lê Minh Hải',
-      avatar: 'https://i.ibb.co/n3H5Nq5/3282224-removebg-preview.png', 
+      avatar: '/images/testimonials/default-avatar.png', 
       content: 'Các khóa học rất đáng giá đồng tiền. Nội dung chi tiết và được hỗ trợ nhiệt tình.',
       rating: 5
     }
