@@ -1,138 +1,140 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = process.env.NEXT_PUBLIC_DOMAIN || 'https://kienvocal.vercel.app'
+
   return [
     {
-      url: 'https://kienvocal.site',
+      url: `${baseUrl}`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1,
     },
     {
-      url: 'https://kienvocal.site/blog',
+      url: `${baseUrl}/blog`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
-      url: 'https://kienvocal.site/blog/ky-thuat-ho-tro-giong-hat',
+      url: `${baseUrl}/blog/ky-thuat-ho-tro-giong-hat`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://kienvocal.site/blog/bai-tap-luyen-giong-co-ban',
+      url: `${baseUrl}/blog/bai-tap-luyen-giong-co-ban`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://kienvocal.site/blog/cach-luyen-hat-dung-tong',
+      url: `${baseUrl}/blog/cach-luyen-hat-dung-tong`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://kienvocal.site/blog/khoi-dong-giong-hat',
+      url: `${baseUrl}/blog/khoi-dong-giong-hat`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://kienvocal.site/blog/phat-trien-giong-hat-tram',
+      url: `${baseUrl}/blog/phat-trien-giong-hat-tram`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://kienvocal.site/courses',
+      url: `${baseUrl}/courses`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://kienvocal.site/courses/basic',
+      url: `${baseUrl}/courses/basic`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://kienvocal.site/courses/intermediate',
+      url: `${baseUrl}/courses/intermediate`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://kienvocal.site/learn/basic',
+      url: `${baseUrl}/learn/basic`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
-      url: 'https://kienvocal.site/learn/intermediate',
+      url: `${baseUrl}/learn/intermediate`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
-      url: 'https://kienvocal.site/about',
+      url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: 'https://kienvocal.site/auth',
+      url: `${baseUrl}/auth`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
-      url: 'https://kienvocal.site/auth/register',
+      url: `${baseUrl}/auth/register`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
-      url: 'https://kienvocal.site/account',
+      url: `${baseUrl}/account`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.4,
     },
     {
-      url: 'https://kienvocal.site/terms',
+      url: `${baseUrl}/terms`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
-      url: 'https://kienvocal.site/privacy',
+      url: `${baseUrl}/privacy`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
-      url: 'https://kienvocal.site/huong-dan-mua-hang',
+      url: `${baseUrl}/huong-dan-mua-hang`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
-      url: 'https://kienvocal.site/chinh-sach-giao-hang',
+      url: `${baseUrl}/chinh-sach-giao-hang`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
-      url: 'https://kienvocal.site/hinh-thuc-thanh-toan',
+      url: `${baseUrl}/hinh-thuc-thanh-toan`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
-      url: 'https://kienvocal.site/chinh-sach-bao-hanh-doi-tra',
+      url: `${baseUrl}/chinh-sach-bao-hanh-doi-tra`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.3,
     }
   ]
-} 
+}

@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 const defaultMetadata: Metadata = {
-  metadataBase: new URL('https://kienvocal.site'),
+  metadataBase: new URL('https://kienvocal.vercel.app'),
   title: {
     default: 'KienVocal - Học Thanh Nhạc Online Cùng Chuyên Gia',
     template: '%s - KienVocal'
@@ -21,7 +21,7 @@ const defaultMetadata: Metadata = {
   authors: [
     {
       name: 'Đinh Trung Kiên',
-      url: 'https://kienvocal.site/about',
+      url: 'https://kienvocal.vercel.app/about',
     }
   ],
   creator: 'Đinh Trung Kiên',
@@ -34,13 +34,13 @@ const defaultMetadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'vi_VN',
-    url: 'https://kienvocal.site',
+    url: 'https://kienvocal.vercel.app',
     siteName: 'KienVocal',
     title: 'KienVocal - Học Thanh Nhạc Online Cùng Chuyên Gia',
     description: 'Khóa học thanh nhạc online chất lượng cao với giảng viên Đinh Trung Kiên - 30 năm kinh nghiệm. Học hát từ cơ bản đến nâng cao, phù hợp mọi trình độ.',
     images: [
       {
-        url: 'https://kienvocal.site/images/logo.png',
+        url: 'https://kienvocal.vercel.app/images/logo.png',
         width: 512,
         height: 512,
         alt: 'KienVocal - Học Thanh Nhạc Online',
@@ -51,12 +51,12 @@ const defaultMetadata: Metadata = {
     card: 'summary_large_image',
     title: 'KienVocal - Học Thanh Nhạc Online Cùng Chuyên Gia',
     description: 'Khóa học thanh nhạc online chất lượng cao với giảng viên Đinh Trung Kiên - 30 năm kinh nghiệm. Học hát từ cơ bản đến nâng cao, phù hợp mọi trình độ.',
-    images: ['https://kienvocal.site/images/logo.png'],
+    images: ['https://kienvocal.vercel.app/images/logo.png'],
     creator: '@kienvocal',
     site: '@kienvocal',
   },
   alternates: {
-    canonical: 'https://kienvocal.site',
+    canonical: 'https://kienvocal.vercel.app',
   },
   robots: {
     index: true,

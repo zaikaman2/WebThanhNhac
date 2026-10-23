@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://kienvocal.site
+Host: https://kienvocal.vercel.app
 
 # Sitemaps
-Sitemap: https://kienvocal.site/sitemap.xml 
+Sitemap: https://kienvocal.vercel.app/sitemap.xml
